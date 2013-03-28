@@ -9,10 +9,10 @@ class BioDiversityComponent(Component):
   biosens     = IndependentVariable("Multiplicative parameter")
   dbsta       = IndependentVariable("Benchmark temperature change")
   
-  def step(self):
-    dt = math.abs(self.delta(self.temp))
+  def every_step(self):
+    dt = math.abs(self.delta('temp'))
     
     self.nospecies = math.max(
       self.initial('nospecies') / 100,
-      self.previous('nospecies') * (1.0 - self.bioloss - s.biosens * dt * dt / self.dbsta / self.dbsta)
+      self.previous('nospecies') * (1.0 - self.bioloss - self.biosens * dt * dt / self.dbsta / self.dbsta)
     )

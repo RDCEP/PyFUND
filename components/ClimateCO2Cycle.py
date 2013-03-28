@@ -27,6 +27,6 @@ class ClimateCO2Cycle(Component):
     self.globc = self.mco2 + self.TerrestrialCO2
     
     for i in xrange(5):
-      self.cbox[i] = self.previous('cbox')[i] * self.co2decay + 0.000471 * self.co2frac[i] * self.globc
+      self.cbox[i] = self.previous('cbox')[i] / self.lifeco[i] + 0.000471 * self.co2frac[i] * self.globc
     
     self.acco2 = sum(self.cbox)
