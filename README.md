@@ -1,5 +1,14 @@
-#### PyFUND [Work-in-Progress]
+PyFUND [Work-in-Progress]
+====
 
-This project is an attempt to port the [FUND](http://www.fund-model.org) to Python, so that data can be more readily computed on non-Microsoft platforms.
+This project is an attempt to reimplement the [FUND](http://www.fund-model.org) model in a more POSIX-friendly language. It is being developed as a part of [RDCEP](http://www.rdcep.org) and the [Computation Institute](http://ci.uchicago.edu) at the University of Chicago.
 
-This project is being worked on at the University of Chicago's [Computation Institute](https://ci.uchicago.edu).
+Licence
+---
+Copyright (c) 2013 Computation Institute
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
