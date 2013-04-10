@@ -4,7 +4,7 @@ class Simulation(object):
   shared = threading.local()
   
   def __init__(self, components, years):
-    self.all_parameters = [ ]
+    self.all_parameters = dict( )
     self.values = dict( )
     self.current_time_step = 0
     self.total_time_steps = len(years) + 1
@@ -32,10 +32,10 @@ class Simulation(object):
     del self.__class__.shared.simulation
   
   def set_parameters(self):
-    for component, parameter in self.all_parameters:
-      self.values[parameter.identifier] = [ None ] * self.total_time_steps
+    for parameter in self.all_parameters.values():
+      # self.values[parameter.identifier] = [ ] # [ None ] * self.total_time_steps
       
-      parameter.set_initial_value(1)
+      parameter.set_initial_value(1.0)
   
   def run_simulation(self):
     with self:
@@ -45,6 +45,14 @@ class Simulation(object):
         self.current_time_step += 1
         for stage in self.stages:
           stage.every_step()
+  
+  def plot_values(self, parameter):
+    with self:
+      line = [ ]
+      for ts in xrange(self.total_time_steps):
+        self.current_time_step = ts
+        line.append("=" * int(10 * self.all_parameters[parameter].__get__(None, None)))
+      print "\n".join(line)
 
 class Variable(object):
   def __init__(self, description, **dargs):
@@ -57,6 +65,9 @@ class Variable(object):
   
   def __set__(self, instance, value):
     sim = Simulation.current_simulation()
+    if self.identifier not in sim.values:
+      sim.values[self.identifier] = [ None ] * sim.total_time_steps
+    
     sim.values[self.identifier][sim.current_time_step] = value
   
   def set_initial_value(self, value):
@@ -83,4 +94,4 @@ class Component(object):
     for name in d.keys():
       if isinstance(d[name], Variable):
         d[name].identifier = name
-        simulation.all_parameters.append((self, d[name]))
+        simulation.all_parameters[name] = d[name]

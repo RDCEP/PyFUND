@@ -5,10 +5,16 @@ from components.helpers import Simulation
 def main():
   sim = Simulation(components = [ ExponentialGrowthTest ], years = range(2010, 2100))
   
-  for component, parameter in sim.all_parameters:
-    print "{0:30} {1}".format(component.__class__.__name__, parameter.identifier)
+  for parameter in sim.all_parameters.values():
+    print "{0:30}".format(parameter.identifier)
+  
+  print "--start sim--"
   
   sim.run_simulation()
+  
+  print "--done with sim--"
+  
+  sim.plot_values('balance')
 
 if __name__ == '__main__':
   main()
