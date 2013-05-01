@@ -11,6 +11,8 @@ class IPopulationState(Parameters):
 
 
 class PopulationComponent(Behaviors):
+    state_class = IPopulationState
+
     def run(state, clock):
 
         s = (state)

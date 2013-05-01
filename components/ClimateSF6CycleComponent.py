@@ -6,6 +6,8 @@ class IClimateSF6CycleState(Parameters):
 
 
 class ClimateSF6CycleComponent(Behaviors):
+    state_class = IClimateSF6CycleState
+
     def run(state, clock):
 
         s = (state)

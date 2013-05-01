@@ -18,6 +18,8 @@ class IClimateCO2CycleState(Parameters):
 
 
 class ClimateCO2CycleComponent(Behaviors):
+    state_class = IClimateCO2CycleState
+
     def run(state, clock):
 
         s = (state)

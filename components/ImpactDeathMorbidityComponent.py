@@ -32,6 +32,8 @@ class IImpactDeathMorbidityState(Parameters):
 
 
 class ImpactDeathMorbidityComponent(Behaviors):
+    state_class = IImpactDeathMorbidityState
+
     def run(state, clock):
 
         s = (state)

@@ -98,7 +98,14 @@ def convert_file(filename):
       code = re.sub(r'!', 'not ', code)
       code = re.sub(r'\(([^=(]+)=>(.+?)\)', r'(lambda \1:\2)', code)
       
+      state_class = match.group(1)
+      
+      if state_class.endswith('Component'):
+        state_class = state_class[:-len('Component')]
+      
       result.append("class {0}(Behaviors):".format(match.group(1)))
+      result.append("   state_class = I{0}State".format(state_class))
+      result.append("   ")
       result.append("   def run(state, clock):")
       result.append(code)
       

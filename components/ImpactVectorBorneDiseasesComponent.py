@@ -16,6 +16,8 @@ class IImpactVectorBorneDiseasesState(Parameters):
 
 
 class ImpactVectorBorneDiseasesComponent(Behaviors):
+    state_class = IImpactVectorBorneDiseasesState
+
     def run(state, clock):
 
         s = (state)

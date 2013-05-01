@@ -5,6 +5,8 @@ class IGeographyState(Parameters):
 
 
 class GeographyComponent(Behaviors):
+    state_class = IGeographyState
+
     def run(state, clock):
 
         s = (state)

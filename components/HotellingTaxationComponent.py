@@ -17,6 +17,8 @@ class IRegionalHotellingTaxationState(Parameters):
 
 
 class GlobalHotellingTaxationComponent(Behaviors):
+    state_class = IGlobalHotellingTaxationState
+
     def run(state, clock):
 
         t = (clock.Current)
@@ -49,6 +51,8 @@ class GlobalHotellingTaxationComponent(Behaviors):
 
 
 class RegionalHotellingTaxationComponent(Behaviors):
+    state_class = IRegionalHotellingTaxationState
+
     def run(state, clock):
 
         t = (clock.Current)

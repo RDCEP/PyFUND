@@ -38,6 +38,8 @@ class IImpactSeaLevelRiseState(Parameters):
 
 
 class ImpactSeaLevelRiseComponent(Behaviors):
+    state_class = IImpactSeaLevelRiseState
+
     def run(state, clock):
 
         s = (state)

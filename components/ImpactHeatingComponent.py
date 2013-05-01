@@ -10,6 +10,8 @@ class IImpactHeatingState(Parameters):
 
 
 class ImpactHeatingComponent(Behaviors):
+    state_class = IImpactHeatingState
+
     def run(state, clock):
 
         s = (state)

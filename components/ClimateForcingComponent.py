@@ -26,6 +26,8 @@ class IClimateForcingState(Parameters):
 
 
 class ClimateForcingComponent(Behaviors):
+    state_class = IClimateForcingState
+
     def run(state, clock):
 
         s = (state)

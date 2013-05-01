@@ -67,6 +67,8 @@ class IEmissionsState(Parameters):
 
 
 class EmissionsComponent(Behaviors):
+    state_class = IEmissionsState
+
     def run(state, clock):
 
         s = (state)

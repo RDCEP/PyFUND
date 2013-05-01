@@ -19,6 +19,8 @@ class IImpactAgricultureState(Parameters):
 
 
 class ImpactAgricultureComponent(Behaviors):
+    state_class = IImpactAgricultureState
+
     def run(state, clock):
 
         s = (state)

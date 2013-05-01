@@ -5,6 +5,8 @@ class IBioDiversityState(Parameters):
 
 
 class BioDiversityComponent(Behaviors):
+    state_class = IBioDiversityState
+
     def run(state, clock):
 
         s = (state)

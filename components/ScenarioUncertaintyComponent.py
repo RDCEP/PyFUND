@@ -20,6 +20,8 @@ class IScenarioUncertaintyState(Parameters):
 
 
 class ScenarioUncertaintyComponent(Behaviors):
+    state_class = IScenarioUncertaintyState
+
     def run(state, clock):
 
         s = (state)

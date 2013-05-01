@@ -10,6 +10,8 @@ class IImpactWaterResourcesState(Parameters):
 
 
 class ImpactWaterResourcesComponent(Behaviors):
+    state_class = IImpactWaterResourcesState
+
     def run(state, clock):
 
         s = (state)

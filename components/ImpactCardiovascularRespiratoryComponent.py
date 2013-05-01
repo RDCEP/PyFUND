@@ -25,6 +25,8 @@ class IImpactCardiovascularRespiratoryState(Parameters):
 
 
 class ImpactCardiovascularRespiratoryComponent(Behaviors):
+    state_class = IImpactCardiovascularRespiratoryState
+
     def run(state, clock):
 
         s = (state)

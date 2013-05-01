@@ -6,6 +6,8 @@ class IClimateCH4CycleState(Parameters):
 
 
 class ClimateCH4CycleComponent(Behaviors):
+    state_class = IClimateCH4CycleState
+
     def run(state, clock):
 
         s = (state)

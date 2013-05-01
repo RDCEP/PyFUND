@@ -6,6 +6,8 @@ class IClimateDynamicsState(Parameters):
 
 
 class ClimateDynamicsComponent(Behaviors):
+    state_class = IClimateDynamicsState
+
     def run(state, clock):
 
         s = (state)

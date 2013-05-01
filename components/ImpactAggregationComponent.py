@@ -22,6 +22,8 @@ class IImpactAggregationState(Parameters):
 
 
 class ImpactAggregationComponent(Behaviors):
+    state_class = IImpactAggregationState
+
     def run(state, clock):
 
         s = (state)

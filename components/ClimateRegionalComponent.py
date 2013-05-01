@@ -9,6 +9,8 @@ class IClimateRegionalState(Parameters):
 
 
 class ClimateRegionalComponent(Behaviors):
+    state_class = IClimateRegionalState
+
     def run(state, clock):
 
         s = (state)

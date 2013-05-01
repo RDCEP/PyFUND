@@ -6,6 +6,8 @@ class IClimateN2OCycleState(Parameters):
 
 
 class ClimateN2OCycleComponent(Behaviors):
+    state_class = IClimateN2OCycleState
+
     def run(state, clock):
 
         s = (state)

@@ -4,6 +4,8 @@ class IMarginalEmissionState(Parameters):
 
 
 class MarginalEmissionComponent(Behaviors):
+    state_class = IMarginalEmissionState
+
     def run(state, clock):
 
         t = (clock.Current)

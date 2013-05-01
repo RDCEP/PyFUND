@@ -10,6 +10,8 @@ class IImpactCoolingState(Parameters):
 
 
 class ImpactCoolingComponent(Behaviors):
+    state_class = IImpactCoolingState
+
     def run(state, clock):
 
         s = (state)

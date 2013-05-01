@@ -28,6 +28,8 @@ class IRegionalWelfareState(Parameters):
 
 
 class GlobalWelfareComponent(Behaviors):
+    state_class = IGlobalWelfareState
+
     def run(state, clock):
 
         s = (state)
@@ -71,6 +73,8 @@ class GlobalWelfareComponent(Behaviors):
 
 
 class UtilitarianWelfareComponent(Behaviors):
+    state_class = IUtilitarianWelfareState
+
     def run(state, clock):
 
         s = (state)
@@ -120,6 +124,8 @@ class UtilitarianWelfareComponent(Behaviors):
 
 
 class RegionalWelfareComponent(Behaviors):
+    state_class = IRegionalWelfareState
+
     def run(state, clock):
 
         s = (state)

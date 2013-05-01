@@ -13,6 +13,8 @@ class IImpactDiarrhoeaState(Parameters):
 
 
 class ImpactDiarrhoeaComponent(Behaviors):
+    state_class = IImpactDiarrhoeaState
+
     def run(state, clock):
 
         s = (state)

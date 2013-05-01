@@ -10,6 +10,8 @@ class IImpactBioDiversityState(Parameters):
 
 
 class ImpactBioDiversityComponent(Behaviors):
+    state_class = IImpactBioDiversityState
+
     def run(state, clock):
 
         s = (state)

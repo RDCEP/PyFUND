@@ -29,6 +29,8 @@ class ISocioEconomicState(Parameters):
 
 
 class SocioEconomicComponent(Behaviors):
+    state_class = ISocioEconomicState
+
     def run(state, clock):
 
         s = (state)

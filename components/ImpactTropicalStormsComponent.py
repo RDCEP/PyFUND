@@ -11,6 +11,8 @@ class IImpactTropicalStormsState(Parameters):
 
 
 class ImpactTropicalStormsComponent(Behaviors):
+    state_class = IImpactTropicalStormsState
+
     def run(state, clock):
 
         t = (clock.Current)

@@ -10,6 +10,8 @@ class IImpactForestsState(Parameters):
 
 
 class ImpactForests(Behaviors):
+    state_class = IImpactForestsState
+
     def run(state, clock):
 
         s = (state)

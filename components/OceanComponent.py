@@ -5,6 +5,8 @@ class IOceanState(Parameters):
 
 
 class OceanComponent(Behaviors):
+    state_class = IOceanState
+
     def run(state, clock):
 
         s = (state)
