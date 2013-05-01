@@ -1,18 +1,24 @@
-from components.helpers import *
+class IBioDiversityState(Parameters):
+    nospecies = IVariable1Dimensional(
+        ['Timestep', 'double'], 'Number of species')
+    temp = IParameter1Dimensional(['Timestep', 'double'], 'Temperature')
 
-class BioDiversityComponent(Component):
-  nospecies   = DependentVariable("Number of species", requiresFirst = True)
-  
-  temp        = ExternalVariable("Temperature")
-  
-  bioloss     = IndependentVariable("Additive parameter")
-  biosens     = IndependentVariable("Multiplicative parameter")
-  dbsta       = IndependentVariable("Benchmark temperature change")
-  
-  def every_step(self):
-    dt = math.abs(self.delta('temp'))
-    
-    self.nospecies = math.max(
-      self.initial('nospecies') / 100,
-      self.previous('nospecies') * (1.0 - self.bioloss - self.biosens * dt * dt / self.dbsta / self.dbsta)
-    )
+
+class BioDiversityComponent(Behaviors):
+    def run(state, clock):
+
+        s = (state)
+        t = (clock.Current)
+
+        if (t > Timestep.FromYear(2000)):
+
+            dt = (math.abs(s.temp[t] - s.temp[t - 1]))
+
+            s.nospecies[t] = (math.max(
+                              s.nospecbase / 100,
+                              s.nospecies[t - 1] * (
+                              1.0 - s.bioloss - s.biosens * dt * dt / s.dbsta / s.dbsta)
+                              ))
+
+        else:
+            s.nospecies[t] = (s.nospecbase)

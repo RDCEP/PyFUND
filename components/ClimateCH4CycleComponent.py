@@ -1,18 +1,27 @@
-from components.helpers import *
+class IClimateCH4CycleState(Parameters):
+    globch4 = IParameter1Dimensional(
+        ['Timestep', 'double'], 'Global CH4 emissions in Mt of CH4')
+    acch4 = IVariable1Dimensional(
+        ['Timestep', 'double'], 'Atmospheric CH4 concentration')
 
-class BioDiversityComponent(Component):
-  acch4         = DependentVariable("Atmospheric Methane concentration", initial = 1222.0)
-  
-  globch4       = ExternalVariable("Global Methane Emissions in Mt")
-  
-  lifech4       = IndependentVariable("Methane Decay")
-  ch4pre        = IndependentVariable("Pre-industrial Methane")
-  
-  def step(self):
-    self.acch4 = (
-      self.previous(self.acch4) + 0.3597 * self.globch4 -
-      1.0 / self.lifech4 * (self.previous(self.acch4) - self.ch4pre)
-    )
-    
-    if self.acch4 < 0
-      raise Exception, "CH4 atmospheric concentration out of range"
+
+class ClimateCH4CycleComponent(Behaviors):
+    def run(state, clock):
+
+        s = (state)
+        t = (clock.Current)
+
+        if (clock.IsFirstTimestep):
+
+            s.ch4decay = (1.0 / s.lifech4)
+
+            s.acch4[t] = (1222.0)
+
+        else:
+
+            s.acch4[t] = (s.acch4[t - 1] + 0.3597 * s.globch4[
+                          t] - s.ch4decay * (s.acch4[t - 1] - s.ch4pre))
+
+            if (s.acch4[t] < 0):
+                raise ApplicationException(
+                    "ch4 atmospheric concentration out of range")
