@@ -57,8 +57,8 @@ def _choose_default_for_type(kind):
    """
    return {
       'double': 3.0,
-      'timestep': Timestep(0),
-      'region': 0,
+      'timestep': Timestep(2),
+      'region': 1,
       'boolean': True,
       'bool': True
    }[kind.lower()]
@@ -89,6 +89,10 @@ class Clock(object):
    def __init__(self, time_steps):
       self.time_steps = time_steps
       self.current_time_step = 1
+   
+   @property
+   def can_advance(self):
+      return self.current_time_step < len(self.time_steps)
    
    def advance(self):
       self.current_time_step += 1
@@ -168,18 +172,15 @@ class FUND(object):
       # Precompute the values of all types
       types = self.dimensions.generate_types()
       
-      print types
-      
       # Ensure that all parameters are specified
       for name, variable in self.all_options.items():
-         new_value = None
-         
-         if variable.is_parameter:
-            if name not in parameters:
-               warnings.warn("Missing parameter {0}; setting to an arbitrary value.".format(name))
-               new_value = _choose_default_for_type(variable.return_value)
+         new_value = _choose_default_for_type(variable.return_value)
          
          if name not in parameters:
+            if variable.is_parameter:
+               warnings.warn("Missing parameter {0}; setting to an arbitrary value.".format(name))
+               # new_value = _choose_default_for_type(variable.return_value)
+            
             self.variables[name] = dict( )
          
             for value in _cross_product_of_types(variable.index_by or [ ], values = types):
@@ -208,8 +209,11 @@ class FUND(object):
       
       Timestep._state.clock = clock # This is terrible form.
       
-      for behavior, state in instances:
-         behavior.run(state, clock, self.dimensions)
+      while clock.can_advance:
+         for behavior, state in instances:
+            behavior.run(state, clock, self.dimensions)
+         
+         clock.advance()
    
    def track(self, *variables):
       pass
