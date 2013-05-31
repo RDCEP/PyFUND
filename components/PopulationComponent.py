@@ -37,7 +37,7 @@ class PopulationComponent(Behaviors):
             for r in dimensions.GetValuesOfRegion():
 
                 s.population[t, r] = ((1.0 + 0.01 * s.pgrowth[t - 1, r]) * (s.population[t - 1, r] +
-                                     (
+                                                                            (
                                                                             (t >= Timestep.FromSimulationYear(40)) and not s.runwithoutpopulationperturbation and (s.enter[t - 1, r] / 1000000.0) - (
                                                                             s.leave[t - 1, r] / 1000000.0) - (s.dead[t - 1, r] >= 0 and s.dead[t - 1, r] / 1000000.0 or 0) or 0
                                                                             )

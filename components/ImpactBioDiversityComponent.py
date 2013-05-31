@@ -37,4 +37,4 @@ class ImpactBioDiversityComponent(Behaviors):
                                    s.valbase * ypc / s.valinc[r] / (1.0 + ypc / s.valinc[r]) / valadj * ypc *
                                    s.population[t, r] / 1000.0 *
                                    dt / s.dbsta / (1.0 + dt / s.dbsta) *
-                                  (1.0 - s.bioshare + s.bioshare * s.biodiv[t]))
+                                   (1.0 - s.bioshare + s.bioshare * s.biodiv[t]))
