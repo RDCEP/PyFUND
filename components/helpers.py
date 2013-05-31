@@ -1,5 +1,7 @@
 import threading
 
+DBsT = 0.04
+
 class Parameters(object):
    """
    The Parameters class is the abstract superclass of all
@@ -30,11 +32,35 @@ class Timestep():
    
    @classmethod
    def FromYear(self, year):
-      return self._state.clock.FromYear(year)
+      return Timestep(self._state.clock.FromYear(year))
    
    @classmethod
    def FromSimulationYear(self, year):
-      return self._state.clock.FromSimulationYear(year)
+      return Timestep(self._state.clock.FromSimulationYear(year))
+   
+   def __init__(self, x):
+      self.Value = x
+   
+   def __hash__(self):
+      return hash(self.Value)
+   
+   def __cmp__(self, other):
+      return self.Value.__cmp__(other.Value)
+   
+   def __sub__(self, x):
+      return Timestep(self.Value - int(x))
+   
+   def __add__(self, x):
+      return Timestep(self.Value + int(x))
+   
+   def __int__(self):
+      return self.Value
+   
+   def __str__(self):
+      return "{0}".format(self.Value)
+   
+   def __repr__(self):
+      return "Timestamp({0})".format(self.Value)
 
 class Variable(object):
    """

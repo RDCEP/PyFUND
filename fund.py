@@ -51,6 +51,35 @@ def _cross_product_of_types(types = [ ], values = dict( )):
    
    return [ ( x, ) + y for x in options for y in child_values ]
 
+def _choose_default_for_type(kind):
+   """
+   This function chooses the default value for a given type.
+   """
+   return {
+      'double': 3.0,
+      'timestep': Timestep(0),
+      'region': 0,
+      'boolean': True,
+      'bool': True
+   }[kind.lower()]
+
+def _bastardize_list(python_list):
+   """
+   This function adds certain methods that C# expects to
+   the standard library.
+   """
+   
+   class CSharpList(list):
+      def Select(self, closure):
+         return CSharpList(map(closure, self))
+      
+      def Sum(self):
+         return sum(self)
+   
+   cs_list = CSharpList(python_list)
+   
+   return cs_list
+   
 class Clock(object):
    """
    The Clock class represents the abstract time-keeper; it allows
@@ -66,11 +95,15 @@ class Clock(object):
    
    @property
    def Current(self):
-      return self.current_time_step
+      return Timestep(self.current_time_step)
    
    @property
    def IsFirstTimestep(self):
       return self.current_time_step == 1
+   
+   @property
+   def StartTime(self):
+      return self.time_steps[0]
    
    def FromYear(self, looking_for):
       for index, year in enumerate(self.time_steps):
@@ -93,12 +126,12 @@ class Dimensions(object):
       self.regions = regions
    
    def GetValuesOfRegion(self):
-      return self.regions
+      return _bastardize_list(self.regions)
    
    def generate_types(self):
       return {
          'Region': self.regions,
-         'Timestep': range(0, len(self.time_steps))
+         'Timestep': [ Timestep(x) for x in range(0, len(self.time_steps)) ]
       }
 
 class FUND(object):
@@ -144,7 +177,7 @@ class FUND(object):
          if variable.is_parameter:
             if name not in parameters:
                warnings.warn("Missing parameter {0}; setting to an arbitrary value.".format(name))
-               new_value = 1
+               new_value = _choose_default_for_type(variable.return_value)
          
          if name not in parameters:
             self.variables[name] = dict( )
