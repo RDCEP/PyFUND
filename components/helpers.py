@@ -1,9 +1,15 @@
+import threading
+
 class Parameters(object):
    """
    The Parameters class is the abstract superclass of all
    parameter configuration objects in the various model
    components.
    """
+   
+   def __init__(self, values):
+      self.values = values
+
 class Behaviors(object):
    """
    This is the abstract superclass for any component of
@@ -11,6 +17,20 @@ class Behaviors(object):
    subclass has an associated Paramters object that defines
    its interaction with the surrounding code.
    """
+
+Timestep = threading.local
+
+class Timestep():
+   """
+   The Timestep singleton is a crutch. It is easier to use this
+   one weird hack than to intelligently rewrite the buggy C#.
+   """
+   
+   _state = threading.local()
+   
+   @classmethod
+   def FromYear(self, year):
+      return self._state.clock.FromYear(year)
 
 class Variable(object):
    """
@@ -26,6 +46,9 @@ class Variable(object):
    def fold_description_from(self, other_variable):
       if self.description is None:
          self.description = other_variable.description
+   
+   def __get__(self, instance, klass):
+      return instance.values[self.machine_readable_name]
 
 class IVariable1Dimensional(Variable):
    is_parameter = False
@@ -42,3 +65,10 @@ class IParameter1Dimensional(Variable):
 class IParameter2Dimensional(Variable):
    is_parameter = True
    dimension = 2
+
+class ScalarVariable(Variable):
+   is_parameter = True
+   dimension = 0
+   
+   def __init__(self, machine_readable_name, return_value, description):
+      Variable.__init__(self, machine_readable_name, None, return_value, description)

@@ -16,6 +16,7 @@ def convert_file(filename):
 # {0}. Think long and hard before
 # attempting to modify it.
 
+import math
 from components.helpers import *
 '''.format(datetime.datetime.now()))
   
@@ -49,14 +50,28 @@ from components.helpers import *
         
         all_parameters.append(match.group(5))
         
-        # print match.groups()[1:] # print "{0} {1}".format(match.group(1), match.group(2))
+        return ""
+      
+      def _ivariable_scalar(match):
+        if match.group(1):
+          desc = re.sub(r'(^//?/?)|(</?summary>)', '', match.group(1)).strip()
+        else:
+          desc = None # '[[{0}]]'.format(match.group(4))
+        
+        result.append("   {0} = ScalarVariable({0!r}, {1!r}, {2!r})".format(match.group(4), match.group(3), desc))
+        
+        all_parameters.append(match.group(4))
         return ""
       
       found_any[0] = True
       
       chunk = match.group(0)[:index]
+      chunk2 = re.sub(r'(//([^\r\n]*?)[ \t\r\n]+?)?(I[a-zA-Z0-9]+)<([^>]*?)> ([a-zA-Z0-9]+) {.*?}',
+        _ivariable, chunk, flags = re.DOTALL)
+      re.sub(r'(//([^\r\n]*?)[\r\n][ \t\r\n]+?)?[ \t]*([a-zA-Z0-9]+)[ \t]+([a-zA-Z0-9]+)[ \t]+{.*?}',
+        _ivariable_scalar, chunk2, flags = re.MULTILINE)
       
-      re.sub(r'(//([^\r\n]*?)[ \t\r\n]+?)?(I[a-zA-Z0-9]+)<([^>]*?)> ([a-zA-Z0-9]+) {.*?}', _ivariable, chunk, flags = re.DOTALL)
+      #### FIXME: ADD NON-ARRAY PARAMETERS
       
       result.append("")
       result.append("   options = [ {0} ]".format(','.join(all_parameters)))
@@ -97,7 +112,6 @@ from components.helpers import *
       code = re.sub(r'(\s+)(.+?):\s*[\r\n \t]*[\r\n]\1([^ \t\r\n])', r'\1\2:\n\1  pass\n\1\3', code)
       code = re.sub(r'[\r\n](\s+)(Double|double|float|int) ', r'\1', code)
       code = re.sub(r'GetValues<Region>', 'GetValuesOfRegion', code)
-      code = re.sub(r'Timestep', 'clock', code)
       code = re.sub(r';[ \t]*(\r\n|\n)', '\n', code)
       code = re.sub(r'\s+\?\s+', ' and ', code)
       code = re.sub(r'\s+:\s+', ' or ', code)
