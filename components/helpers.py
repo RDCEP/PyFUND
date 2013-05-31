@@ -31,6 +31,10 @@ class Timestep():
    @classmethod
    def FromYear(self, year):
       return self._state.clock.FromYear(year)
+   
+   @classmethod
+   def FromSimulationYear(self, year):
+      return self._state.clock.FromSimulationYear(year)
 
 class Variable(object):
    """
@@ -38,7 +42,7 @@ class Variable(object):
    time.
    """
    def __init__(self, machine_readable_name, index_by, return_value, description):
-      self.machine_readable_name = machine_readable_name
+      self.machine_readable_name = "{0}_{1}".format(machine_readable_name, len(index_by or [ ]))
       self.index_by = index_by
       self.return_value = return_value
       self.description = description 

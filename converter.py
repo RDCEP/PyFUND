@@ -71,8 +71,6 @@ from components.helpers import *
       re.sub(r'(//([^\r\n]*?)[\r\n][ \t\r\n]+?)?[ \t]*([a-zA-Z0-9]+)[ \t]+([a-zA-Z0-9]+)[ \t]+{.*?}',
         _ivariable_scalar, chunk2, flags = re.MULTILINE)
       
-      #### FIXME: ADD NON-ARRAY PARAMETERS
-      
       result.append("")
       result.append("   options = [ {0} ]".format(','.join(all_parameters)))
       return match.group(0)[index:]
@@ -107,11 +105,14 @@ from components.helpers import *
       code = re.sub(r'(\s+)=\s+([^;]+?);', r'\1= (\2);', code)
       code = re.sub(r'foreach \((.+?) in (.+?)\):', r'for \1 in \2:', code)
       code = re.sub(r'else\s*([\r\n])', r'else:\1', code)
+      code = re.sub(r'Math\.(Abs|Max|Min)', lambda x: x.group(1).lower(), code)
       code = re.sub(r'Math\.[A-Za-z]+', lambda x: x.group(0).lower(), code)
       code = re.sub(r'throw\s+new', 'raise', code)
       code = re.sub(r'(\s+)(.+?):\s*[\r\n \t]*[\r\n]\1([^ \t\r\n])', r'\1\2:\n\1  pass\n\1\3', code)
       code = re.sub(r'[\r\n](\s+)(Double|double|float|int) ', r'\1', code)
       code = re.sub(r'GetValues<Region>', 'GetValuesOfRegion', code)
+      code = re.sub(r'double.PositiveInfinity', 'float(\'+inf\')', code)
+      code = re.sub(r'double.NegativeInfinity', 'float(\'-inf\')', code)
       code = re.sub(r';[ \t]*(\r\n|\n)', '\n', code)
       code = re.sub(r'\s+\?\s+', ' and ', code)
       code = re.sub(r'\s+:\s+', ' or ', code)
@@ -131,7 +132,7 @@ from components.helpers import *
       result.append("class {0}(Behaviors):".format(match.group(1)))
       result.append("   state_class = I{0}State".format(state_class))
       result.append("   ")
-      result.append("   def run(self, state, clock):")
+      result.append("   def run(self, state, clock, dimensions):")
       result.append(code)
       
       found_any[0] = True
