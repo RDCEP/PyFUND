@@ -1,97 +1,44 @@
-import threading
-
-class Simulation(object):
-  shared = threading.local()
-  
-  def __init__(self, components, years):
-    self.all_parameters = dict( )
-    self.values = dict( )
-    self.current_time_step = 0
-    self.total_time_steps = len(years) + 1
-    self.years = years
-    self.stages = [ x(self) for x in components ]
-  
-  @classmethod
-  def current_simulation(klass):
-    if klass.in_simulation():
-      return klass.shared.simulation
-    else:
-      raise ValueError, "Not in a simulation yet."
-  
-  @classmethod
-  def in_simulation(klass):
-    return hasattr(klass.shared, 'simulation')
-  
-  def __enter__(self):
-    if self.__class__.in_simulation():
-      raise Exception("Already in simulation")
-    
-    self.__class__.shared.simulation = self
-  
-  def __exit__(self, type, value, traceback):
-    del self.__class__.shared.simulation
-  
-  def set_parameters(self):
-    for parameter in self.all_parameters.values():
-      # self.values[parameter.identifier] = [ ] # [ None ] * self.total_time_steps
-      
-      parameter.set_initial_value(1.0)
-  
-  def run_simulation(self):
-    with self:
-      self.set_parameters()
-      
-      for year in self.years:
-        self.current_time_step += 1
-        for stage in self.stages:
-          stage.every_step()
-  
-  def plot_values(self, parameter):
-    with self:
-      line = [ ]
-      for ts in xrange(self.total_time_steps):
-        self.current_time_step = ts
-        line.append("=" * int(10 * self.all_parameters[parameter].__get__(None, None)))
-      print "\n".join(line)
+class Parameters(object):
+   """
+   The Parameters class is the abstract superclass of all
+   parameter configuration objects in the various model
+   components.
+   """
+class Behaviors(object):
+   """
+   This is the abstract superclass for any component of
+   the model that tracks changes over time. Every Behaviors
+   subclass has an associated Paramters object that defines
+   its interaction with the surrounding code.
+   """
 
 class Variable(object):
-  def __init__(self, description, **dargs):
-    self.identifier = None
-    self.description = description
-  
-  def __get__(self, instance, owner):
-    sim = Simulation.current_simulation()
-    return sim.values[self.identifier][sim.current_time_step - 1]
-  
-  def __set__(self, instance, value):
-    sim = Simulation.current_simulation()
-    if self.identifier not in sim.values:
-      sim.values[self.identifier] = [ None ] * sim.total_time_steps
-    
-    sim.values[self.identifier][sim.current_time_step] = value
-  
-  def set_initial_value(self, value):
-    self.__set__(None, value)
+   """
+   A variable is a reference to a value that is tracked over
+   time.
+   """
+   def __init__(self, machine_readable_name, index_by, return_value, description):
+      self.machine_readable_name = machine_readable_name
+      self.index_by = index_by
+      self.return_value = return_value
+      self.description = description 
+   
+   def fold_description_from(self, other_variable):
+      if self.description is None:
+         self.description = other_variable.description
 
-class DependentVariable(Variable):
-  pass
+class IVariable1Dimensional(Variable):
+   is_parameter = False
+   dimension = 1
 
-class IndependentVariable(Variable):
-  def __get__(self, instance, owner):
-    sim = Simulation.current_simulation()
-    return sim.values[self.identifier]
-  
-  def __set__(self, instance, value):
-    sim = Simulation.current_simulation()
-    sim.values[self.identifier] = value
+class IVariable2Dimensional(Variable):
+   is_parameter = False
+   dimension = 2
 
-class ExternalVariable(Variable):
-  pass
+class IParameter1Dimensional(Variable):
+   is_parameter = True
+   dimension = 1
 
-class Component(object):
-  def __init__(self, simulation):
-    d = self.__class__.__dict__
-    for name in d.keys():
-      if isinstance(d[name], Variable):
-        d[name].identifier = name
-        simulation.all_parameters[name] = d[name]
+class IParameter2Dimensional(Variable):
+   is_parameter = True
+   dimension = 2
