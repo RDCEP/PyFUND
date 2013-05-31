@@ -20,3 +20,6 @@ class ClimateSO2CycleComponent(Behaviors):
         else:
 
             s.acso2[t] = (s.globso2[t])
+
+
+behavior_classes = [ClimateSO2CycleComponent]

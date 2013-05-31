@@ -27,3 +27,6 @@ class ClimateN2OCycleComponent(Behaviors):
             if (s.acn2o[t] < 0):
                 raise ApplicationException(
                     "n2o atmospheric concentration out of range")
+
+
+behavior_classes = [ClimateN2OCycleComponent]

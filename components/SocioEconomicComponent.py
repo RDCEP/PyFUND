@@ -112,3 +112,6 @@ class SocioEconomicComponent(Behaviors):
 
             s.globalypc[t] = (dimensions.GetValuesOfRegion().Select(lambda r: s.income[t, r] * 1000000000.0).Sum() /
                               dimensions.GetValuesOfRegion().Select(lambda r: s.populationin1[t, r]).Sum())
+
+
+behavior_classes = [SocioEconomicComponent]

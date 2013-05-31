@@ -57,3 +57,6 @@ class ClimateForcingComponent(Behaviors):
                             t] + s.rfN2O[t] + s.rfSF6[t] - s.rfSO2[t])
 
             s.rfEMF22[t] = (s.rfCO2[t] + s.rfCH4[t] + s.rfN2O[t])
+
+
+behavior_classes = [ClimateForcingComponent]

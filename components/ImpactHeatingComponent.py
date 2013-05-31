@@ -29,3 +29,6 @@ class ImpactHeatingComponent(Behaviors):
 
                 s.heating[t, r] = (s.hebm[r] * s.cumaeei[t, r] * s.gdp90[r] * math.atan(s.temp[
                                    t, r]) / math.atan(1.0) * math.pow(ypc / ypc90, s.heel) * s.population[t, r] / s.pop90[r])
+
+
+behavior_classes = [ImpactHeatingComponent]

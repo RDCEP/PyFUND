@@ -20,6 +20,8 @@ def convert_file(filename):
   source = open(filename).read()
   destination = open(new_name, 'w')
   result = [ ]
+
+  behaviors_classes = [ ]
   
   def _class(match):
     found_any = [ True ]
@@ -103,6 +105,8 @@ def convert_file(filename):
       if state_class.endswith('Component'):
         state_class = state_class[:-len('Component')]
       
+      behaviors_classes.append(match.group(1))
+      
       result.append("class {0}(Behaviors):".format(match.group(1)))
       result.append("   state_class = I{0}State".format(state_class))
       result.append("   ")
@@ -118,10 +122,12 @@ def convert_file(filename):
     while found_any[0]:
       found_any[0] = False
       left = re.sub(r'public class ([A-Za-z0-9]+).*?{.*?public void Run.*?{(.*)}.*?}', _run, left, flags = re.DOTALL)
-    
+  
     return ""
   
   re.sub(r'namespace Fund\.Components\.([A-Za-z0-9]*).*?{(.*)}', _class, source, flags = re.DOTALL)
+
+  result.append("\n\nbehavior_classes = [ {0} ]".format(', '.join(behaviors_classes)))
   
   generated_code = "\n".join(result)
   
@@ -144,5 +150,5 @@ def convert_file(filename):
   destination.write(generated_code)
   destination.close()
 
-for file in glob.glob('../fund-master/FundComponents/*.cs'):
+for file in glob.glob('fund/FundComponents/*.cs'):
   convert_file(file)

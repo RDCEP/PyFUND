@@ -31,3 +31,6 @@ class ImpactExtratropicalStormsComponent(Behaviors):
                 math.pow(1.0 + (s.extratropicalstormspar[r] * (s.acco2[t] / s.co2pre)), s.extratropicalstormsnl) - 1.0))
             s.extratropicalstormsdead[t, r] = (1000.0 * s.extratropicalstormsbasedead[r] * s.population[t, r] * math.pow(
                 ypc / ypc90, s.extratropicalstormsdeadel) * (math.pow(1.0 + (s.extratropicalstormspar[r] * (s.acco2[t] / s.co2pre)), s.extratropicalstormsnl) - 1.0))
+
+
+behavior_classes = [ImpactExtratropicalStormsComponent]

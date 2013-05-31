@@ -27,3 +27,6 @@ class ClimateSF6CycleComponent(Behaviors):
             if (s.acsf6[t] < 0):
                 raise ApplicationException(
                     "sf6 atmospheric concentration out of range")
+
+
+behavior_classes = [ClimateSF6CycleComponent]

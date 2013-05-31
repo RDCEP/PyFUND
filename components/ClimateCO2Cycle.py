@@ -75,3 +75,6 @@ class ClimateCO2CycleComponent(Behaviors):
 
             s.acco2[t] = (s.cbox1[t] + s.cbox2[
                           t] + s.cbox3[t] + s.cbox4[t] + s.cbox5[t])
+
+
+behavior_classes = [ClimateCO2CycleComponent]

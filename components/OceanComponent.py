@@ -22,3 +22,6 @@ class OceanComponent(Behaviors):
             ds = (s.delaysea * s.seas * s.temp[t] - s.delaysea * s.sea[t - 1])
 
             s.sea[t] = (s.sea[t - 1] + ds)
+
+
+behavior_classes = [OceanComponent]

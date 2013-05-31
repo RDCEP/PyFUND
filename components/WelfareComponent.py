@@ -177,3 +177,7 @@ class RegionalWelfareComponent(Behaviors):
                 for r in dimensions.GetValuesOfRegion():
 
                     s.cummulativewelfare[t, r] = (0)
+
+
+behavior_classes = [GlobalWelfareComponent,
+                    UtilitarianWelfareComponent, RegionalWelfareComponent]

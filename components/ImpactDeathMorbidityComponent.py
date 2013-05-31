@@ -65,3 +65,6 @@ class ImpactDeathMorbidityComponent(Behaviors):
                 s.vmorb[t, r] = (s.vmorbbm * math.pow(
                     ypc / s.vmorbypc0, s.vmorbel))
                 s.morbcost[t, r] = (s.vmorb[t, r] * s.yld[t, r] / 1000000000.0)
+
+
+behavior_classes = [ImpactDeathMorbidityComponent]

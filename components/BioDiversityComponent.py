@@ -24,3 +24,6 @@ class BioDiversityComponent(Behaviors):
 
         else:
             s.nospecies[t] = (s.nospecbase)
+
+
+behavior_classes = [BioDiversityComponent]

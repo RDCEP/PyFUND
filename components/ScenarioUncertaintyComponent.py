@@ -43,3 +43,6 @@ class ScenarioUncertaintyComponent(Behaviors):
                 t >= s.timeofuncertaintystart and s.aceiadd[r] * sdTimeFactor or 0.0))
             s.forestemm[t, r] = (s.scenforestemm[t, r] + (
                 t >= s.timeofuncertaintystart and s.foremadd[r] * sdTimeFactor or 0.0))
+
+
+behavior_classes = [ScenarioUncertaintyComponent]

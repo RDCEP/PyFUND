@@ -34,3 +34,6 @@ class ImpactWaterResourcesComponent(Behaviors):
                 s.water[t, r] = (0.1 * s.income[t, r])
             else:
                 s.water[t, r] = (water)
+
+
+behavior_classes = [ImpactWaterResourcesComponent]

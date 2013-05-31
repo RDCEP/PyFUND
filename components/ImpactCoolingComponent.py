@@ -29,3 +29,6 @@ class ImpactCoolingComponent(Behaviors):
 
                 s.cooling[t, r] = (s.cebm[r] * s.cumaeei[t, r] * s.gdp90[r] * math.pow(s.temp[
                                    t, r] / 1.0, s.cenl) * math.pow(ypc / ypc90, s.ceel) * s.population[t, r] / s.pop90[r])
+
+
+behavior_classes = [ImpactCoolingComponent]

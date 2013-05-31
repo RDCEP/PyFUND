@@ -80,3 +80,7 @@ class RegionalHotellingTaxationComponent(Behaviors):
 
             s.currtaxn2o[t, r] = (s.currtax[t, r])
             s.currtaxch4[t, r] = (s.currtax[t, r])
+
+
+behavior_classes = [
+    GlobalHotellingTaxationComponent, RegionalHotellingTaxationComponent]

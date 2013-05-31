@@ -38,3 +38,6 @@ class ImpactBioDiversityComponent(Behaviors):
                                    s.population[t, r] / 1000.0 *
                                    dt / s.dbsta / (1.0 + dt / s.dbsta) *
                                    (1.0 - s.bioshare + s.bioshare * s.biodiv[t]))
+
+
+behavior_classes = [ImpactBioDiversityComponent]

@@ -27,3 +27,6 @@ class ImpactTropicalStormsComponent(Behaviors):
 
             s.hurrdead[t, r] = (1000.0 * s.hurrbasedead[r] * s.population[t, r] * math.pow(
                 ypc / ypc90, s.hurrdeadel) * (math.pow(1.0 + s.hurrpar * s.regstmp[t, r], s.hurrnl) - 1.0))
+
+
+behavior_classes = [ImpactTropicalStormsComponent]

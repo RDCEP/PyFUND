@@ -32,3 +32,6 @@ class ImpactForests(Behaviors):
 
                 if (s.forests[t, r] > 0.1 * s.income[t, r]):
                     s.forests[t, r] = (0.1 * s.income[t, r])
+
+
+behavior_classes = [ImpactForests]

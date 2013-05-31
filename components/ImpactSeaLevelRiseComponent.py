@@ -206,3 +206,6 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 ypc = (s.income[t, r] / s.population[t, r] * 1000.0)
                 s.entercost[t, r] = (
                     s.immcst * ypc * s.enter[t, r] / 1000000000)
+
+
+behavior_classes = [ImpactSeaLevelRiseComponent]

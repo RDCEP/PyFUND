@@ -40,3 +40,6 @@ class ImpactDiarrhoeaComponent(Behaviors):
 
                 s.diadead[t, r] = (0.0)
                 s.diasick[t, r] = (0.0)
+
+
+behavior_classes = [ImpactDiarrhoeaComponent]

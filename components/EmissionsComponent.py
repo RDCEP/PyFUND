@@ -313,3 +313,6 @@ class EmissionsComponent(Behaviors):
             s.cumglobn2o[t] = (s.cumglobn2o[t - 1] + s.globn2o[t])
             s.cumglobsf6[t] = (s.cumglobsf6[t - 1] + s.globsf6[t])
             s.cumglobso2[t] = (s.cumglobso2[t - 1] + s.globso2[t])
+
+
+behavior_classes = [EmissionsComponent]

@@ -78,3 +78,6 @@ class ImpactCardiovascularRespiratoryComponent(Behaviors):
                                         t, r] * s.population[t, r])
                 if (s.cardcold[t, r] > 0):
                     s.cardcold[t, r] = (0)
+
+
+behavior_classes = [ImpactCardiovascularRespiratoryComponent]

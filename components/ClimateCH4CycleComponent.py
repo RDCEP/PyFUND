@@ -27,3 +27,6 @@ class ClimateCH4CycleComponent(Behaviors):
             if (s.acch4[t] < 0):
                 raise ApplicationException(
                     "ch4 atmospheric concentration out of range")
+
+
+behavior_classes = [ClimateCH4CycleComponent]

@@ -23,3 +23,6 @@ class MarginalEmissionComponent(Behaviors):
 
             else:
                 s.modemission[t] = (s.emission[t])
+
+
+behavior_classes = [MarginalEmissionComponent]

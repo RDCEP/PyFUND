@@ -39,3 +39,6 @@ class ImpactVectorBorneDiseasesComponent(Behaviors):
 
             s.malaria[t, r] = (s.malbs[r] * s.population[t, r] * s.malch[
                                r] * math.pow(s.temp[t, r], s.malnl) * math.pow(ypc / ypc90, s.vbel))
+
+
+behavior_classes = [ImpactVectorBorneDiseasesComponent]

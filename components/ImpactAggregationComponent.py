@@ -71,3 +71,6 @@ class ImpactAggregationComponent(Behaviors):
             for r in dimensions.GetValuesOfRegion():
 
                 s.loss[t, r] = ((s.eloss[t, r] + s.sloss[t, r]) * 1000000000.0)
+
+
+behavior_classes = [ImpactAggregationComponent]

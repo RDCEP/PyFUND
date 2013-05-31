@@ -66,3 +66,6 @@ class ImpactAgricultureComponent(Behaviors):
 
                 s.agcost[t, r] = (math.min(1.0, s.agrate[t, r] + s.aglevel[
                                   t, r] + s.agco2[t, r]) * s.agrish[t, r] * s.income[t, r])
+
+
+behavior_classes = [ImpactAgricultureComponent]

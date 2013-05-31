@@ -28,3 +28,6 @@ class ClimateRegionalComponent(Behaviors):
 
             s.regstmp[t, r] = (s.inputtemp[
                                t] * s.bregstmp[r] + s.scentemp[t, r])
+
+
+behavior_classes = [ClimateRegionalComponent]

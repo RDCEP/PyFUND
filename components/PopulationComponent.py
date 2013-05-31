@@ -50,3 +50,6 @@ class PopulationComponent(Behaviors):
                 globalPopulation = (globalPopulation + s.populationin1[t, r])
 
             s.globalpopulation[t] = (globalPopulation)
+
+
+behavior_classes = [PopulationComponent]

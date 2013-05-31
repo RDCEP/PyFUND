@@ -30,3 +30,6 @@ class ClimateDynamicsComponent(Behaviors):
                      t] - delaytemp * s.temp[t - 1])
 
             s.temp[t] = (s.temp[t - 1] + dtemp)
+
+
+behavior_classes = [ClimateDynamicsComponent]
