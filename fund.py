@@ -210,10 +210,17 @@ class FUND(object):
       Timestep._state.clock = clock # This is terrible form.
       
       while clock.can_advance:
+         warnings.warn("Masking divide by zero exceptions since parameters aren't specified.")
+         
          for behavior, state in instances:
-            behavior.run(state, clock, self.dimensions)
+            try:
+               behavior.run(state, clock, self.dimensions)
+            except (ZeroDivisionError, ValueError):
+               pass
          
          clock.advance()
+      
+      # Do stuff with the results
    
    def track(self, *variables):
       pass
