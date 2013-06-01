@@ -18,6 +18,7 @@ def convert_file(filename):
 
 import math
 from components.helpers import *
+from components._patches import *
 '''.format(datetime.datetime.now()))
   
   behaviors_classes = [ ]
