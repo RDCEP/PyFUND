@@ -11,7 +11,7 @@ def _find_fund_behaviors():
    
    for file in glob.glob('components/*.py'):
       module_name = file[:-3].split('/')[1]
-      if module_name not in ('__init__', 'helpers'):
+      if module_name not in ('__init__', 'helpers', '_patches'):
          module = getattr(__import__('components.{0}'.format(module_name)),
            module_name)
          behaviors.extend(module.behavior_classes)
