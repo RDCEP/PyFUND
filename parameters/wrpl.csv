@@ -1,0 +1,10 @@
+Name,wrpl
+Value,NormalDistribution(0.85, 0.15)
+Mean,0.85
+Standard deviation,0.15
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,
+Mode,

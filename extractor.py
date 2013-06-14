@@ -8,7 +8,8 @@ import glob
 import xlrd
 import string
 import re
-import fund
+from fund import FUND
+import os
 
 class NormalDistribution(object):
   def __init__(self, *values):
@@ -100,7 +101,14 @@ class Table(object):
           if row_index == 0:
             continue
           
-          results.append((column, row, self.all_cells[row_index][column_index]))
+          value = self.all_cells[row_index][column_index]
+          
+          results.append((column, row, value))
+          results.append((row, column, value))
+          
+           # Tables are not drawn in any particular orientation,
+           # so we duplicate them in the dictionary with the hope
+           # that at least one way of doing it will work.
       
       return results
     else:
@@ -148,7 +156,29 @@ def main():
         row += table.height
         all_tables.append(table)
   
-  print '{0} table(s) extracted, {1} warnings'.format(len(all_tables), count_warnings)
+  print('{0} table(s) extracted, {1} warnings'.format(len(all_tables), count_warnings))
+  
+  options_specified = 0
+  options_total = 0
+  
+  for old_parameter_file in glob.glob('parameters/*.csv'):
+    os.unlink(old_parameter_file)
+  
+  for option in FUND.all_options:
+    unmangled_name, arity = option.rsplit('_', 1)
+    for table in all_tables:
+      value = table.extract_field(unmangled_name)
+      if value:
+        with open('parameters/{0}.csv'.format(unmangled_name), 'w') as fp:
+          for row in value:
+            flattened = ','.join(str(x) for x in row)
+            fp.write("{0}\n".format(flattened))
+        options_specified += 1
+        break
+    options_total += 1
+  
+  print('{0} option(s) specified of {1} total; {2} omitted'.
+    format(options_specified, options_total, options_total - options_specified))
   
   for table in all_tables:
     table.extract_field('ypcgrowth')

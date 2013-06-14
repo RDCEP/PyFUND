@@ -1,0 +1,10 @@
+Name,bioloss
+Value,NormalDistribution(0.003, 0.002)
+Mean,0.003
+Standard deviation,0.002
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,
+Mode,

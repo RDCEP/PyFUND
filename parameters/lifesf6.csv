@@ -1,0 +1,10 @@
+Name,lifesf6
+Value,TriangularDistribution(1600; 3200; 4800)
+Mean,3200.0
+Standard deviation,
+Alpha,
+Beta,
+Lambda,
+Min,1600.0
+Max,4800.0
+Mode,

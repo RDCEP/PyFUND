@@ -1,0 +1,10 @@
+Name,ceel
+Value,NormalDistribution(0.8, 0.2)
+Mean,0.8
+Standard deviation,0.2
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,1.0
+Mode,
