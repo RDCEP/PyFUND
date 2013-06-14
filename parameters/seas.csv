@@ -1,10 +1,10 @@
-Name,seas
-Value,GammaDistribution(6; 0.4)
-Mean,
-Standard deviation,
-Alpha,6.0
-Beta,0.4
-Lambda,
-Min,
-Max,
-Mode,2.0
+Name|seas
+Value|GammaDistribution(6; 0.4)
+Mean|
+Standard deviation|
+Alpha|6.0
+Beta|0.4
+Lambda|
+Min|
+Max|
+Mode|2.0

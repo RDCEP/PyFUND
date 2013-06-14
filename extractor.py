@@ -23,6 +23,10 @@ class NormalDistribution(object):
     return u'NormalDistribution({0}, {1})'.format(self.mean, self.stddev)
 
 def _extract_as_typed(object):
+  """
+  Typifies this object as a value of the given
+  type.
+  """
   if type(object) in (str, unicode):
     if object.startswith('Normal'):
       return NormalDistribution(object)
@@ -45,6 +49,9 @@ class Table(object):
   
   @classmethod
   def detect_single(self, sheet, row, start_column):
+    """
+    Searches for a 1D (horizontal) table at this offset.
+    """
     extent = start_column
     for column in xrange(start_column, sheet.ncols):
       if not sheet.cell(row, column).value:
@@ -55,6 +62,9 @@ class Table(object):
   
   @classmethod
   def detect_several(self, sheet, start_row, start_column):
+    """
+    Searches for a 2D table at this offset.
+    """
     extent_column = start_column
     extent_row = start_row
     
@@ -76,6 +86,10 @@ class Table(object):
                         range(start_column, extent_column + 1))
   
   def extract_field(self, field_name):
+    """
+    Extracts all values of a given parameter as a list of ordered
+    pairs.
+    """
     top_columns = self.all_cells[0]
     left_columns = [ x[0] for x in self.all_cells ]
     
@@ -171,7 +185,7 @@ def main():
       if value:
         with open('parameters/{0}.csv'.format(unmangled_name), 'w') as fp:
           for row in value:
-            flattened = ','.join(str(x) for x in row)
+            flattened = '|'.join(str(x) for x in row)
             fp.write("{0}\n".format(flattened))
         options_specified += 1
         break

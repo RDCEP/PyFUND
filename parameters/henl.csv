@@ -1,10 +1,10 @@
-Name,henl
-Value,NormalDistribution(0.5, 0.5)
-Mean,0.5
-Standard deviation,0.5
-Alpha,
-Beta,
-Lambda,
-Min,0.0
-Max,
-Mode,
+Name|henl
+Value|NormalDistribution(0.5, 0.5)
+Mean|0.5
+Standard deviation|0.5
+Alpha|
+Beta|
+Lambda|
+Min|0.0
+Max|
+Mode|

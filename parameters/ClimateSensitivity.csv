@@ -1,10 +1,10 @@
-Name,ClimateSensitivity
-Value,GammaDistribution(6.47815626; 0.547629469; 1)
-Mean,
-Standard deviation,
-Alpha,6.47815626
-Beta,0.547629469
-Lambda,
-Min,
-Max,
-Mode,2.99999980376
+Name|ClimateSensitivity
+Value|GammaDistribution(6.47815626; 0.547629469; 1)
+Mean|
+Standard deviation|
+Alpha|6.47815626
+Beta|0.547629469
+Lambda|
+Min|
+Max|
+Mode|2.99999980376

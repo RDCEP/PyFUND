@@ -1,10 +1,10 @@
-Name,TerrCO2Sens
-Value,GammaDistribution(4.92255; 662.834125760029)
-Mean,
-Standard deviation,
-Alpha,4.92255
-Beta,662.83412576
-Lambda,
-Min,
-Max,
-Mode,2600.0
+Name|TerrCO2Sens
+Value|GammaDistribution(4.92255; 662.834125760029)
+Mean|
+Standard deviation|
+Alpha|4.92255
+Beta|662.83412576
+Lambda|
+Min|
+Max|
+Mode|2600.0

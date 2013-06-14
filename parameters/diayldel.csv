@@ -1,10 +1,10 @@
-Name,diayldel
-Value,NormalDistribution(-0.418406, 0.119223)
-Mean,-0.418406
-Standard deviation,0.119223
-Alpha,
-Beta,
-Lambda,
-Min,-1.0
-Max,0.0
-Mode,
+Name|diayldel
+Value|NormalDistribution(-0.418406, 0.119223)
+Mean|-0.418406
+Standard deviation|0.119223
+Alpha|
+Beta|
+Lambda|
+Min|-1.0
+Max|0.0
+Mode|

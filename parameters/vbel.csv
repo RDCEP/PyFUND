@@ -1,10 +1,10 @@
-Name,vbel
-Value,NormalDistribution(-2.65, 0.69)
-Mean,-2.65
-Standard deviation,0.69
-Alpha,
-Beta,
-Lambda,
-Min,
-Max,0.0
-Mode,
+Name|vbel
+Value|NormalDistribution(-2.65, 0.69)
+Mean|-2.65
+Standard deviation|0.69
+Alpha|
+Beta|
+Lambda|
+Min|
+Max|0.0
+Mode|

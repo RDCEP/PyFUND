@@ -1,10 +1,10 @@
-Name,extratropicalstormsdeadel
-Value,NormalDistribution(-0.501, 0.051)
-Mean,-0.501
-Standard deviation,0.051
-Alpha,
-Beta,
-Lambda,
-Min,-1.0
-Max,0.0
-Mode,
+Name|extratropicalstormsdeadel
+Value|NormalDistribution(-0.501, 0.051)
+Mean|-0.501
+Standard deviation|0.051
+Alpha|
+Beta|
+Lambda|
+Min|-1.0
+Max|0.0
+Mode|

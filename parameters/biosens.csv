@@ -1,10 +1,10 @@
-Name,biosens
-Value,NormalDistribution(0.001, 0.001)
-Mean,0.001
-Standard deviation,0.001
-Alpha,
-Beta,
-Lambda,
-Min,0.0
-Max,
-Mode,
+Name|biosens
+Value|NormalDistribution(0.001, 0.001)
+Mean|0.001
+Standard deviation|0.001
+Alpha|
+Beta|
+Lambda|
+Min|0.0
+Max|
+Mode|
