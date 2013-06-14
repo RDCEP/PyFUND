@@ -1,3 +1,12 @@
+#
+# This script reads the existing C# files from the model and converts
+# them, by way of several nasty regular expressions, into Python source
+# files. It will overwrite the existing files in components/, so be
+# careful before running it. Also, be advised that it expects to find
+# the FUND model in ./fund, so be sure to download it from the GitHub
+# repository and place it in the appropriate location.
+# 
+
 import re
 import glob
 import os
@@ -173,6 +182,11 @@ from components._patches import *
   
   destination.write(generated_code)
   destination.close()
+
+if not os.path.isdir('fund'):
+  print('Unable to find the FUND model. Please download it and place it in ./fund,')
+  print('in the root directory of the PyFUND project.')
+  sys.exit(1)
 
 for file in glob.glob('fund/FundComponents/*.cs'):
   convert_file(file)
