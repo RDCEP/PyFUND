@@ -5,11 +5,25 @@
 # and validation.
 
 import glob
-import xlrd
+import sys
 import string
 import re
-from fund import FUND
 import os
+
+try:
+  import xlrd
+except ImportError:
+  print("Please install the xlrd library. You might find it useful to run")
+  print("  pip install -r requirements.txt")
+  print("or to use virtualenv to do this.")
+  sys.exit(1)
+
+if not os.path.isdir('fund'):
+  print('Unable to find the FUND model. Please download it and place it in ./fund,')
+  print('in the root directory of the PyFUND project.')
+  sys.exit(1)
+
+from fund import FUND
 
 class NormalDistribution(object):
   def __init__(self, *values):
@@ -194,8 +208,8 @@ def main():
   print('{0} option(s) specified of {1} total; {2} omitted'.
     format(options_specified, options_total, options_total - options_specified))
   
-  for table in all_tables:
-    table.extract_field('ypcgrowth')
+  # for table in all_tables:
+  #   table.extract_field('ypcgrowth')
 
 if __name__ == '__main__':
   main()
