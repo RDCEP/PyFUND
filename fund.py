@@ -1,6 +1,23 @@
 import glob
+import os
 import warnings
 from components.helpers import Timestep
+import csv
+import re
+
+class NormalDistribution(object):
+  def __init__(self, *values):
+    if len(values) == 1:
+      match = re.match(r'NormalDistribution\(([^;]+); ([^;]+).+\)', values[0])
+      if not match:
+         raise ValueError('Improperly formatted normal distribution specifier.')
+      
+      self.mean, self.stddev = map(float, match.groups())
+    else:
+      self.mean, self.stddev = values
+  
+  def __repr__(self):
+    return u'NormalDistribution({0}; {1})'.format(self.mean, self.stddev)
 
 def _find_fund_behaviors():
    """
@@ -50,6 +67,48 @@ def _cross_product_of_types(types = [ ], values = dict( )):
    options = values[types[0]]
    
    return [ ( x, ) + y for x in options for y in child_values ]
+
+def _choose_default_for_variable(variable):
+   dimension = variable.dimension
+   result = {}
+   filename = 'parameters/{0}.csv'.format(variable.name)
+   
+   if not os.path.isfile(filename):
+     return None
+   
+   for row in csv.DictReader(open(filename)):
+      if variable.name in row:
+         value = row[variable.name]
+      else:
+         value = row[variable.name.lower()]
+      
+      try:
+         value = float(value)
+      except ValueError:
+         try:
+            value = NormalDistribution(value).mean
+         except ValueError:
+            warnings.warn('Caught an incomprehensible field value: {0!r}'.
+              format(repr(value)))
+            value = 0
+      
+      if dimension == 0:
+         if row['Name'] == 'Value':
+            return value
+         
+      elif dimension == 1:
+         second_key = list(set(row.keys()) - set([variable.name]))[0]
+         result[row[second_key]] = value
+         
+      elif dimension == 2:
+         first = row[variable.index_by[0]]
+         second = row[variable.index_by[1]]
+         result[first, second] = value
+   
+   if dimension == 0:
+      return None
+   else:
+      return result
 
 def _choose_default_for_type(kind):
    """
@@ -174,7 +233,10 @@ class FUND(object):
       
       # Ensure that all parameters are specified
       for name, variable in self.all_options.items():
-         new_value = _choose_default_for_type(variable.return_value)
+         new_value = (
+            _choose_default_for_variable(variable) or
+            _choose_default_for_type(variable.return_value)
+         )
          
          if name not in parameters:
             if variable.is_parameter:

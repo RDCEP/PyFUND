@@ -23,18 +23,7 @@ if not os.path.isdir('fund'):
   print('in the root directory of the PyFUND project.')
   sys.exit(1)
 
-from fund import FUND
-
-class NormalDistribution(object):
-  def __init__(self, *values):
-    if len(values) == 1:
-      match = re.match(r'NormalDistribution\(([^;]+); ([^;]+).+\)', values[0])
-      self.mean, self.stddev = map(float, match.groups())
-    else:
-      self.mean, self.stddev = values
-  
-  def __repr__(self):
-    return u'NormalDistribution({0}; {1})'.format(self.mean, self.stddev)
+from fund import FUND, NormalDistribution
 
 def _extract_as_typed(object):
   """

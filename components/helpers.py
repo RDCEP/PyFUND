@@ -66,6 +66,7 @@ class Variable(object):
    time.
    """
    def __init__(self, machine_readable_name, index_by, return_value, description):
+      self.name = machine_readable_name
       self.machine_readable_name = "{0}_{1}".format(machine_readable_name, len(index_by or [ ]))
       self.index_by = index_by
       self.return_value = return_value
