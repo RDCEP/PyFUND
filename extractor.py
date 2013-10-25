@@ -122,6 +122,9 @@ class Table(object):
     elif field_name == self.sheet_name:
       results = [ ]
       
+      machine_readable_name = "{0}_2".format(field_name) # FIXME!
+      results.append(FUND.all_options[machine_readable_name].index_by + [field_name])
+      
       for column_index, column in enumerate(top_columns):
         if column_index == 0:
           continue
