@@ -1,10 +1,10 @@
-Name|forco2
-Value|NormalDistribution(2.2972, 1.1486)
-Mean|2.2972
-Standard deviation|1.1486
-Alpha|
-Beta|
-Lambda|
-Min|0.0
-Max|
-Mode|
+Name,forco2
+Value,NormalDistribution(2.2972; 1.1486)
+Mean,2.2972
+Standard deviation,1.1486
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,
+Mode,

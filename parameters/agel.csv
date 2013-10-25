@@ -1,10 +1,10 @@
-Name|agel
-Value|NormalDistribution(0.31, 0.15)
-Mean|0.31
-Standard deviation|0.15
-Alpha|
-Beta|
-Lambda|
-Min|0.0
-Max|1.0
-Mode|
+Name,agel
+Value,NormalDistribution(0.31; 0.15)
+Mean,0.31
+Standard deviation,0.15
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,1.0
+Mode,

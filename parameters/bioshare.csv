@@ -1,10 +1,10 @@
-Name|bioshare
-Value|TriangularDistribution(0; 0.05; 1)
-Mean|0.05
-Standard deviation|
-Alpha|
-Beta|
-Lambda|
-Min|0.0
-Max|1.0
-Mode|
+Name,bioshare
+Value,TriangularDistribution(0; 0.05; 1)
+Mean,0.05
+Standard deviation,
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,1.0
+Mode,

@@ -1,10 +1,10 @@
-Name|extratropicalstormsdamel
-Value|NormalDistribution(-0.514, 0.027)
-Mean|-0.514
-Standard deviation|0.027
-Alpha|
-Beta|
-Lambda|
-Min|-1.0
-Max|0.0
-Mode|
+Name,extratropicalstormsdamel
+Value,NormalDistribution(-0.514; 0.027)
+Mean,-0.514
+Standard deviation,0.027
+Alpha,
+Beta,
+Lambda,
+Min,-1.0
+Max,0.0
+Mode,

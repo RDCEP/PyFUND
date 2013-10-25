@@ -1,10 +1,10 @@
-Name|agnl
-Value|NormalDistribution(2.0, 0.5)
-Mean|2.0
-Standard deviation|0.5
-Alpha|
-Beta|
-Lambda|
-Min|0.0
-Max|
-Mode|
+Name,agnl
+Value,NormalDistribution(2.0; 0.5)
+Mean,2.0
+Standard deviation,0.5
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,
+Mode,

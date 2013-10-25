@@ -1,10 +1,10 @@
-Name|maxcardvasc
-Value|NormalDistribution(0.05, 0.02)
-Mean|0.05
-Standard deviation|0.02
-Alpha|
-Beta|
-Lambda|
-Min|0.0
-Max|
-Mode|
+Name,maxcardvasc
+Value,NormalDistribution(0.05; 0.02)
+Mean,0.05
+Standard deviation,0.02
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,
+Mode,

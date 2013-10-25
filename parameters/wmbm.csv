@@ -1,17 +1,17 @@
-Region|wmbm
-USA|NormalDistribution(789.0, 8344.0)
-CAN|0.0
-WEU|NormalDistribution(903.0, 2188.0)
-JPK|NormalDistribution(7.0, 815.0)
-ANZ|NormalDistribution(183.0, 508.0)
-EEU|NormalDistribution(0.0, 26.0)
-FSU|0.0
-MDE|0.0
-CAM|NormalDistribution(238.0, 15832.0)
-LAM|NormalDistribution(4748.0, 28997.0)
-SAS|NormalDistribution(0.0, 8492.0)
-SEA|NormalDistribution(4.0, 41860.0)
-CHI|NormalDistribution(1779.0, 9654.0)
-MAF|NormalDistribution(0.0, 2814.0)
-SSA|NormalDistribution(345.0, 12768.0)
-SIS|NormalDistribution(169.0, 1516.0)
+Region,wmbm
+USA,NormalDistribution(789.0; 8344.0)
+CAN,0.0
+WEU,NormalDistribution(903.0; 2188.0)
+JPK,NormalDistribution(7.0; 815.0)
+ANZ,NormalDistribution(183.0; 508.0)
+EEU,NormalDistribution(0.0; 26.0)
+FSU,0.0
+MDE,0.0
+CAM,NormalDistribution(238.0; 15832.0)
+LAM,NormalDistribution(4748.0; 28997.0)
+SAS,NormalDistribution(0.0; 8492.0)
+SEA,NormalDistribution(4.0; 41860.0)
+CHI,NormalDistribution(1779.0; 9654.0)
+MAF,NormalDistribution(0.0; 2814.0)
+SSA,NormalDistribution(345.0; 12768.0)
+SIS,NormalDistribution(169.0; 1516.0)

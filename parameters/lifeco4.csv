@@ -1,10 +1,10 @@
-Name|lifeco4
-Value|NormalDistribution(17.0, 4.25)
-Mean|17.0
-Standard deviation|4.25
-Alpha|
-Beta|
-Lambda|
-Min|0.0
-Max|
-Mode|
+Name,lifeco4
+Value,NormalDistribution(17.0; 4.25)
+Mean,17.0
+Standard deviation,4.25
+Alpha,
+Beta,
+Lambda,
+Min,0.0
+Max,
+Mode,

@@ -34,7 +34,7 @@ class NormalDistribution(object):
       self.mean, self.stddev = values
   
   def __repr__(self):
-    return u'NormalDistribution({0}, {1})'.format(self.mean, self.stddev)
+    return u'NormalDistribution({0}; {1})'.format(self.mean, self.stddev)
 
 def _extract_as_typed(object):
   """
@@ -199,7 +199,7 @@ def main():
       if value:
         with open('parameters/{0}.csv'.format(unmangled_name), 'w') as fp:
           for row in value:
-            flattened = '|'.join(str(x) for x in row)
+            flattened = ','.join(str(x) for x in row)
             fp.write("{0}\n".format(flattened))
         options_specified += 1
         break

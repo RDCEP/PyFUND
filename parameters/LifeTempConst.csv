@@ -1,10 +1,10 @@
-Name|LifeTempConst
-Value|NormalDistribution(-31.8978379263, 0.120720541866)
-Mean|-31.8978379263
-Standard deviation|0.120720541866
-Alpha|
-Beta|
-Lambda|
-Min|
-Max|
-Mode|
+Name,LifeTempConst
+Value,NormalDistribution(-31.8978379263; 0.120720541866)
+Mean,-31.8978379263
+Standard deviation,0.120720541866
+Alpha,
+Beta,
+Lambda,
+Min,
+Max,
+Mode,
