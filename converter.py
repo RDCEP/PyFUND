@@ -12,6 +12,7 @@ import glob
 import os
 import warnings
 import datetime
+import sys
 
 def convert_file(filename):
   new_name = "components/{0}.py".format(os.path.basename(filename)[:-3])
