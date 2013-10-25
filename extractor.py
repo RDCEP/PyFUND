@@ -207,9 +207,6 @@ def main():
   
   print('{0} option(s) specified of {1} total; {2} omitted'.
     format(options_specified, options_total, options_total - options_specified))
-  
-  # for table in all_tables:
-  #   table.extract_field('ypcgrowth')
 
 if __name__ == '__main__':
   main()
