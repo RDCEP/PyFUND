@@ -1,9 +1,9 @@
 import glob
 import os
 import warnings
-from components.helpers import Timestep
 import csv
 import re
+from components.helpers import Timestep
 
 class NormalDistribution(object):
   def __init__(self, *values):
@@ -103,6 +103,13 @@ def _choose_default_for_variable(variable):
       elif dimension == 2:
          first = row[variable.index_by[0]]
          second = row[variable.index_by[1]]
+         
+         try: first = float(first)
+         except ValueError: pass
+         
+         try: second = float(second)
+         except ValueError: pass
+         
          result[first, second] = value
    
    if dimension == 0:
@@ -116,7 +123,7 @@ def _choose_default_for_type(kind):
    """
    return {
       'double': 3.0,
-      'timestep': Timestep(2),
+      'timestep': 1950,
       'region': 1,
       'boolean': True,
       'bool': True
@@ -138,45 +145,6 @@ def _bastardize_list(python_list):
    cs_list = CSharpList(python_list)
    
    return cs_list
-   
-class Clock(object):
-   """
-   The Clock class represents the abstract time-keeper; it allows
-   model components to transparently access both the current year
-   and time-step.
-   """
-   def __init__(self, time_steps):
-      self.time_steps = time_steps
-      self.current_time_step = 1
-   
-   @property
-   def can_advance(self):
-      return self.current_time_step < len(self.time_steps)
-   
-   def advance(self):
-      self.current_time_step += 1
-   
-   @property
-   def Current(self):
-      return Timestep(self.current_time_step)
-   
-   @property
-   def IsFirstTimestep(self):
-      return self.current_time_step == 1
-   
-   @property
-   def StartTime(self):
-      return self.time_steps[0]
-   
-   def FromYear(self, looking_for):
-      for index, year in enumerate(self.time_steps):
-         if year >= looking_for:
-            return index
-      
-      raise ValueError, "The year {0!r} is not in this simulation.".format(looking_for)
-   
-   def FromSimulationYear(self, looking_for):
-      return self.FromYear(looking_for + self.time_steps[0])
 
 class Dimensions(object):
    """
@@ -194,7 +162,7 @@ class Dimensions(object):
    def generate_types(self):
       return {
          'Region': self.regions,
-         'Timestep': [ Timestep(x) for x in range(0, len(self.time_steps)) ]
+         'Timestep': self.time_steps
       }
 
 class FUND(object):
@@ -225,7 +193,8 @@ class FUND(object):
       # Save the list of all dimensions (regions, timesteps, etc.)
       self.dimensions = Dimensions(
          time_steps = time_steps,
-         regions = range(0, 5)
+         regions = [ "USA", "CAN", "WEU", "JPK", "ANZ", "EEU", "FSU", "MDE",
+                     "CAM", "LAM", "SAS", "SEA", "CHI", "MAF", "SSA", "SIS" ]
       )
       
       # Precompute the values of all types
@@ -233,25 +202,28 @@ class FUND(object):
       
       # Ensure that all parameters are specified
       for name, variable in self.all_options.items():
-         new_value = (
-            _choose_default_for_variable(variable) or
-            _choose_default_for_type(variable.return_value)
-         )
+         new_value = _choose_default_for_variable(variable)
+          
+         if new_value:
+            self.variables[name] = new_value
          
-         if name not in parameters:
-            if variable.is_parameter:
-               warnings.warn("Missing parameter {0}; setting to an arbitrary value.".format(name))
-               # new_value = _choose_default_for_type(variable.return_value)
+         else:
+            new_value = _choose_default_for_type(variable.return_value)
             
-            self.variables[name] = dict( )
-         
-            for value in _cross_product_of_types(variable.index_by or [ ], values = types):
-               if len(value) == 0:
-                  self.variables[name] = new_value
-               elif len(value) == 1:
-                  self.variables[name][value[0]] = new_value
-               else:
-                  self.variables[name][value] = new_value
+            if name not in parameters:
+               if variable.is_parameter:
+                  warnings.warn("Missing parameter {0}; setting to an arbitrary value.".format(name))
+                  # new_value = _choose_default_for_type(variable.return_value)
+               
+               self.variables[name] = dict( )
+               
+               for value in _cross_product_of_types(variable.index_by or [ ], values = types):
+                  if len(value) == 0:
+                     self.variables[name] = new_value
+                  elif len(value) == 1:
+                     self.variables[name][value[0]] = new_value
+                  else:
+                     self.variables[name][value] = new_value
    
    def run(self):
       """
@@ -267,20 +239,15 @@ class FUND(object):
          
          instances.append(( behavior_instance, state_instance ))
       
-      clock = Clock(self.dimensions.time_steps)
-      
-      Timestep._state.clock = clock # This is terrible form.
-      
-      while clock.can_advance:
-         warnings.warn("Masking divide by zero exceptions since parameters aren't specified.")
+      for year in self.dimensions.time_steps:
+         print "year is {0}".format(year)
+         Timestep.__init__(year, self.dimensions.time_steps[0])
+         
+         if Timestep.IsFirstTimestep:
+            continue
          
          for behavior, state in instances:
-            try:
-               behavior.run(state, clock, self.dimensions)
-            except (ZeroDivisionError, ValueError):
-               pass
-         
-         clock.advance()
+            behavior.run(state, Timestep, self.dimensions)
       
       # Do stuff with the results
    
@@ -292,7 +259,7 @@ def main():
    
    with warnings.catch_warnings():
       warnings.simplefilter('ignore')
-      model = FUND(time_steps = range(1990, 2100))
+      model = FUND(time_steps = range(1960, 2100))
    
    model.run()
 
