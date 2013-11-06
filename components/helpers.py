@@ -1,5 +1,8 @@
 import threading
 
+class ApplicationException(Exception):
+   pass
+
 class Parameters(object):
    """
    The Parameters class is the abstract superclass of all
