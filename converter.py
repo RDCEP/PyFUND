@@ -125,6 +125,7 @@ from components._patches import *
       code = re.sub(r'[dD]ouble.PositiveInfinity', 'float(\'+inf\')', code)
       code = re.sub(r'[dD]ouble.NegativeInfinity', 'float(\'-inf\')', code)
       code = re.sub(r'[dD]ouble.IsNaN', 'math.isnan', code)
+      code = re.sub(r'\.Value', '', code)
       code = re.sub(r';[ \t]*(\r\n|\n)', '\n', code)
       code = re.sub(r'\s+\?\s+', ' and ', code)
       code = re.sub(r'\s+:\s+', ' or ', code)

@@ -18,47 +18,35 @@ class Behaviors(object):
    its interaction with the surrounding code.
    """
 
-Timestep = threading.local
-
-class Timestep():
+class Clock(object):
    """
-   The Timestep singleton is a crutch. It is easier to use this
-   one weird hack than to intelligently rewrite the buggy C#.
+   The Clock class represents the abstract time-keeper; it allows
+   model components to transparently access both the current year
+   and time-step.
    """
+   def __init__(self, time_step, first_time_step):
+      self.first = first_time_step
+      self.time_step = time_step
    
-   _state = threading.local()
+   @property
+   def Current(self):
+      return self.time_step
    
-   @classmethod
+   @property
+   def IsFirstTimestep(self):
+      return self.first == self.time_step
+   
+   @property
+   def StartTime(self):
+      return self.first
+   
    def FromYear(self, year):
-      return Timestep(self._state.clock.FromYear(year))
+      return year
    
-   @classmethod
-   def FromSimulationYear(self, year):
-      return Timestep(self._state.clock.FromSimulationYear(year))
-   
-   def __init__(self, x):
-      self.Value = x
-   
-   def __hash__(self):
-      return hash(self.Value)
-   
-   def __cmp__(self, other):
-      return self.Value.__cmp__(other.Value)
-   
-   def __sub__(self, x):
-      return Timestep(self.Value - int(x))
-   
-   def __add__(self, x):
-      return Timestep(self.Value + int(x))
-   
-   def __int__(self):
-      return self.Value
-   
-   def __str__(self):
-      return "{0}".format(self.Value)
-   
-   def __repr__(self):
-      return "Timestamp({0})".format(self.Value)
+   def FromSimulationYear(self, looking_for):
+      return looking_for + self.first
+
+Timestep = Clock(None, None)
 
 class Variable(object):
    """
