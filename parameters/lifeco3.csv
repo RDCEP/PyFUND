@@ -1,10 +1,10 @@
 Name,lifeco3
 Value,NormalDistribution(74.0; 18.5)
-Mean,74.0
+Mean,74
 Standard deviation,18.5
 Alpha,
 Beta,
 Lambda,
-Min,0.0
+Min,0
 Max,
 Mode,

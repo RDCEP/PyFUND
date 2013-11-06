@@ -1,17 +1,17 @@
 Region,foremadd
 USA,NormalDistribution(0.0; 0.202)
 CAN,NormalDistribution(0.0; 0.202)
-WEU,0.0
-JPK,0.0
-ANZ,0.0
-EEU,0.0
-FSU,0.0
-MDE,0.0
+WEU,0
+JPK,0
+ANZ,0
+EEU,0
+FSU,0
+MDE,0
 CAM,NormalDistribution(0.0; 3.18)
 LAM,NormalDistribution(0.0; 28.6)
 SAS,NormalDistribution(0.0; 4.037)
 SEA,NormalDistribution(0.0; 12.112)
 CHI,NormalDistribution(0.0; 1.267)
-MAF,0.0
+MAF,0
 SSA,NormalDistribution(0.0; 11.7)
-SIS,0.0
+SIS,0

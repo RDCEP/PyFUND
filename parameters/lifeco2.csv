@@ -1,10 +1,10 @@
 Name,lifeco2
 Value,NormalDistribution(363.0; 90.75)
-Mean,363.0
+Mean,363
 Standard deviation,90.75
 Alpha,
 Beta,
 Lambda,
-Min,0.0
+Min,0
 Max,
 Mode,

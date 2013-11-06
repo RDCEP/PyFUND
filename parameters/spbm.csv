@@ -1,10 +1,10 @@
 Name,spbm
 Value,NormalDistribution(50.0; 50.0)
-Mean,50.0
-Standard deviation,50.0
+Mean,50
+Standard deviation,50
 Alpha,
 Beta,
 Lambda,
-Min,0.0
+Min,0
 Max,
 Mode,

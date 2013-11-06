@@ -1,10 +1,10 @@
 Name,vslel
 Value,NormalDistribution(1.0; 0.2)
-Mean,1.0
+Mean,1
 Standard deviation,0.2
 Alpha,
 Beta,
 Lambda,
-Min,0.0
+Min,0
 Max,
 Mode,
