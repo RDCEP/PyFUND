@@ -33,6 +33,9 @@ def _extract_as_typed(object):
   if type(object) in (str, unicode):
     if object.startswith('Normal'):
       return NormalDistribution(object)
+  if type(object) in (float,):
+     if int(object) == object:
+        return int(object)
   return object
 
 class Table(object):
