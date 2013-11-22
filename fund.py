@@ -122,11 +122,11 @@ def _choose_default_for_type(kind):
    This function chooses the default value for a given type.
    """
    return {
-      'double': 3.0,
+      'double': float('NaN'),
       'timestep': 1950,
-      'region': 1,
-      'boolean': True,
-      'bool': True
+      'region': float('NaN'),
+      'boolean': False,
+      'bool': False
    }[kind.lower()]
 
 def _bastardize_list(python_list):
@@ -240,10 +240,10 @@ class FUND(object):
          instances.append(( behavior_instance, state_instance ))
       
       for year in self.dimensions.time_steps:
-         print "year is {0}".format(year)
-         Timestep.__init__(year, self.dimensions.time_steps[0])
+         Timestep.__init__(year, self.dimensions.time_steps[1])
+         print "year is {0} (is first = {1})".format(year, Timestep.IsFirstTimestep)
          
-         if Timestep.IsFirstTimestep:
+         if year == self.dimensions.time_steps[0]:
             continue
          
          for behavior, state in instances:
@@ -258,7 +258,7 @@ def main():
    model = None
    
    with warnings.catch_warnings():
-      warnings.simplefilter('ignore')
+      # warnings.simplefilter('ignore')
       model = FUND(time_steps = range(1960, 2100))
    
    model.run()

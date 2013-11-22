@@ -8,3 +8,8 @@ def Interact(M, N):
    
    d = 1.0 + math.pow(M * N, 0.75) * 2.01E-5 + math.pow(M * N, 1.52) * M * 5.31E-15
    return 0.47 * math.log(d)
+
+class Convert(object):
+  @classmethod
+  def ToDouble(klass, x):
+    return x
