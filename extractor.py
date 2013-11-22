@@ -185,8 +185,6 @@ def main():
         table = Table.detect_single(sheet, row, 0)
         row += table.height
         all_tables.append(table)
-        
-        table.describe()
   
   print('{0} table(s) extracted, {1} warnings'.format(len(all_tables), count_warnings))
   
@@ -201,10 +199,10 @@ def main():
     for table in all_tables:
       value = table.extract_field(unmangled_name)
       if value:
-        with csv.writer(open('parameters/{0}.csv'.format(unmangled_name), 'w')) as fp:
+        with open('parameters/{0}.csv'.format(unmangled_name), 'w') as fp:
+          writer = csv.writer(fp)
           for row in value:
-            flattened = ','.join(str(x) for x in row)
-            fp.write(flattened)
+            writer.writerow(row)
         options_specified += 1
         break
     options_total += 1
