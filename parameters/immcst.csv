@@ -1,1 +1,2 @@
-immcst,immcst
+immcst
+NormalDistribution(0.4; 0.2)

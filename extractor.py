@@ -9,6 +9,7 @@ import sys
 import string
 import re
 import os
+import csv
 
 try:
   import xlrd
@@ -99,7 +100,13 @@ class Table(object):
     top_columns = self.all_cells[0]
     left_columns = [ x[0] for x in self.all_cells ]
     
-    if field_name in top_columns: # we are a column
+    if self.height == 1 and top_columns[0] == field_name:
+      return [[ field_name ], [ str(top_columns[1]) ]]
+    
+    elif self.width == 1 and top_columns[0] == field_name:
+      return [[ field_name ], [ str(self.all_cells[1][0]) ]]
+    
+    elif field_name in top_columns: # we are a column
       index = top_columns.index(field_name)
       values = [ x[index] for x in self.all_cells ]
       headers = [ x[0] for x in self.all_cells ]
@@ -178,6 +185,8 @@ def main():
         table = Table.detect_single(sheet, row, 0)
         row += table.height
         all_tables.append(table)
+        
+        table.describe()
   
   print('{0} table(s) extracted, {1} warnings'.format(len(all_tables), count_warnings))
   
@@ -192,10 +201,10 @@ def main():
     for table in all_tables:
       value = table.extract_field(unmangled_name)
       if value:
-        with open('parameters/{0}.csv'.format(unmangled_name), 'w') as fp:
+        with csv.writer(open('parameters/{0}.csv'.format(unmangled_name), 'w')) as fp:
           for row in value:
             flattened = ','.join(str(x) for x in row)
-            fp.write("{0}\n".format(flattened))
+            fp.write(flattened)
         options_specified += 1
         break
     options_total += 1
