@@ -6,18 +6,54 @@ import re
 from components.helpers import Timestep
 
 class NormalDistribution(object):
-  def __init__(self, *values):
-    if len(values) == 1:
-      match = re.match(r'NormalDistribution\(([^;]+); ([^;]+).+\)', values[0])
-      if not match:
-         raise ValueError('Improperly formatted normal distribution specifier.')
-      
-      self.mean, self.stddev = map(float, match.groups())
-    else:
-      self.mean, self.stddev = values
-  
-  def __repr__(self):
-    return u'NormalDistribution({0}; {1})'.format(self.mean, self.stddev)
+   def __init__(self, *values):
+      if len(values) == 1:
+         match = re.match(r'NormalDistribution\(([^;]+); ([^;]+).+\)', values[0])
+         if not match:
+            raise ValueError('Improperly formatted normal distribution specifier.')
+         
+         self.mean, self.stddev = map(float, match.groups())
+      else:
+         self.mean, self.stddev = values
+
+   def __repr__(self):
+      return u'NormalDistribution({0}; {1})'.format(self.mean, self.stddev)
+
+class TriangularDistribution(object):
+   def __init__(self, *values):
+      if len(values) == 1:
+         match = re.match(r'TriangularDistribution\(([^;]+); ([^;]+); ([^;]+).+\)', values[0])
+         if not match:
+            raise ValueError('Improperly formatted triangle distribution specifier.')
+         
+         self.minimum, self.mode, self.maximum = map(float, match.groups())
+      else:
+         self.minimum, self.mode, self.maximum = values
+   
+   def __repr__(self):
+      return u'TriangularDistribution({0}; {1}; {2})'.format(self.minimum, self.mode, self.maximum)
+   
+   @property
+   def mean(self):
+      return (self.minimum + self.mode + self.maximum) / 3
+
+class GammaDistribution(object):
+   def __init__(self, *values):
+      if len(values) == 1:
+         match = re.match(r'GammaDistribution\(([^;]+); ([^;]+).+\)', values[0])
+         if not match:
+            raise ValueError('Improperly formatted gamma distribution specifier.')
+         
+         self.alpha, self.beta = map(float, match.groups())
+      else:
+         self.alpha, self.beta = values
+
+   def __repr__(self):
+      return u'GammaDistribution({0}; {1})'.format(self.alpha, self.beta)
+   
+   @property
+   def mean(self):
+      return self.alpha / self.beta
 
 def _find_fund_behaviors():
    """
@@ -82,23 +118,35 @@ def _choose_default_for_variable(variable):
       else:
          value = row[variable.name.lower()]
       
-      try:
-         value = float(value)
-      except ValueError:
+      attempts = [ float, NormalDistribution, TriangularDistribution,
+                   GammaDistribution ]
+      
+      for attempt in attempts:
          try:
-            value = NormalDistribution(value).mean
+            value = attempt(value)
          except ValueError:
-            warnings.warn('Caught an incomprehensible field value: {0!r}'.
-              format(repr(value)))
-            value = 0
+            pass
+         else:
+            break
+      else:
+         warnings.warn('Caught an incomprehensible field value: {0!r}'.
+           format(repr(value)))
+         value = 0
+      
+      if hasattr(value, "mean"):
+         value = value.mean # FIXME
       
       if dimension == 0:
-         if row['Name'] == 'Value':
+         if len(row.keys()) > 1:
+            if row['Name'] == 'Value':
+               return value
+         else:
             return value
          
       elif dimension == 1:
-         second_key = list(set(row.keys()) - set([variable.name]))[0]
-         result[row[second_key]] = value
+         if len(row.keys()) > 1:
+            second_key = list(set(row.keys()) - set([variable.name]))[0]
+            result[row[second_key]] = value
          
       elif dimension == 2:
          first = row[variable.index_by[0]]
@@ -121,13 +169,17 @@ def _choose_default_for_type(kind):
    """
    This function chooses the default value for a given type.
    """
+   return None
+   
+   # Alternatively:
+   """
    return {
-      'double': float('NaN'),
+      'double': 0,
       'timestep': 1950,
-      'region': float('NaN'),
+      'region': 0,
       'boolean': False,
       'bool': False
-   }[kind.lower()]
+   }[kind.lower()] """
 
 def _bastardize_list(python_list):
    """
@@ -203,7 +255,10 @@ class FUND(object):
       # Ensure that all parameters are specified
       for name, variable in self.all_options.items():
          new_value = _choose_default_for_variable(variable)
-          
+         
+         if name.startswith("lifech4"):
+            print new_value
+         
          if new_value:
             self.variables[name] = new_value
          
@@ -213,7 +268,6 @@ class FUND(object):
             if name not in parameters:
                if variable.is_parameter:
                   warnings.warn("Missing parameter {0}; setting to an arbitrary value.".format(name))
-                  # new_value = _choose_default_for_type(variable.return_value)
                
                self.variables[name] = dict( )
                
