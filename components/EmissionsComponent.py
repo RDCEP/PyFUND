@@ -188,13 +188,6 @@ class EmissionsComponent(Behaviors):
 
             for r in dimensions.GetValuesOfRegion():
 
-                print r
-                print(1)                     # 1.0
-                print(- 0.01 * s.aeei[t, r]) # -0.03
-                print(- s.reei[t - 1, r])    # -3.0
-                print(- 0.01 * s.acei[t, r]) # -0.03
-                print(- s.rcei[t - 1, r])    # -3.0
-                
                 s.so2[t, r] = (s.so2[t - 1, r] *
                                math.pow(1 + 0.01 * s.pgrowth[t - 1, r], s.so2pop) *
                                math.pow(1 + 0.01 * s.ypcgrowth[t - 1, r], s.so2inc) *
