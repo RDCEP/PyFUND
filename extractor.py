@@ -118,8 +118,9 @@ class Table(object):
       headers = self.all_cells[0]
       return zip(headers, values)
     
-    elif field_name == self.sheet_name:
+    elif field_name.lower() == self.sheet_name.lower():
       results = [ ]
+      already_hit = set()
       
       machine_readable_name = "{0}_2".format(field_name) # FIXME!
       results.append(FUND.all_options[machine_readable_name].index_by + [field_name])
@@ -134,11 +135,16 @@ class Table(object):
           value = self.all_cells[row_index][column_index]
           
           results.append((column, row, value))
-          results.append((row, column, value))
+          already_hit.add((column, row))
+          
+          if (row, column) not in already_hit:
+            results.append((row, column, value)) # FIXME
           
            # Tables are not drawn in any particular orientation,
            # so we duplicate them in the dictionary with the hope
-           # that at least one way of doing it will work.
+           # that at least one way of doing it will work. That
+           # policy doesn't work with REG -> REG spreadsheets, so
+           # in that case we make a wild guess.
       
       return results
     else:
