@@ -43,9 +43,9 @@ class Distribution(object):
 class NormalDistribution(Distribution):
    def __init__(self, *values):
       if len(values) == 1:
-         match = re.match(r'NormalDistribution\(([^;]+); ([^;]+)\)', values[0])
+         match = re.match(r'NormalDistribution\(([^;]+); ([^;]+).*\)', values[0])
          if not match:
-            raise ValueError('Improperly formatted normal distribution specifier.')
+            raise ValueError('Improperly formatted normal distribution specifier: ')
          
          self.mean, self.stddev = map(float, match.groups())
       else:
@@ -57,7 +57,7 @@ class NormalDistribution(Distribution):
 class TriangularDistribution(Distribution):
    def __init__(self, *values):
       if len(values) == 1:
-         match = re.match(r'TriangularDistribution\(([^;]+); ([^;]+); ([^;]+)\)', values[0])
+         match = re.match(r'TriangularDistribution\(([^;]+); ([^;]+); ([^;]+).*\)', values[0])
          if not match:
             raise ValueError('Improperly formatted triangle distribution specifier.')
          
@@ -75,7 +75,7 @@ class TriangularDistribution(Distribution):
 class GammaDistribution(Distribution):
    def __init__(self, *values):
       if len(values) == 1:
-         match = re.match(r'GammaDistribution\(([^;]+); ([^;]+)\)', values[0])
+         match = re.match(r'GammaDistribution\(([^;]+); ([^;]+).*\)', values[0])
          if not match:
             raise ValueError('Improperly formatted gamma distribution specifier.')
          
