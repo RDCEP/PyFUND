@@ -3,7 +3,7 @@ PyFUND [Work-in-Progress]
 
 This project is an attempt to reimplement the [FUND](http://www.fund-model.org) model in a more POSIX-friendly language. It is being developed as a part of [RDCEP](http://www.rdcep.org) and the [Computation Institute](http://ci.uchicago.edu) at the University of Chicago.
 
-Licence
+License
 ---
 Copyright (c) 2013 Computation Institute
 
