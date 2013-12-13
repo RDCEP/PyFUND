@@ -100,28 +100,32 @@ class Table(object):
     top_columns = self.all_cells[0]
     left_columns = [ x[0] for x in self.all_cells ]
     
-    if self.height == 1 and top_columns[0] == field_name:
+    tci = [ str(x).lower() for x in top_columns ]
+    lci = [ str(x).lower() for x in left_columns ]
+    fn = field_name.lower()
+    
+    if self.height == 1 and tci[0] == fn:
       if (' ' in str(top_columns[1]) and
           'Distribution' not in str(top_columns[1])):
          return None
       return [[ field_name ], [ str(top_columns[1]) ]]
     
-    elif self.width == 1 and top_columns[0] == field_name:
+    elif self.width == 1 and tci[0] == fn:
       return [[ field_name ], [ str(self.all_cells[1][0]) ]]
     
-    elif field_name in top_columns: # we are a column
-      index = top_columns.index(field_name)
+    elif fn in tci: # we are a column
+      index = tci.index(fn)
       values = [ x[index] for x in self.all_cells ]
       headers = [ x[0] for x in self.all_cells ]
       return zip(headers, values)
     
-    elif field_name in [ x[0] for x in self.all_cells ]: # we are a row
-      index = left_columns.index(field_name)
+    elif fn in lci: # we are a row
+      index = lci.index(fn)
       values = self.all_cells[index]
       headers = self.all_cells[0]
       return zip(headers, values)
     
-    elif field_name.lower() == self.sheet_name.lower():
+    elif fn == self.sheet_name.lower():
       results = [ ]
       already_hit = set()
       
