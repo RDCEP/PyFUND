@@ -37,10 +37,13 @@ COMPONENT_ORDER = [
    "ImpactAggregationComponent"
 ]
 
-class NormalDistribution(object):
+class Distribution(object):
+   pass
+
+class NormalDistribution(Distribution):
    def __init__(self, *values):
       if len(values) == 1:
-         match = re.match(r'NormalDistribution\(([^;]+); ([^;]+).+\)', values[0])
+         match = re.match(r'NormalDistribution\(([^;]+); ([^;]+)\)', values[0])
          if not match:
             raise ValueError('Improperly formatted normal distribution specifier.')
          
@@ -51,10 +54,10 @@ class NormalDistribution(object):
    def __repr__(self):
       return u'NormalDistribution({0}; {1})'.format(self.mean, self.stddev)
 
-class TriangularDistribution(object):
+class TriangularDistribution(Distribution):
    def __init__(self, *values):
       if len(values) == 1:
-         match = re.match(r'TriangularDistribution\(([^;]+); ([^;]+); ([^;]+).+\)', values[0])
+         match = re.match(r'TriangularDistribution\(([^;]+); ([^;]+); ([^;]+)\)', values[0])
          if not match:
             raise ValueError('Improperly formatted triangle distribution specifier.')
          
@@ -69,10 +72,10 @@ class TriangularDistribution(object):
    def mean(self):
       return (self.minimum + self.mode + self.maximum) / 3
 
-class GammaDistribution(object):
+class GammaDistribution(Distribution):
    def __init__(self, *values):
       if len(values) == 1:
-         match = re.match(r'GammaDistribution\(([^;]+); ([^;]+).+\)', values[0])
+         match = re.match(r'GammaDistribution\(([^;]+); ([^;]+)\)', values[0])
          if not match:
             raise ValueError('Improperly formatted gamma distribution specifier.')
          
@@ -146,12 +149,14 @@ def _choose_default_for_variable(variable):
    if not os.path.isfile(filename):
      return None
    
-   for row in csv.DictReader(open(filename)):
-      if variable.name in row:
-         value = row[variable.name]
-      else:
-         value = row[variable.name.lower()]
+   first_row = True
+   
+   for row in csv.reader(open(filename)):
+      if first_row:
+         first_row = False
+         continue
       
+      value = row[-1]
       attempts = [ float, NormalDistribution, TriangularDistribution,
                    GammaDistribution ]
       
@@ -167,29 +172,33 @@ def _choose_default_for_variable(variable):
            format(repr(value)))
          value = 0
       
-      if hasattr(value, "mean"):
+      if isinstance(value, Distribution):
          value = value.mean # FIXME
       
       if dimension == 0:
-         if len(row.keys()) > 1:
-            if row['Name'] == 'Value':
+         if len(row) > 1:
+            if row[0] == 'Value':
                return value
          else:
             return value
          
       elif dimension == 1:
-         if len(row.keys()) > 1:
-            second_key = list(set(row.keys()) - set([variable.name]))[0]
-            result[row[second_key]] = value
+         result[row[0]] = value
          
       elif dimension == 2:
-         first = row[variable.index_by[0]]
-         second = row[variable.index_by[1]]
+         first = row[0]
+         second = row[1]
          
-         try: first = float(first)
+         try:
+            first = float(first)
+            if int(first) == first:
+               first = int(first)
          except ValueError: pass
          
-         try: second = float(second)
+         try:
+            second = float(second)
+            if int(second) == second:
+               second = int(second)
          except ValueError: pass
          
          result[first, second] = value
@@ -287,9 +296,6 @@ class FUND(object):
       for name, variable in self.all_options.items():
          new_value = _choose_default_for_variable(variable)
          
-         if name.startswith("lifech4"):
-            print new_value
-         
          if new_value:
             self.variables[name] = new_value
          
@@ -298,7 +304,9 @@ class FUND(object):
             
             if name not in parameters:
                if variable.is_parameter:
-                  warnings.warn("Missing parameter {0}; setting to an arbitrary value.".format(name))
+                  warnings.warn(
+                    ("Missing parameter {0}; setting to an " +
+                     "arbitrary value.").format(name))
                
                self.variables[name] = dict( )
                
@@ -325,11 +333,11 @@ class FUND(object):
          instances.append(( behavior_instance, state_instance ))
       
       for year in self.dimensions.time_steps:
-         Timestep.__init__(year, self.dimensions.time_steps[1])
-         print "year is {0} (is first = {1})".format(year, Timestep.IsFirstTimestep)
+         Timestep.__init__(year, self.dimensions.time_steps[0])
+         print "(year={0}, is_first={1})".format(year, Timestep.IsFirstTimestep)
          
          for behavior, state in instances:
-            print behavior
+            print "  {0}".format(behavior.__class__.__name__)
             behavior.run(state, Timestep, self.dimensions)
       
       # Do stuff with the results
