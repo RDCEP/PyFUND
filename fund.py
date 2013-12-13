@@ -5,6 +5,38 @@ import csv
 import re
 from components.helpers import Timestep
 
+COMPONENT_ORDER = [
+   "ScenarioUncertaintyComponent",
+   "GeographyComponent",
+   "PopulationComponent",
+   "SocioEconomicComponent",
+   "EmissionsComponent",
+   "ClimateCO2CycleComponent",
+   "ClimateCH4CycleComponent",
+   "ClimateN2OCycleComponent",
+   "ClimateSF6CycleComponent",
+   "ClimateSO2CycleComponent",
+   "ClimateForcingComponent",
+   "ClimateDynamicsComponent",
+   "ClimateRegionalComponent",
+   "OceanComponent",
+   "BioDiversityComponent",
+   "ImpactBioDiversityComponent",
+   "ImpactHeatingComponent",
+   "ImpactCoolingComponent",
+   "ImpactAgricultureComponent",
+   "ImpactWaterResourcesComponent",
+   "ImpactDiarrhoeaComponent",
+   "ImpactTropicalStormsComponent",
+   "ImpactExtratropicalStormsComponent",
+   "ImpactSeaLevelRiseComponent",
+   "ImpactForests",
+   "ImpactVectorBorneDiseasesComponent",
+   "ImpactCardiovascularRespiratoryComponent",
+   "ImpactDeathMorbidityComponent",
+   "ImpactAggregationComponent"
+]
+
 class NormalDistribution(object):
    def __init__(self, *values):
       if len(values) == 1:
@@ -62,12 +94,14 @@ def _find_fund_behaviors():
    """
    behaviors = [ ]
    
-   for file in glob.glob('components/*.py'):
-      module_name = file[:-3].split('/')[1]
-      if module_name not in ('__init__', 'helpers', '_patches'):
-         module = getattr(__import__('components.{0}'.format(module_name)),
-           module_name)
-         behaviors.extend(module.behavior_classes)
+   for module_name in COMPONENT_ORDER:
+      try:
+         module = getattr(__import__('components.{0}'.format(module_name)
+           ), module_name)
+      except ImportError:
+         module = getattr(__import__('components.{0}'.format(module_name[:-9])
+           ), module_name[:-9])
+      behaviors.extend(module.behavior_classes)
    
    return behaviors
 
@@ -169,17 +203,14 @@ def _choose_default_for_type(kind):
    """
    This function chooses the default value for a given type.
    """
-   return None
    
-   # Alternatively:
-   """
    return {
       'double': 0,
       'timestep': 1950,
       'region': 0,
       'boolean': False,
       'bool': False
-   }[kind.lower()] """
+   }[kind.lower()]
 
 def _bastardize_list(python_list):
    """
@@ -297,10 +328,8 @@ class FUND(object):
          Timestep.__init__(year, self.dimensions.time_steps[1])
          print "year is {0} (is first = {1})".format(year, Timestep.IsFirstTimestep)
          
-         if year == self.dimensions.time_steps[0]:
-            continue
-         
          for behavior, state in instances:
+            print behavior
             behavior.run(state, Timestep, self.dimensions)
       
       # Do stuff with the results
