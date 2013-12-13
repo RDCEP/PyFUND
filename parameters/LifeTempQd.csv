@@ -1,5 +1,5 @@
 Name,LifeTempQd
-Value,NormalDistribution(-0.00993; 0.00156)
+Value,NormalDistribution(-0.00993; 0.001568)
 Mean,-0.00993
 Standard deviation,0.001568
 Alpha,

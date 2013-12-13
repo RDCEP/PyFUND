@@ -101,6 +101,9 @@ class Table(object):
     left_columns = [ x[0] for x in self.all_cells ]
     
     if self.height == 1 and top_columns[0] == field_name:
+      if (' ' in str(top_columns[1]) and
+          'Distribution' not in str(top_columns[1])):
+         return None
       return [[ field_name ], [ str(top_columns[1]) ]]
     
     elif self.width == 1 and top_columns[0] == field_name:

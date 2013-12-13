@@ -1,5 +1,5 @@
 Name,hurrpar
-Value,NormalDistribution(0.04; 0.0)
+Value,NormalDistribution(0.04; 0.005)
 Mean,0.04
 Standard deviation,0.005
 Alpha,

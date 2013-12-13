@@ -1,2 +1,17 @@
-smch
-"change in baseline mortality due to a one degree warming, expressed as fractions of baseline mortality"
+Region,smch
+USA,NormalDistribution(-0.1149; 0.0614)
+CAN,NormalDistribution(-0.1149; 0.0614)
+WEU,NormalDistribution(-0.1149; 0.0614)
+JPK,NormalDistribution(-0.1149; 0.0614)
+ANZ,NormalDistribution(-0.1149; 0.0614)
+EEU,NormalDistribution(-0.1149; 0.0614)
+FSU,NormalDistribution(-0.1149; 0.0614)
+MDE,NormalDistribution(-0.1149; 0.0614)
+CAM,NormalDistribution(-0.1149; 0.0614)
+LAM,NormalDistribution(-0.1149; 0.0614)
+SAS,NormalDistribution(-0.1149; 0.0614)
+SEA,NormalDistribution(-0.1149; 0.0614)
+CHI,NormalDistribution(-0.1149; 0.0614)
+MAF,NormalDistribution(-0.1149; 0.0614)
+SSA,NormalDistribution(-0.1149; 0.0614)
+SIS,NormalDistribution(-0.1149; 0.0614)

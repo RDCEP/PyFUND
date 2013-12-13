@@ -1,2 +1,17 @@
-malch
-impact of a one degree warming onmalaria mortality
+Region,malch
+USA,NormalDistribution(0.0794; 0.0575)
+CAN,NormalDistribution(0.0794; 0.0575)
+WEU,NormalDistribution(0.0794; 0.0575)
+JPK,NormalDistribution(0.0794; 0.0575)
+ANZ,NormalDistribution(0.0794; 0.0575)
+EEU,NormalDistribution(0.0794; 0.0575)
+FSU,NormalDistribution(0.0794; 0.0575)
+MDE,NormalDistribution(0.0794; 0.0575)
+CAM,NormalDistribution(0.0794; 0.0575)
+LAM,NormalDistribution(0.0794; 0.0575)
+SAS,NormalDistribution(0.0794; 0.0575)
+SEA,NormalDistribution(0.0794; 0.0575)
+CHI,NormalDistribution(0.0794; 0.0575)
+MAF,NormalDistribution(0.0794; 0.0575)
+SSA,NormalDistribution(0.0794; 0.0575)
+SIS,NormalDistribution(0.0794; 0.0575)

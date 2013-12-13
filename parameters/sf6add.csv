@@ -1,5 +1,5 @@
 Name,sf6add
-Value,NormalDistribution(0.0; 0.0)
+Value,NormalDistribution(0.0; 0.08)
 Mean,
 Standard deviation,
 Alpha,
