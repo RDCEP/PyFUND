@@ -1,0 +1,2633 @@
+Region,Region,migrate
+USA,USA,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+USA,USA,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+USA,CAN,GammaDistribution(1; 0.05)
+CAN,USA,GammaDistribution(1; 0.05)
+USA,WEU,GammaDistribution(1; 0.02)
+WEU,USA,GammaDistribution(1; 0.02)
+USA,JPK,GammaDistribution(1; 0.01)
+JPK,USA,GammaDistribution(1; 0.01)
+USA,ANZ,GammaDistribution(1; 0.02)
+ANZ,USA,GammaDistribution(1; 0.02)
+USA,EEU,GammaDistribution(1; 0.001)
+EEU,USA,GammaDistribution(1; 0.001)
+USA,FSU,GammaDistribution(1; 0.001)
+FSU,USA,GammaDistribution(1; 0.001)
+USA,MDE,GammaDistribution(1; 0.001)
+MDE,USA,GammaDistribution(1; 0.001)
+USA,CAM,GammaDistribution(1; 0.001)
+CAM,USA,GammaDistribution(1; 0.001)
+USA,LAM,GammaDistribution(1; 0.001)
+LAM,USA,GammaDistribution(1; 0.001)
+USA,SAS,GammaDistribution(1; 0.001)
+SAS,USA,GammaDistribution(1; 0.001)
+USA,SEA,GammaDistribution(1; 0.001)
+SEA,USA,GammaDistribution(1; 0.001)
+USA,CHI,GammaDistribution(1; 0.001)
+CHI,USA,GammaDistribution(1; 0.001)
+USA,MAF,GammaDistribution(1; 0.001)
+MAF,USA,GammaDistribution(1; 0.001)
+USA,SSA,GammaDistribution(1; 0.001)
+SSA,USA,GammaDistribution(1; 0.001)
+USA,SIS,GammaDistribution(1; 0.001)
+SIS,USA,GammaDistribution(1; 0.001)
+CAN,USA,GammaDistribution(1; 0.05)
+CAN,CAN,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+CAN,CAN,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+CAN,WEU,GammaDistribution(1; 0.02)
+WEU,CAN,GammaDistribution(1; 0.02)
+CAN,JPK,GammaDistribution(1; 0.01)
+JPK,CAN,GammaDistribution(1; 0.01)
+CAN,ANZ,GammaDistribution(1; 0.02)
+ANZ,CAN,GammaDistribution(1; 0.02)
+CAN,EEU,GammaDistribution(1; 0.001)
+EEU,CAN,GammaDistribution(1; 0.001)
+CAN,FSU,GammaDistribution(1; 0.001)
+FSU,CAN,GammaDistribution(1; 0.001)
+CAN,MDE,GammaDistribution(1; 0.001)
+MDE,CAN,GammaDistribution(1; 0.001)
+CAN,CAM,GammaDistribution(1; 0.001)
+CAM,CAN,GammaDistribution(1; 0.001)
+CAN,LAM,GammaDistribution(1; 0.001)
+LAM,CAN,GammaDistribution(1; 0.001)
+CAN,SAS,GammaDistribution(1; 0.001)
+SAS,CAN,GammaDistribution(1; 0.001)
+CAN,SEA,GammaDistribution(1; 0.001)
+SEA,CAN,GammaDistribution(1; 0.001)
+CAN,CHI,GammaDistribution(1; 0.001)
+CHI,CAN,GammaDistribution(1; 0.001)
+CAN,MAF,GammaDistribution(1; 0.001)
+MAF,CAN,GammaDistribution(1; 0.001)
+CAN,SSA,GammaDistribution(1; 0.001)
+SSA,CAN,GammaDistribution(1; 0.001)
+CAN,SIS,GammaDistribution(1; 0.001)
+SIS,CAN,GammaDistribution(1; 0.001)
+WEU,USA,GammaDistribution(1; 0.05)
+WEU,CAN,GammaDistribution(1; 0.02)
+WEU,WEU,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+WEU,WEU,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+WEU,JPK,GammaDistribution(1; 0.01)
+JPK,WEU,GammaDistribution(1; 0.01)
+WEU,ANZ,GammaDistribution(1; 0.02)
+ANZ,WEU,GammaDistribution(1; 0.02)
+WEU,EEU,GammaDistribution(1; 0.001)
+EEU,WEU,GammaDistribution(1; 0.001)
+WEU,FSU,GammaDistribution(1; 0.001)
+FSU,WEU,GammaDistribution(1; 0.001)
+WEU,MDE,GammaDistribution(1; 0.001)
+MDE,WEU,GammaDistribution(1; 0.001)
+WEU,CAM,GammaDistribution(1; 0.001)
+CAM,WEU,GammaDistribution(1; 0.001)
+WEU,LAM,GammaDistribution(1; 0.001)
+LAM,WEU,GammaDistribution(1; 0.001)
+WEU,SAS,GammaDistribution(1; 0.001)
+SAS,WEU,GammaDistribution(1; 0.001)
+WEU,SEA,GammaDistribution(1; 0.001)
+SEA,WEU,GammaDistribution(1; 0.001)
+WEU,CHI,GammaDistribution(1; 0.001)
+CHI,WEU,GammaDistribution(1; 0.001)
+WEU,MAF,GammaDistribution(1; 0.001)
+MAF,WEU,GammaDistribution(1; 0.001)
+WEU,SSA,GammaDistribution(1; 0.001)
+SSA,WEU,GammaDistribution(1; 0.001)
+WEU,SIS,GammaDistribution(1; 0.001)
+SIS,WEU,GammaDistribution(1; 0.001)
+JPK,USA,GammaDistribution(1; 0.05)
+JPK,CAN,GammaDistribution(1; 0.02)
+JPK,WEU,GammaDistribution(1; 0.02)
+JPK,JPK,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+JPK,JPK,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+JPK,ANZ,GammaDistribution(1; 0.02)
+ANZ,JPK,GammaDistribution(1; 0.02)
+JPK,EEU,GammaDistribution(1; 0.001)
+EEU,JPK,GammaDistribution(1; 0.001)
+JPK,FSU,GammaDistribution(1; 0.001)
+FSU,JPK,GammaDistribution(1; 0.001)
+JPK,MDE,GammaDistribution(1; 0.001)
+MDE,JPK,GammaDistribution(1; 0.001)
+JPK,CAM,GammaDistribution(1; 0.001)
+CAM,JPK,GammaDistribution(1; 0.001)
+JPK,LAM,GammaDistribution(1; 0.001)
+LAM,JPK,GammaDistribution(1; 0.001)
+JPK,SAS,GammaDistribution(1; 0.001)
+SAS,JPK,GammaDistribution(1; 0.001)
+JPK,SEA,GammaDistribution(1; 0.001)
+SEA,JPK,GammaDistribution(1; 0.001)
+JPK,CHI,GammaDistribution(1; 0.001)
+CHI,JPK,GammaDistribution(1; 0.001)
+JPK,MAF,GammaDistribution(1; 0.001)
+MAF,JPK,GammaDistribution(1; 0.001)
+JPK,SSA,GammaDistribution(1; 0.001)
+SSA,JPK,GammaDistribution(1; 0.001)
+JPK,SIS,GammaDistribution(1; 0.001)
+SIS,JPK,GammaDistribution(1; 0.001)
+ANZ,USA,GammaDistribution(1; 0.05)
+ANZ,CAN,GammaDistribution(1; 0.02)
+ANZ,WEU,GammaDistribution(1; 0.02)
+ANZ,JPK,GammaDistribution(1; 0.01)
+ANZ,ANZ,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+ANZ,ANZ,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+ANZ,EEU,GammaDistribution(1; 0.001)
+EEU,ANZ,GammaDistribution(1; 0.001)
+ANZ,FSU,GammaDistribution(1; 0.001)
+FSU,ANZ,GammaDistribution(1; 0.001)
+ANZ,MDE,GammaDistribution(1; 0.001)
+MDE,ANZ,GammaDistribution(1; 0.001)
+ANZ,CAM,GammaDistribution(1; 0.001)
+CAM,ANZ,GammaDistribution(1; 0.001)
+ANZ,LAM,GammaDistribution(1; 0.001)
+LAM,ANZ,GammaDistribution(1; 0.001)
+ANZ,SAS,GammaDistribution(1; 0.001)
+SAS,ANZ,GammaDistribution(1; 0.001)
+ANZ,SEA,GammaDistribution(1; 0.001)
+SEA,ANZ,GammaDistribution(1; 0.001)
+ANZ,CHI,GammaDistribution(1; 0.001)
+CHI,ANZ,GammaDistribution(1; 0.001)
+ANZ,MAF,GammaDistribution(1; 0.001)
+MAF,ANZ,GammaDistribution(1; 0.001)
+ANZ,SSA,GammaDistribution(1; 0.001)
+SSA,ANZ,GammaDistribution(1; 0.001)
+ANZ,SIS,GammaDistribution(1; 0.001)
+SIS,ANZ,GammaDistribution(1; 0.001)
+EEU,USA,GammaDistribution(1; 0.05)
+EEU,CAN,GammaDistribution(1; 0.02)
+EEU,WEU,GammaDistribution(1; 0.02)
+EEU,JPK,GammaDistribution(1; 0.001)
+EEU,ANZ,GammaDistribution(1; 0.01)
+EEU,EEU,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+EEU,EEU,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+EEU,FSU,GammaDistribution(1; 0.001)
+FSU,EEU,GammaDistribution(1; 0.001)
+EEU,MDE,GammaDistribution(1; 0.001)
+MDE,EEU,GammaDistribution(1; 0.001)
+EEU,CAM,GammaDistribution(1; 0.001)
+CAM,EEU,GammaDistribution(1; 0.001)
+EEU,LAM,GammaDistribution(1; 0.001)
+LAM,EEU,GammaDistribution(1; 0.001)
+EEU,SAS,GammaDistribution(1; 0.001)
+SAS,EEU,GammaDistribution(1; 0.001)
+EEU,SEA,GammaDistribution(1; 0.001)
+SEA,EEU,GammaDistribution(1; 0.001)
+EEU,CHI,GammaDistribution(1; 0.001)
+CHI,EEU,GammaDistribution(1; 0.001)
+EEU,MAF,GammaDistribution(1; 0.001)
+MAF,EEU,GammaDistribution(1; 0.001)
+EEU,SSA,GammaDistribution(1; 0.001)
+SSA,EEU,GammaDistribution(1; 0.001)
+EEU,SIS,GammaDistribution(1; 0.001)
+SIS,EEU,GammaDistribution(1; 0.001)
+FSU,USA,GammaDistribution(1; 0.05)
+FSU,CAN,GammaDistribution(1; 0.02)
+FSU,WEU,GammaDistribution(1; 0.02)
+FSU,JPK,GammaDistribution(1; 0.001)
+FSU,ANZ,GammaDistribution(1; 0.01)
+FSU,EEU,GammaDistribution(1; 0.05)
+FSU,FSU,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+FSU,FSU,GammaDistribution(101.990195135928; 9.90195135927852E-03)
+FSU,MDE,GammaDistribution(1; 0.001)
+MDE,FSU,GammaDistribution(1; 0.001)
+FSU,CAM,GammaDistribution(1; 0.001)
+CAM,FSU,GammaDistribution(1; 0.001)
+FSU,LAM,GammaDistribution(1; 0.001)
+LAM,FSU,GammaDistribution(1; 0.001)
+FSU,SAS,GammaDistribution(1; 0.001)
+SAS,FSU,GammaDistribution(1; 0.001)
+FSU,SEA,GammaDistribution(1; 0.001)
+SEA,FSU,GammaDistribution(1; 0.001)
+FSU,CHI,GammaDistribution(1; 0.001)
+CHI,FSU,GammaDistribution(1; 0.001)
+FSU,MAF,GammaDistribution(1; 0.001)
+MAF,FSU,GammaDistribution(1; 0.001)
+FSU,SSA,GammaDistribution(1; 0.001)
+SSA,FSU,GammaDistribution(1; 0.001)
+FSU,SIS,GammaDistribution(1; 0.001)
+SIS,FSU,GammaDistribution(1; 0.001)
+MDE,USA,GammaDistribution(2; 0.04)
+MDE,CAN,GammaDistribution(2; 0.01)
+MDE,WEU,GammaDistribution(2; 0.04)
+MDE,JPK,GammaDistribution(1; 0.005)
+MDE,ANZ,GammaDistribution(2; 0.01)
+MDE,EEU,GammaDistribution(1; 0.001)
+MDE,FSU,GammaDistribution(1; 0.001)
+MDE,MDE,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+MDE,MDE,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+MDE,CAM,GammaDistribution(1; 0.001)
+CAM,MDE,GammaDistribution(1; 0.001)
+MDE,LAM,GammaDistribution(1; 0.001)
+LAM,MDE,GammaDistribution(1; 0.001)
+MDE,SAS,GammaDistribution(1; 0.001)
+SAS,MDE,GammaDistribution(1; 0.001)
+MDE,SEA,GammaDistribution(1; 0.001)
+SEA,MDE,GammaDistribution(1; 0.001)
+MDE,CHI,GammaDistribution(1; 0.001)
+CHI,MDE,GammaDistribution(1; 0.001)
+MDE,MAF,GammaDistribution(1; 0.001)
+MAF,MDE,GammaDistribution(1; 0.001)
+MDE,SSA,GammaDistribution(1; 0.001)
+SSA,MDE,GammaDistribution(1; 0.001)
+MDE,SIS,GammaDistribution(1; 0.001)
+SIS,MDE,GammaDistribution(1; 0.001)
+CAM,USA,GammaDistribution(2; 0.1)
+CAM,CAN,GammaDistribution(1; 0.05)
+CAM,WEU,GammaDistribution(1; 0.05)
+CAM,JPK,GammaDistribution(1; 0.01)
+CAM,ANZ,GammaDistribution(1; 0.01)
+CAM,EEU,GammaDistribution(1; 0.001)
+CAM,FSU,GammaDistribution(1; 0.001)
+CAM,MDE,GammaDistribution(1; 0.001)
+CAM,CAM,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+CAM,CAM,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+CAM,LAM,GammaDistribution(1; 0.005)
+LAM,CAM,GammaDistribution(1; 0.005)
+CAM,SAS,GammaDistribution(1; 0.001)
+SAS,CAM,GammaDistribution(1; 0.001)
+CAM,SEA,GammaDistribution(1; 0.001)
+SEA,CAM,GammaDistribution(1; 0.001)
+CAM,CHI,GammaDistribution(1; 0.001)
+CHI,CAM,GammaDistribution(1; 0.001)
+CAM,MAF,GammaDistribution(1; 0.001)
+MAF,CAM,GammaDistribution(1; 0.001)
+CAM,SSA,GammaDistribution(1; 0.001)
+SSA,CAM,GammaDistribution(1; 0.001)
+CAM,SIS,GammaDistribution(1; 0.001)
+SIS,CAM,GammaDistribution(1; 0.001)
+LAM,USA,GammaDistribution(2; 0.1)
+LAM,CAN,GammaDistribution(1; 0.05)
+LAM,WEU,GammaDistribution(1; 0.05)
+LAM,JPK,GammaDistribution(1; 0.01)
+LAM,ANZ,GammaDistribution(1; 0.01)
+LAM,EEU,GammaDistribution(1; 0.001)
+LAM,FSU,GammaDistribution(1; 0.001)
+LAM,MDE,GammaDistribution(1; 0.001)
+LAM,CAM,GammaDistribution(1; 0.005)
+LAM,LAM,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+LAM,LAM,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+LAM,SAS,GammaDistribution(1; 0.001)
+SAS,LAM,GammaDistribution(1; 0.001)
+LAM,SEA,GammaDistribution(1; 0.001)
+SEA,LAM,GammaDistribution(1; 0.001)
+LAM,CHI,GammaDistribution(1; 0.001)
+CHI,LAM,GammaDistribution(1; 0.001)
+LAM,MAF,GammaDistribution(1; 0.001)
+MAF,LAM,GammaDistribution(1; 0.001)
+LAM,SSA,GammaDistribution(1; 0.001)
+SSA,LAM,GammaDistribution(1; 0.001)
+LAM,SIS,GammaDistribution(1; 0.001)
+SIS,LAM,GammaDistribution(1; 0.001)
+SAS,USA,GammaDistribution(2; 0.04)
+SAS,CAN,GammaDistribution(2; 0.01)
+SAS,WEU,GammaDistribution(2; 0.04)
+SAS,JPK,GammaDistribution(2; 0.005)
+SAS,ANZ,GammaDistribution(2; 0.005)
+SAS,EEU,GammaDistribution(1; 0.001)
+SAS,FSU,GammaDistribution(1; 0.001)
+SAS,MDE,GammaDistribution(1; 0.001)
+SAS,CAM,GammaDistribution(1; 0.001)
+SAS,LAM,GammaDistribution(1; 0.001)
+SAS,SAS,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+SAS,SAS,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+SAS,SEA,GammaDistribution(1; 0.005)
+SEA,SAS,GammaDistribution(1; 0.005)
+SAS,CHI,GammaDistribution(1; 0.001)
+CHI,SAS,GammaDistribution(1; 0.001)
+SAS,MAF,GammaDistribution(1; 0.001)
+MAF,SAS,GammaDistribution(1; 0.001)
+SAS,SSA,GammaDistribution(1; 0.001)
+SSA,SAS,GammaDistribution(1; 0.001)
+SAS,SIS,GammaDistribution(1; 0.001)
+SIS,SAS,GammaDistribution(1; 0.001)
+SEA,USA,GammaDistribution(2; 0.04)
+SEA,CAN,GammaDistribution(2; 0.01)
+SEA,WEU,GammaDistribution(2; 0.02)
+SEA,JPK,GammaDistribution(2; 0.01)
+SEA,ANZ,GammaDistribution(2; 0.02)
+SEA,EEU,GammaDistribution(1; 0.001)
+SEA,FSU,GammaDistribution(1; 0.001)
+SEA,MDE,GammaDistribution(1; 0.001)
+SEA,CAM,GammaDistribution(1; 0.001)
+SEA,LAM,GammaDistribution(1; 0.001)
+SEA,SAS,GammaDistribution(1; 0.005)
+SEA,SEA,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+SEA,SEA,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+SEA,CHI,GammaDistribution(1; 0.001)
+CHI,SEA,GammaDistribution(1; 0.001)
+SEA,MAF,GammaDistribution(1; 0.001)
+MAF,SEA,GammaDistribution(1; 0.001)
+SEA,SSA,GammaDistribution(1; 0.001)
+SSA,SEA,GammaDistribution(1; 0.001)
+SEA,SIS,GammaDistribution(1; 0.001)
+SIS,SEA,GammaDistribution(1; 0.001)
+CHI,USA,GammaDistribution(2; 0.04)
+CHI,CAN,GammaDistribution(2; 0.01)
+CHI,WEU,GammaDistribution(2; 0.02)
+CHI,JPK,GammaDistribution(2; 0.01)
+CHI,ANZ,GammaDistribution(2; 0.02)
+CHI,EEU,GammaDistribution(1; 0.001)
+CHI,FSU,GammaDistribution(1; 0.001)
+CHI,MDE,GammaDistribution(1; 0.001)
+CHI,CAM,GammaDistribution(1; 0.001)
+CHI,LAM,GammaDistribution(1; 0.001)
+CHI,SAS,GammaDistribution(1; 0.001)
+CHI,SEA,GammaDistribution(1; 0.005)
+CHI,CHI,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+CHI,CHI,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+CHI,MAF,GammaDistribution(1; 0.001)
+MAF,CHI,GammaDistribution(1; 0.001)
+CHI,SSA,GammaDistribution(1; 0.001)
+SSA,CHI,GammaDistribution(1; 0.001)
+CHI,SIS,GammaDistribution(1; 0.001)
+SIS,CHI,GammaDistribution(1; 0.001)
+MAF,USA,GammaDistribution(2; 0.01)
+MAF,CAN,GammaDistribution(1; 0.005)
+MAF,WEU,GammaDistribution(2; 0.09)
+MAF,JPK,GammaDistribution(1; 0.001)
+MAF,ANZ,GammaDistribution(1; 0.005)
+MAF,EEU,GammaDistribution(1; 0.001)
+MAF,FSU,GammaDistribution(1; 0.001)
+MAF,MDE,GammaDistribution(1; 0.001)
+MAF,CAM,GammaDistribution(1; 0.001)
+MAF,LAM,GammaDistribution(1; 0.001)
+MAF,SAS,GammaDistribution(1; 0.001)
+MAF,SEA,GammaDistribution(1; 0.001)
+MAF,CHI,GammaDistribution(1; 0.001)
+MAF,MAF,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+MAF,MAF,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+MAF,SSA,GammaDistribution(1; 0.001)
+SSA,MAF,GammaDistribution(1; 0.001)
+MAF,SIS,GammaDistribution(1; 0.001)
+SIS,MAF,GammaDistribution(1; 0.001)
+SSA,USA,GammaDistribution(2; 0.03)
+SSA,CAN,GammaDistribution(2; 0.005)
+SSA,WEU,GammaDistribution(2; 0.06)
+SSA,JPK,GammaDistribution(1; 0.001)
+SSA,ANZ,GammaDistribution(2; 0.005)
+SSA,EEU,GammaDistribution(1; 0.001)
+SSA,FSU,GammaDistribution(1; 0.001)
+SSA,MDE,GammaDistribution(1; 0.001)
+SSA,CAM,GammaDistribution(1; 0.001)
+SSA,LAM,GammaDistribution(1; 0.001)
+SSA,SAS,GammaDistribution(1; 0.001)
+SSA,SEA,GammaDistribution(1; 0.001)
+SSA,CHI,GammaDistribution(1; 0.001)
+SSA,MAF,GammaDistribution(1; 0.005)
+SSA,SSA,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+SSA,SSA,GammaDistribution(82.987950057818; 1.09772228646444E-02)
+SSA,SIS,GammaDistribution(1; 0.001)
+SIS,SSA,GammaDistribution(1; 0.001)
+SIS,USA,GammaDistribution(2; 0.15)
+SIS,CAN,GammaDistribution(2; 0.1)
+SIS,WEU,GammaDistribution(2; 0.15)
+SIS,JPK,GammaDistribution(2; 0.05)
+SIS,ANZ,GammaDistribution(2; 0.15)
+SIS,EEU,GammaDistribution(1; 0.001)
+SIS,FSU,GammaDistribution(1; 0.001)
+SIS,MDE,GammaDistribution(1; 0.001)
+SIS,CAM,GammaDistribution(2; 0.1)
+SIS,LAM,GammaDistribution(2; 0.1)
+SIS,SAS,GammaDistribution(2; 0.1)
+SIS,SEA,GammaDistribution(2; 0.1)
+SIS,CHI,GammaDistribution(1; 0.001)
+SIS,MAF,GammaDistribution(1; 0.001)
+SIS,SSA,GammaDistribution(1; 0.001)
+SIS,SIS,GammaDistribution(1; 0.1)
+SIS,SIS,GammaDistribution(1; 0.1)
+,USA,
+USA,,
+,CAN,
+CAN,,
+,WEU,
+WEU,,
+,JPK,
+JPK,,
+,ANZ,
+ANZ,,
+,EEU,
+EEU,,
+,FSU,
+FSU,,
+,MDE,
+MDE,,
+,CAM,
+CAM,,
+,LAM,
+LAM,,
+,SAS,
+SAS,,
+,SEA,
+SEA,,
+,CHI,
+CHI,,
+,MAF,
+MAF,,
+,SSA,
+SSA,,
+,SIS,
+SIS,,
+alpha,USA,101.99019513592752
+USA,alpha,101.99019513592752
+alpha,CAN,1
+CAN,alpha,1
+alpha,WEU,1
+WEU,alpha,1
+alpha,JPK,1
+JPK,alpha,1
+alpha,ANZ,1
+ANZ,alpha,1
+alpha,EEU,1
+EEU,alpha,1
+alpha,FSU,1
+FSU,alpha,1
+alpha,MDE,1
+MDE,alpha,1
+alpha,CAM,1
+CAM,alpha,1
+alpha,LAM,1
+LAM,alpha,1
+alpha,SAS,1
+SAS,alpha,1
+alpha,SEA,1
+SEA,alpha,1
+alpha,CHI,1
+CHI,alpha,1
+alpha,MAF,1
+MAF,alpha,1
+alpha,SSA,1
+SSA,alpha,1
+alpha,SIS,1
+SIS,alpha,1
+,USA,1
+USA,,1
+,CAN,101.99019513592752
+CAN,,101.99019513592752
+,WEU,1
+WEU,,1
+,JPK,1
+JPK,,1
+,ANZ,1
+ANZ,,1
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,1
+USA,,1
+,CAN,1
+CAN,,1
+,WEU,101.99019513592752
+WEU,,101.99019513592752
+,JPK,1
+JPK,,1
+,ANZ,1
+ANZ,,1
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,1
+USA,,1
+,CAN,1
+CAN,,1
+,WEU,1
+WEU,,1
+,JPK,101.99019513592752
+JPK,,101.99019513592752
+,ANZ,1
+ANZ,,1
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,1
+USA,,1
+,CAN,1
+CAN,,1
+,WEU,1
+WEU,,1
+,JPK,1
+JPK,,1
+,ANZ,101.99019513592752
+ANZ,,101.99019513592752
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,1
+USA,,1
+,CAN,1
+CAN,,1
+,WEU,1
+WEU,,1
+,JPK,1
+JPK,,1
+,ANZ,1
+ANZ,,1
+,EEU,101.99019513592752
+EEU,,101.99019513592752
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,1
+USA,,1
+,CAN,1
+CAN,,1
+,WEU,1
+WEU,,1
+,JPK,1
+JPK,,1
+,ANZ,1
+ANZ,,1
+,EEU,1
+EEU,,1
+,FSU,101.99019513592752
+FSU,,101.99019513592752
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,2
+CAN,,2
+,WEU,2
+WEU,,2
+,JPK,1
+JPK,,1
+,ANZ,2
+ANZ,,2
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,82.98795005781801
+MDE,,82.98795005781801
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,1
+CAN,,1
+,WEU,1
+WEU,,1
+,JPK,1
+JPK,,1
+,ANZ,1
+ANZ,,1
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,82.98795005781801
+CAM,,82.98795005781801
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,1
+CAN,,1
+,WEU,1
+WEU,,1
+,JPK,1
+JPK,,1
+,ANZ,1
+ANZ,,1
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,82.98795005781801
+LAM,,82.98795005781801
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,2
+CAN,,2
+,WEU,2
+WEU,,2
+,JPK,2
+JPK,,2
+,ANZ,2
+ANZ,,2
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,82.98795005781801
+SAS,,82.98795005781801
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,2
+CAN,,2
+,WEU,2
+WEU,,2
+,JPK,2
+JPK,,2
+,ANZ,2
+ANZ,,2
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,82.98795005781801
+SEA,,82.98795005781801
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,2
+CAN,,2
+,WEU,2
+WEU,,2
+,JPK,2
+JPK,,2
+,ANZ,2
+ANZ,,2
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,82.98795005781801
+CHI,,82.98795005781801
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,1
+CAN,,1
+,WEU,2
+WEU,,2
+,JPK,1
+JPK,,1
+,ANZ,1
+ANZ,,1
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,82.98795005781801
+MAF,,82.98795005781801
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,2
+CAN,,2
+,WEU,2
+WEU,,2
+,JPK,1
+JPK,,1
+,ANZ,2
+ANZ,,2
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,1
+CAM,,1
+,LAM,1
+LAM,,1
+,SAS,1
+SAS,,1
+,SEA,1
+SEA,,1
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,82.98795005781801
+SSA,,82.98795005781801
+,SIS,1
+SIS,,1
+,USA,2
+USA,,2
+,CAN,2
+CAN,,2
+,WEU,2
+WEU,,2
+,JPK,2
+JPK,,2
+,ANZ,2
+ANZ,,2
+,EEU,1
+EEU,,1
+,FSU,1
+FSU,,1
+,MDE,1
+MDE,,1
+,CAM,2
+CAM,,2
+,LAM,2
+LAM,,2
+,SAS,2
+SAS,,2
+,SEA,2
+SEA,,2
+,CHI,1
+CHI,,1
+,MAF,1
+MAF,,1
+,SSA,1
+SSA,,1
+,SIS,1
+SIS,,1
+,USA,
+USA,,
+,CAN,
+CAN,,
+,WEU,
+WEU,,
+,JPK,
+JPK,,
+,ANZ,
+ANZ,,
+,EEU,
+EEU,,
+,FSU,
+FSU,,
+,MDE,
+MDE,,
+,CAM,
+CAM,,
+,LAM,
+LAM,,
+,SAS,
+SAS,,
+,SEA,
+SEA,,
+,CHI,
+CHI,,
+,MAF,
+MAF,,
+,SSA,
+SSA,,
+,SIS,
+SIS,,
+beta,USA,0.009901951359278516
+USA,beta,0.009901951359278516
+beta,CAN,0.05
+CAN,beta,0.05
+beta,WEU,0.02
+WEU,beta,0.02
+beta,JPK,0.01
+JPK,beta,0.01
+beta,ANZ,0.02
+ANZ,beta,0.02
+beta,EEU,0.001
+EEU,beta,0.001
+beta,FSU,0.001
+FSU,beta,0.001
+beta,MDE,0.001
+MDE,beta,0.001
+beta,CAM,0.001
+CAM,beta,0.001
+beta,LAM,0.001
+LAM,beta,0.001
+beta,SAS,0.001
+SAS,beta,0.001
+beta,SEA,0.001
+SEA,beta,0.001
+beta,CHI,0.001
+CHI,beta,0.001
+beta,MAF,0.001
+MAF,beta,0.001
+beta,SSA,0.001
+SSA,beta,0.001
+beta,SIS,0.001
+SIS,beta,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.009901951359278516
+CAN,,0.009901951359278516
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.009901951359278516
+WEU,,0.009901951359278516
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,0.009901951359278516
+JPK,,0.009901951359278516
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.009901951359278516
+ANZ,,0.009901951359278516
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.009901951359278516
+EEU,,0.009901951359278516
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.05
+EEU,,0.05
+,FSU,0.009901951359278516
+FSU,,0.009901951359278516
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.04
+WEU,,0.04
+,JPK,0.005
+JPK,,0.005
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.010977222864644365
+MDE,,0.010977222864644365
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.1
+USA,,0.1
+,CAN,0.05
+CAN,,0.05
+,WEU,0.05
+WEU,,0.05
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.010977222864644365
+CAM,,0.010977222864644365
+,LAM,0.005
+LAM,,0.005
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.1
+USA,,0.1
+,CAN,0.05
+CAN,,0.05
+,WEU,0.05
+WEU,,0.05
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.005
+CAM,,0.005
+,LAM,0.010977222864644365
+LAM,,0.010977222864644365
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.04
+WEU,,0.04
+,JPK,0.005
+JPK,,0.005
+,ANZ,0.005
+ANZ,,0.005
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.010977222864644365
+SAS,,0.010977222864644365
+,SEA,0.005
+SEA,,0.005
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.005
+SAS,,0.005
+,SEA,0.010977222864644365
+SEA,,0.010977222864644365
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.005
+SEA,,0.005
+,CHI,0.010977222864644365
+CHI,,0.010977222864644365
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.01
+USA,,0.01
+,CAN,0.005
+CAN,,0.005
+,WEU,0.09
+WEU,,0.09
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.005
+ANZ,,0.005
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.010977222864644365
+MAF,,0.010977222864644365
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.03
+USA,,0.03
+,CAN,0.005
+CAN,,0.005
+,WEU,0.06
+WEU,,0.06
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.005
+ANZ,,0.005
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.005
+MAF,,0.005
+,SSA,0.010977222864644365
+SSA,,0.010977222864644365
+,SIS,0.001
+SIS,,0.001
+,USA,0.15
+USA,,0.15
+,CAN,0.1
+CAN,,0.1
+,WEU,0.15
+WEU,,0.15
+,JPK,0.05
+JPK,,0.05
+,ANZ,0.15
+ANZ,,0.15
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.1
+CAM,,0.1
+,LAM,0.1
+LAM,,0.1
+,SAS,0.1
+SAS,,0.1
+,SEA,0.1
+SEA,,0.1
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.1
+SIS,,0.1
+,USA,
+USA,,
+,CAN,
+CAN,,
+,WEU,
+WEU,,
+,JPK,
+JPK,,
+,ANZ,
+ANZ,,
+,EEU,
+EEU,,
+,FSU,
+FSU,,
+,MDE,
+MDE,,
+,CAM,
+CAM,,
+,LAM,
+LAM,,
+,SAS,
+SAS,,
+,SEA,
+SEA,,
+,CHI,
+CHI,,
+,MAF,
+MAF,,
+,SSA,
+SSA,,
+,SIS,
+SIS,,
+mean,USA,1.0099019513592786
+USA,mean,1.0099019513592786
+mean,CAN,0.05
+CAN,mean,0.05
+mean,WEU,0.02
+WEU,mean,0.02
+mean,JPK,0.01
+JPK,mean,0.01
+mean,ANZ,0.02
+ANZ,mean,0.02
+mean,EEU,0.001
+EEU,mean,0.001
+mean,FSU,0.001
+FSU,mean,0.001
+mean,MDE,0.001
+MDE,mean,0.001
+mean,CAM,0.001
+CAM,mean,0.001
+mean,LAM,0.001
+LAM,mean,0.001
+mean,SAS,0.001
+SAS,mean,0.001
+mean,SEA,0.001
+SEA,mean,0.001
+mean,CHI,0.001
+CHI,mean,0.001
+mean,MAF,0.001
+MAF,mean,0.001
+mean,SSA,0.001
+SSA,mean,0.001
+mean,SIS,0.001
+SIS,mean,0.001
+,USA,0.05
+USA,,0.05
+,CAN,1.0099019513592786
+CAN,,1.0099019513592786
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,1.0099019513592786
+WEU,,1.0099019513592786
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,1.0099019513592786
+JPK,,1.0099019513592786
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,1.0099019513592786
+ANZ,,1.0099019513592786
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.01
+ANZ,,0.01
+,EEU,1.0099019513592786
+EEU,,1.0099019513592786
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.05
+USA,,0.05
+,CAN,0.02
+CAN,,0.02
+,WEU,0.02
+WEU,,0.02
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.05
+EEU,,0.05
+,FSU,1.0099019513592786
+FSU,,1.0099019513592786
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.08
+USA,,0.08
+,CAN,0.02
+CAN,,0.02
+,WEU,0.08
+WEU,,0.08
+,JPK,0.005
+JPK,,0.005
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.9109772228646446
+MDE,,0.9109772228646446
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.2
+USA,,0.2
+,CAN,0.05
+CAN,,0.05
+,WEU,0.05
+WEU,,0.05
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.9109772228646446
+CAM,,0.9109772228646446
+,LAM,0.005
+LAM,,0.005
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.2
+USA,,0.2
+,CAN,0.05
+CAN,,0.05
+,WEU,0.05
+WEU,,0.05
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.005
+CAM,,0.005
+,LAM,0.9109772228646446
+LAM,,0.9109772228646446
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.08
+USA,,0.08
+,CAN,0.02
+CAN,,0.02
+,WEU,0.08
+WEU,,0.08
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.9109772228646446
+SAS,,0.9109772228646446
+,SEA,0.005
+SEA,,0.005
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.08
+USA,,0.08
+,CAN,0.02
+CAN,,0.02
+,WEU,0.04
+WEU,,0.04
+,JPK,0.02
+JPK,,0.02
+,ANZ,0.04
+ANZ,,0.04
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.005
+SAS,,0.005
+,SEA,0.9109772228646446
+SEA,,0.9109772228646446
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.08
+USA,,0.08
+,CAN,0.02
+CAN,,0.02
+,WEU,0.04
+WEU,,0.04
+,JPK,0.02
+JPK,,0.02
+,ANZ,0.04
+ANZ,,0.04
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.005
+SEA,,0.005
+,CHI,0.9109772228646446
+CHI,,0.9109772228646446
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.02
+USA,,0.02
+,CAN,0.005
+CAN,,0.005
+,WEU,0.18
+WEU,,0.18
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.005
+ANZ,,0.005
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.9109772228646446
+MAF,,0.9109772228646446
+,SSA,0.001
+SSA,,0.001
+,SIS,0.001
+SIS,,0.001
+,USA,0.06
+USA,,0.06
+,CAN,0.01
+CAN,,0.01
+,WEU,0.12
+WEU,,0.12
+,JPK,0.001
+JPK,,0.001
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.001
+CAM,,0.001
+,LAM,0.001
+LAM,,0.001
+,SAS,0.001
+SAS,,0.001
+,SEA,0.001
+SEA,,0.001
+,CHI,0.001
+CHI,,0.001
+,MAF,0.005
+MAF,,0.005
+,SSA,0.9109772228646446
+SSA,,0.9109772228646446
+,SIS,0.001
+SIS,,0.001
+,USA,0.3
+USA,,0.3
+,CAN,0.2
+CAN,,0.2
+,WEU,0.3
+WEU,,0.3
+,JPK,0.1
+JPK,,0.1
+,ANZ,0.3
+ANZ,,0.3
+,EEU,0.001
+EEU,,0.001
+,FSU,0.001
+FSU,,0.001
+,MDE,0.001
+MDE,,0.001
+,CAM,0.2
+CAM,,0.2
+,LAM,0.2
+LAM,,0.2
+,SAS,0.2
+SAS,,0.2
+,SEA,0.2
+SEA,,0.2
+,CHI,0.001
+CHI,,0.001
+,MAF,0.001
+MAF,,0.001
+,SSA,0.001
+SSA,,0.001
+,SIS,0.1
+SIS,,0.1
+,USA,
+USA,,
+,CAN,
+CAN,,
+,WEU,
+WEU,,
+,JPK,
+JPK,,
+,ANZ,
+ANZ,,
+,EEU,
+EEU,,
+,FSU,
+FSU,,
+,MDE,
+MDE,,
+,CAM,
+CAM,,
+,LAM,
+LAM,,
+,SAS,
+SAS,,
+,SEA,
+SEA,,
+,CHI,
+CHI,,
+,MAF,
+MAF,,
+,SSA,
+SSA,,
+,SIS,
+SIS,,
+mode,USA,1
+USA,mode,1
+mode,CAN,0
+CAN,mode,0
+mode,WEU,0
+WEU,mode,0
+mode,JPK,0
+JPK,mode,0
+mode,ANZ,0
+ANZ,mode,0
+mode,EEU,0
+EEU,mode,0
+mode,FSU,0
+FSU,mode,0
+mode,MDE,0
+MDE,mode,0
+mode,CAM,0
+CAM,mode,0
+mode,LAM,0
+LAM,mode,0
+mode,SAS,0
+SAS,mode,0
+mode,SEA,0
+SEA,mode,0
+mode,CHI,0
+CHI,mode,0
+mode,MAF,0
+MAF,mode,0
+mode,SSA,0
+SSA,mode,0
+mode,SIS,0
+SIS,mode,0
+,USA,0
+USA,,0
+,CAN,1
+CAN,,1
+,WEU,0
+WEU,,0
+,JPK,0
+JPK,,0
+,ANZ,0
+ANZ,,0
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0
+USA,,0
+,CAN,0
+CAN,,0
+,WEU,1
+WEU,,1
+,JPK,0
+JPK,,0
+,ANZ,0
+ANZ,,0
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0
+USA,,0
+,CAN,0
+CAN,,0
+,WEU,0
+WEU,,0
+,JPK,1
+JPK,,1
+,ANZ,0
+ANZ,,0
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0
+USA,,0
+,CAN,0
+CAN,,0
+,WEU,0
+WEU,,0
+,JPK,0
+JPK,,0
+,ANZ,1
+ANZ,,1
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0
+USA,,0
+,CAN,0
+CAN,,0
+,WEU,0
+WEU,,0
+,JPK,0
+JPK,,0
+,ANZ,0
+ANZ,,0
+,EEU,1
+EEU,,1
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0
+USA,,0
+,CAN,0
+CAN,,0
+,WEU,0
+WEU,,0
+,JPK,0
+JPK,,0
+,ANZ,0
+ANZ,,0
+,EEU,0
+EEU,,0
+,FSU,1
+FSU,,1
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.04
+WEU,,0.04
+,JPK,0
+JPK,,0
+,ANZ,0.01
+ANZ,,0.01
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0.9000000000000001
+MDE,,0.9000000000000001
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.1
+USA,,0.1
+,CAN,0
+CAN,,0
+,WEU,0
+WEU,,0
+,JPK,0
+JPK,,0
+,ANZ,0
+ANZ,,0
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0.9000000000000001
+CAM,,0.9000000000000001
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.1
+USA,,0.1
+,CAN,0
+CAN,,0
+,WEU,0
+WEU,,0
+,JPK,0
+JPK,,0
+,ANZ,0
+ANZ,,0
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0.9000000000000001
+LAM,,0.9000000000000001
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.04
+WEU,,0.04
+,JPK,0.005
+JPK,,0.005
+,ANZ,0.005
+ANZ,,0.005
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0.9000000000000001
+SAS,,0.9000000000000001
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0.9000000000000001
+SEA,,0.9000000000000001
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.04
+USA,,0.04
+,CAN,0.01
+CAN,,0.01
+,WEU,0.02
+WEU,,0.02
+,JPK,0.01
+JPK,,0.01
+,ANZ,0.02
+ANZ,,0.02
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0.9000000000000001
+CHI,,0.9000000000000001
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.01
+USA,,0.01
+,CAN,0
+CAN,,0
+,WEU,0.09
+WEU,,0.09
+,JPK,0
+JPK,,0
+,ANZ,0
+ANZ,,0
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0.9000000000000001
+MAF,,0.9000000000000001
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,0.03
+USA,,0.03
+,CAN,0.005
+CAN,,0.005
+,WEU,0.06
+WEU,,0.06
+,JPK,0
+JPK,,0
+,ANZ,0.005
+ANZ,,0.005
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0
+CAM,,0
+,LAM,0
+LAM,,0
+,SAS,0
+SAS,,0
+,SEA,0
+SEA,,0
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0.9000000000000001
+SSA,,0.9000000000000001
+,SIS,0
+SIS,,0
+,USA,0.15
+USA,,0.15
+,CAN,0.1
+CAN,,0.1
+,WEU,0.15
+WEU,,0.15
+,JPK,0.05
+JPK,,0.05
+,ANZ,0.15
+ANZ,,0.15
+,EEU,0
+EEU,,0
+,FSU,0
+FSU,,0
+,MDE,0
+MDE,,0
+,CAM,0.1
+CAM,,0.1
+,LAM,0.1
+LAM,,0.1
+,SAS,0.1
+SAS,,0.1
+,SEA,0.1
+SEA,,0.1
+,CHI,0
+CHI,,0
+,MAF,0
+MAF,,0
+,SSA,0
+SSA,,0
+,SIS,0
+SIS,,0
+,USA,
+USA,,
+,CAN,
+CAN,,
+,WEU,
+WEU,,
+,JPK,
+JPK,,
+,ANZ,
+ANZ,,
+,EEU,
+EEU,,
+,FSU,
+FSU,,
+,MDE,
+MDE,,
+,CAM,
+CAM,,
+,LAM,
+LAM,,
+,SAS,
+SAS,,
+,SEA,
+SEA,,
+,CHI,
+CHI,,
+,MAF,
+MAF,,
+,SSA,
+SSA,,
+,SIS,
+SIS,,
+st.dev.,USA,0.10000000000000017
+USA,st.dev.,0.10000000000000017
+st.dev.,CAN,0.05
+CAN,st.dev.,0.05
+st.dev.,WEU,0.02
+WEU,st.dev.,0.02
+st.dev.,JPK,0.01
+JPK,st.dev.,0.01
+st.dev.,ANZ,0.02
+ANZ,st.dev.,0.02
+st.dev.,EEU,0.001
+EEU,st.dev.,0.001
+st.dev.,FSU,0.001
+FSU,st.dev.,0.001
+st.dev.,MDE,0.001
+MDE,st.dev.,0.001
+st.dev.,CAM,0.001
+CAM,st.dev.,0.001
+st.dev.,LAM,0.001
+LAM,st.dev.,0.001
+st.dev.,SAS,0.001
+SAS,st.dev.,0.001
+st.dev.,SEA,0.001
+SEA,st.dev.,0.001
+st.dev.,CHI,0.001
+CHI,st.dev.,0.001
+st.dev.,MAF,0.001
+MAF,st.dev.,0.001
+st.dev.,SSA,0.001
+SSA,st.dev.,0.001
+st.dev.,SIS,0.001
+SIS,st.dev.,0.001
