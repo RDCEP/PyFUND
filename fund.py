@@ -298,7 +298,7 @@ class FUND(object):
       for name, variable in self.all_options.items():
          new_value = _choose_default_for_variable(variable)
          
-         if new_value:
+         if new_value is not None:
             self.variables[name] = new_value
          
          else:
