@@ -32,8 +32,11 @@ def _extract_as_typed(object):
   type.
   """
   if type(object) in (str, unicode):
+    object = object.strip()
     if object.startswith('Normal'):
       return NormalDistribution(object)
+    elif '2000y' in object:
+      return int(object[:-1])
   if type(object) in (float,):
      if int(object) == object:
         return int(object)
@@ -53,6 +56,7 @@ class Table(object):
     self.sheet_name = sheet.name
     self.height = len(rows)
     self.width = len(columns)
+    self.prefix = ""
   
   @classmethod
   def detect_single(self, sheet, row, start_column):
@@ -100,8 +104,13 @@ class Table(object):
     top_columns = self.all_cells[0]
     left_columns = [ x[0] for x in self.all_cells ]
     
-    tci = [ str(x).lower() for x in top_columns ]
-    lci = [ str(x).lower() for x in left_columns ]
+    if not field_name.startswith(self.prefix):
+      return None
+    else:
+      field_name = field_name[len(self.prefix):]
+    
+    tci = [ str(x).lower().strip() for x in top_columns ]
+    lci = [ str(x).lower().strip() for x in left_columns ]
     fn = field_name.lower()
     
     if self.height == 1 and tci[0] == fn:
@@ -162,44 +171,56 @@ class Table(object):
       print(repr(row))
     print('')
 
+def process_sheet(sheet, prefix = ""):
+   """
+   Processes the given xlrd sheet, returning a generator of all tables in that
+   sheet.
+   """
+   
+   row = 0
+   
+   while row < sheet.nrows:
+     cell = sheet.cell(colx = 0, rowx = row)
+     second = sheet.cell(colx = 1, rowx = row) if sheet.ncols > 1 else None
+     
+     if cell.value in ('Region', 'Name', 'Year') or ((not cell.value) and second.value):
+       table = Table.detect_several(sheet, row, 0)
+       table.prefix = prefix
+       
+       row += table.height
+       
+       yield table
+       
+     elif cell.ctype == 1 and (' ' in cell.value or len(cell.value) > 20):
+       row += 1 # comment
+     elif cell.value in ('', None):
+       row += 1 # blank cell
+     else:
+       table = Table.detect_single(sheet, row, 0)
+       table.prefix = prefix
+       
+       row += table.height
+       yield table
+
 def main():
   workbook = xlrd.open_workbook('fund/Fund/Data/Parameter - Base.xlsm')
+  scenario = xlrd.open_workbook('fund/Fund/Data/Parameter - SRES A1b.xlsm')
   
   all_tables = [ ]
-  count_warnings = 0
   
+  # Process first workbook.
   for sheet_name in workbook.sheet_names():
     sheet = workbook.sheet_by_name(sheet_name)
-    row = 0
     
-    while row < sheet.nrows:
-      cell = sheet.cell(colx = 0, rowx = row)
-      second = sheet.cell(colx = 1, rowx = row) if sheet.ncols > 1 else None
-      
-      if cell.value in ('Region', 'Name', 'Year') or ((not cell.value) and second.value):
-        table = Table.detect_several(sheet, row, 0)
-        row += table.height
-        
-        if table.height == 1:
-          print('Warning: there is bizarre data on sheet "{0}" starting at cell A{1}:'.
-              format(sheet_name, row))
-          table.describe()
-          print('---')
-          print('')
-          count_warnings += 1
-        
-        all_tables.append(table)
-        
-      elif cell.ctype == 1 and (' ' in cell.value or len(cell.value) > 20):
-        row += 1 # comment
-      elif cell.value in ('', None):
-        row += 1 # blank cell
-      else:
-        table = Table.detect_single(sheet, row, 0)
-        row += table.height
-        all_tables.append(table)
+    all_tables.extend(process_sheet(sheet))
   
-  print('{0} table(s) extracted, {1} warnings'.format(len(all_tables), count_warnings))
+  # Process scenario.
+  for sheet_name in workbook.sheet_names():
+    sheet = workbook.sheet_by_name(sheet_name)
+    
+    all_tables.extend(process_sheet(sheet, prefix = 'scen'))
+  
+  print('{0} table(s) extracted'.format(len(all_tables)))
   
   options_specified = 0
   options_total = 0
