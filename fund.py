@@ -106,6 +106,8 @@ def _find_fund_behaviors():
            ), module_name[:-9])
       behaviors.extend(module.behavior_classes)
    
+   from components import _patches; _patches.reassociate_variables()
+   
    return behaviors
 
 def _extract_options_from_behaviors(behaviors):

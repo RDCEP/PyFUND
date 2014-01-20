@@ -13,3 +13,14 @@ class Convert(object):
   @classmethod
   def ToDouble(klass, x):
     return x
+
+def reassociate_variables():
+  """
+  This fixes the occasional name clash in FUND.
+  """
+  
+  from components.ClimateRegionalComponent import IClimateRegionalState
+  
+  IClimateRegionalState.inputtemp.name = "temp"
+  IClimateRegionalState.inputtemp.machine_readable_name = "temp_1"
+  

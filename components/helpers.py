@@ -68,6 +68,8 @@ class Variable(object):
          self.description = other_variable.description
    
    def __get__(self, instance, klass):
+      if instance is None:
+        return self
       return instance.values[self.machine_readable_name]
 
 class IVariable1Dimensional(Variable):
