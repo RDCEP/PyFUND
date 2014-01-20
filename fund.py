@@ -215,13 +215,7 @@ def _choose_default_for_type(kind):
    This function chooses the default value for a given type.
    """
    
-   return {
-      'double': 0,
-      'timestep': 1950,
-      'region': 0,
-      'boolean': False,
-      'bool': False
-   }[kind.lower()]
+   return None
 
 def _bastardize_list(python_list):
    """
