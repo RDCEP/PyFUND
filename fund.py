@@ -153,7 +153,7 @@ def _choose_default_for_variable(variable):
    
    first_row = True
    
-   for row in csv.reader(open(filename)):
+   for row in csv.reader(open(filename, 'rU')):
       if first_row:
          first_row = False
          continue
