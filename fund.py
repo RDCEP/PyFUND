@@ -3,6 +3,7 @@ import os
 import warnings
 import csv
 import re
+import datetime
 from components.helpers import Timestep
 
 COMPONENT_ORDER = [
@@ -336,7 +337,37 @@ class FUND(object):
             print "  {0}".format(behavior.__class__.__name__)
             behavior.run(state, Timestep, self.dimensions)
       
-      # Do stuff with the results
+      # Prepare the massive CSV file.
+      rows = {}
+      
+      for year in self.dimensions.time_steps:
+         rows[year] = dict()
+      
+      # Actually add the data to the CSV.
+      for name, variable in self.variables.items():
+         if type(variable) is not dict:
+            continue
+         
+         for key, value in variable.items():
+            if type(key) != tuple:
+               key = (key,)
+            year = key[0]
+            column = "-".join([ name[:-2] ] + [ str(x) for x in key[1:]])
+            
+            if year in rows:
+               rows[year][column] = value
+      
+      # Save the results to the CSV.
+      result = csv.DictWriter(
+                 open("output@{0}.csv".format(datetime.datetime.now()), "w"),
+                 fieldnames = ['year'] + 
+                             sorted(rows[self.dimensions.time_steps[0]].keys()))
+      
+      result.writeheader()
+      
+      for year in self.dimensions.time_steps:
+         rows[year]['year'] = year
+         result.writerow(rows[year])
    
    def track(self, *variables):
       pass
