@@ -349,7 +349,10 @@ class FUND(object):
       # Actually add the data to the CSV.
       for name, variable in self.variables.items():
          if type(variable) is not dict:
-            continue
+            old_variable = variable
+            variable = dict()
+            for year in self.dimensions.time_steps:
+                variable[year] = old_variable
          
          for key, value in variable.items():
             if type(key) != tuple:
