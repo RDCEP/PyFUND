@@ -89,7 +89,10 @@ class GammaDistribution(Distribution):
    
    @property
    def mean(self):
-      return self.alpha / self.beta
+      if self.alpha <= 1:
+         return self.alpha * self.beta
+      else:
+         return (self.alpha - 1) * self.beta # this is mode, not mean
 
 def _find_fund_behaviors():
    """
