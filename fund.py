@@ -383,7 +383,7 @@ def main():
    
    with warnings.catch_warnings():
       # warnings.simplefilter('ignore')
-      model = FUND(time_steps = range(1960, 2100))
+      model = FUND(time_steps = range(1950, 2300))
    
    model.run()
 
