@@ -47,5 +47,10 @@ class ClimateSF6CycleComponent(Behaviors):
                 raise ApplicationException(
                     "sf6 atmospheric concentration out of range")
 
+            #print "acsf6;", t, ";global;", s.acsf6[t]
+            #print "sf6decay;", t, ";global;", s.sf6decay
+            #print "globsf6;", t, ";global;", s.globsf6[t]
+
+
 
 behavior_classes = [ClimateSF6CycleComponent]

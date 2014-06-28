@@ -303,120 +303,63 @@ class EmissionsComponent(Behaviors):
         else:
 
             for r in dimensions.GetValuesOfRegion():
+                #print "ACEI start ;", r, " ;", s.acei[t,r]
+                #print "AEEI start ;", r, " ;", s.aeei[t,r]
+                #print "income start ;", r, " ;", s.income[t,r]
+                #print "population start ;", r, " ;", s.population[t,r]
 
-                s.energint[
-                    t,
-                    r] = (
-                    (1.0 -
-                     0.01 *
-                     s.aeei[
-                         t,
-                         r] -
-                        s.reei[
-                         t -
-                         1,
-                         r]) *
-                    s.energint[
-                        t -
-                        1,
-                        r])
-                s.emissint[
-                    t,
-                    r] = (
-                    (1.0 -
-                     0.01 *
-                     s.acei[
-                         t,
-                         r] -
-                        s.rcei[
-                         t -
-                         1,
-                         r]) *
-                    s.emissint[
-                        t -
-                        1,
-                        r])
+
+                s.energint[t,r] = ((1.0 - 0.01 * s.aeei[t, r] - s.reei[t - 1, r]) * s.energint[t - 1,r])
+                s.emissint[t,r] = ((1.0 - 0.01 * s.acei[t,r] - s.rcei[t - 1,r]) * s.emissint[t -1,r])
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.so2[t, r] = (s.so2[t - 1, r] *
-                               math.pow(1 + 0.01 * s.pgrowth[t - 1, r], s.so2pop) *
+                s.so2[t, r] = (s.so2[t - 1, r] * math.pow(1 + 0.01 * s.pgrowth[t - 1, r], s.so2pop) *
                                math.pow(1 + 0.01 * s.ypcgrowth[t - 1, r], s.so2inc) *
                                math.pow(1 - 0.01 * s.aeei[t, r] - s.reei[t - 1, r] - 0.01 * s.acei[t, r] - s.rcei[t - 1, r], s.so2carb))
 
-                s.so2WithSeeiAndScei[t, r] = (
-                    s.so2[t, r] * (1 - s.seei[t - 1, r] - s.scei[t - 1, r]))
+                s.so2WithSeeiAndScei[t, r] = (s.so2[t, r] * (1 - s.seei[t - 1, r] - s.scei[t - 1, r]))
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.sf6[t, r] = ((s.sf60[r] +
-                                s.sf6gdp *
-                                (s.income[t, r] -
-                                 s.GDP90[r]) +
-                                s.sf6ypc *
-                                (s.income[t -
-                                          1, r] /
-                                 s.population[t -
-                                              1, r] -
-                                 s.GDP90[r] /
-                                 s.pop90[r])) *
-                               (t <= Timestep.FromSimulationYear(60) and 1 +
-                                (t -
-                                   40.0) /
-                                40.0 or 1.0 +
-                                (60.0 -
-                                   40.0) /
-                                40.0) *
-                               (t > Timestep.FromSimulationYear(60) and math.pow(0.99, t -
-                                                                                 60.0) or 1.0))
+                s.sf6[t, r] = ((s.sf60[r] + s.sf6gdp * (s.income[t, r] - s.GDP90[r]) + s.sf6ypc *
+                            (s.income[t - 1, r] / s.population[t -1, r] - s.GDP90[r] /s.pop90[r])) *
+                            (t <= Timestep.FromSimulationYear(60) and 1 + (t - 40.0) /40.0 or 1.0 +
+                            (60.0 - 40.0) /40.0) * (t > Timestep.FromSimulationYear(60) and math.pow(0.99, t -60.0) or 1.0))
+
+                print "sf60;", t, ";", r, ";", s.sf60[r]
+                print "sf6gdp;", t, ";", r, ";", s.sf6gdp
+                print "income;", t, ";", r, ";", s.income[t,r]
+                print "GDP90;", t, ";", r, ";", s.GDP90[r]
+                print "sf6ypc;", t, ";", r, ";", s.sf6ypc
+                print "population;", t, ";", r, ";", s.population[t,r]
+                print "pop90;", t, ";", r, ";", s.pop90[r]
+                print "t<=timestepFromSimulationYear 60;", t, ";", r, ";", t<=Timestep.FromSimulationYear(60)
+                print "1 + (t - 40.0) /40.0 ;", t, ";", r, ";", 1 + (t - 40.0) /40.0
+                print "t>timestepFromSimulationYear 60;", t, ";", r, ";", t>Timestep.FromSimulationYear(60)
+                print "math.pow(0.99, t -60.0) ;", t, ";", r, ";", math.pow(0.99, t -60.0)
+
+                print "((s.sf60[r] + s.sf6gdp * (s.income[t, r] - s.GDP90[r]) + s.sf6ypc * (s.income[t - 1, r] / s.population[t -1, r] - s.GDP90[r] /s.pop90[r]))", t, ";", r, ";", ((s.sf60[r] + s.sf6gdp * (s.income[t, r] - s.GDP90[r]) + s.sf6ypc *(s.income[t - 1, r] / s.population[t -1, r] - s.GDP90[r] /s.pop90[r])))
+                print "(t <= Timestep.FromSimulationYear(60) and 1 + (t - 40.0) /40.0 or 1.0 + (60.0 - 40.0) /40.0) * (t > Timestep.FromSimulationYear(60) and math.pow(0.99, t -60.0) or 1.0)) ;" , t, ";", r, ";", (t <= Timestep.FromSimulationYear(60) and 1 + (t - 40.0) /40.0 or 1.0 + (60.0 - 40.0) /40.0) * (t > Timestep.FromSimulationYear(60) and math.pow(0.99, t -60.0) or 1.0)
+
+
+                print "sf6original;", t, ";", r, ";", s.sf6[t,r]
+
 
             for r in dimensions.GetValuesOfRegion():
 
                 if (s.sf6[t, r] < 0.0):
                     s.sf6[t, r] = (0)
+                print "sf6adjusted;", t, ";", r, ";", s.sf6[t,r]
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.energuse[
-                    t,
-                    r] = (
-                    (1 -
-                     s.seei[
-                         t -
-                         1,
-                         r]) *
-                    s.energint[
-                        t,
-                        r] *
-                    s.income[
-                        t,
-                        r])
+                s.energuse[t,r] = ((1 -s.seei[t -1,r]) * s.energint[t,r] * s.income[t,r])
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.emission[
-                    t,
-                    r] = (
-                    (1 -
-                     s.scei[
-                         t -
-                         1,
-                         r]) *
-                    s.emissint[
-                        t,
-                        r] *
-                    s.energuse[
-                        t,
-                        r])
-                s.emissionwithforestry[
-                    t,
-                    r] = (
-                    s.emission[
-                        t,
-                        r] +
-                    s.forestemm[
-                        t,
-                        r])
+                s.emission[t,r] = ((1 - s.scei[t -1,r]) * s.emissint[t,r] * s.energuse[t,r])
+                s.emissionwithforestry[t,r] = (s.emission[t, r] + s.forestemm[t,r])
 
             for r in dimensions.GetValuesOfRegion():
 
@@ -431,48 +374,11 @@ class EmissionsComponent(Behaviors):
                 if (s.emission[t, r] / s.income[t, r] - s.minint[t - 1] <= 0):
                     s.taxpar[t, r] = (s.TaxConstant)
                 else:
-                    s.taxpar[
-                        t,
-                        r] = (
-                        s.TaxConstant -
-                        s.TaxEmInt *
-                        math.sqrt(
-                            s.emission[
-                                t,
-                                r] /
-                            s.income[
-                                t,
-                                r] -
-                            s.minint[
-                                t -
-                                1]))
+                    s.taxpar[t,r] = (s.TaxConstant - s.TaxEmInt * math.sqrt(s.emission[t,r] /s.income[t,r] - s.minint[t -1]))
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.co2red[
-                    t,
-                    r] = (
-                    s.currtax[
-                        t,
-                        r] *
-                    s.emission[
-                        t,
-                        r] *
-                    s.know[
-                        t -
-                        1,
-                        r] *
-                    s.globknow[
-                        t -
-                        1] /
-                    2 /
-                    s.taxpar[
-                        t,
-                        r] /
-                    s.income[
-                        t,
-                        r] /
-                    1000)
+                s.co2red[t,r] = (s.currtax[t,r] * s.emission[t,r] * s.know[t -1,r] * s.globknow[t -1] /2 /s.taxpar[t,r] /s.income[t,r] /1000)
 
                 if (s.co2red[t, r] < 0):
                     s.co2red[t, r] = (0)
@@ -481,35 +387,11 @@ class EmissionsComponent(Behaviors):
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.ryg[
-                    t,
-                    r] = (
-                    s.taxpar[
-                        t,
-                        r] *
-                    math.pow(
-                        s.co2red[
-                            t,
-                            r],
-                        2) /
-                    s.know[
-                        t -
-                        1,
-                        r] /
-                    s.globknow[
-                        t -
-                        1])
+                s.ryg[t,r] = (s.taxpar[t,r] * math.pow(s.co2red[t,r],2) / s.know[t -1,r] /s.globknow[t -1])
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.perm[t, r] = (1.0 -
-                                1.0 /
-                                s.TaxThreshold *
-                                s.currtax[t, r] /
-                                (1 +
-                                 1.0 /
-                                 s.TaxThreshold *
-                                 s.currtax[t, r]))
+                s.perm[t, r] = (1.0 - 1.0 / s.TaxThreshold * s.currtax[t, r] /(1 + 1.0 /s.TaxThreshold * s.currtax[t, r]))
 
             for r in dimensions.GetValuesOfRegion():
 
@@ -518,57 +400,24 @@ class EmissionsComponent(Behaviors):
             for r in dimensions.GetValuesOfRegion():
 
                 if (s.currtax[t, r] < s.TaxThreshold):
-                    s.rcei[
-                        t,
-                        r] = (
-                        s.perm[
-                            t,
-                            r] *
-                        0.5 *
-                        math.pow(
-                            s.co2red[
-                                t,
-                                r],
-                            2))
+                    s.rcei[t,r] = (s.perm[t,r] * 0.5 * math.pow(s.co2red[t,r],2))
                 else:
                     s.rcei[t, r] = (s.perm[t, r] * 0.5 * s.co2red[t, r])
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.seei[t,
-                       r] = ((1.0 - s.TaxDepreciation) * s.seei[t - 1,
-                                                                r] + (1.0 - s.perm[t,
-                                                                                   r]) * 0.5 * s.co2red[t,
-                                                                                                        r] * 1.7)
+                s.seei[t,r] = ((1.0 - s.TaxDepreciation) * s.seei[t - 1,r] + (1.0 - s.perm[t,r]) * 0.5 * s.co2red[t,r] * 1.7)
 
             for r in dimensions.GetValuesOfRegion():
 
                 if (s.currtax[t, r] < 100):
-                    s.scei[t,
-                           r] = (0.9 * s.scei[t - 1,
-                                              r] + (1 - s.perm[t,
-                                                               r]) * 0.5 * math.pow(s.co2red[t,
-                                                                                             r],
-                                                                                    2))
+                    s.scei[t,r] = (0.9 * s.scei[t - 1,r] + (1 - s.perm[t,r]) * 0.5 * math.pow(s.co2red[t,r], 2))
                 else:
-                    s.scei[t, r] = (
-                        0.9 * s.scei[t - 1, r] + (1 - s.perm[t, r]) * 0.5 * s.co2red[t, r] * 1.7)
+                    s.scei[t, r] = (0.9 * s.scei[t - 1, r] + (1 - s.perm[t, r]) * 0.5 * s.co2red[t, r] * 1.7)
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.know[
-                    t,
-                    r] = (
-                    s.know[
-                        t -
-                        1,
-                        r] *
-                    math.sqrt(
-                        1 +
-                        s.knowpar *
-                        s.co2red[
-                            t,
-                            r]))
+                s.know[t,r] = (s.know[t -1,r] * math.sqrt(1 + s.knowpar *s.co2red[t,r]))
 
                 if (s.know[t, r] > math.sqrt(s.MaxCostFall)):
                     s.know[t, r] = (math.sqrt(s.MaxCostFall))
@@ -576,37 +425,14 @@ class EmissionsComponent(Behaviors):
             s.globknow[t] = (s.globknow[t - 1])
             for r in dimensions.GetValuesOfRegion():
 
-                s.globknow[t] = (
-                    s.globknow[t] *
-                    math.sqrt(
-                        1 +
-                        s.knowgpar *
-                        s.co2red[
-                            t,
-                            r]))
+                s.globknow[t] = (s.globknow[t] * math.sqrt(1 + s.knowgpar * s.co2red[t,r]))
 
             if (s.globknow[t] > 3.16):
                 s.globknow[t] = (3.16)
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.ch4red[
-                    t,
-                    r] = (
-                    s.currtaxch4[
-                        t,
-                        r] *
-                    s.ch4em[
-                        t,
-                        r] /
-                    2 /
-                    s.ch4par1[r] /
-                    s.ch4par2[r] /
-                    s.ch4par2[r] /
-                    s.income[
-                        t,
-                        r] /
-                    1000)
+                s.ch4red[t,r] = (s.currtaxch4[t,r] * s.ch4em[t,r] /2 /s.ch4par1[r] /s.ch4par2[r] /s.ch4par2[r] /s.income[t,r] /1000)
 
                 if (s.ch4red[t, r] < 0):
                     s.ch4red[t, r] = (0)
@@ -615,24 +441,7 @@ class EmissionsComponent(Behaviors):
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.n2ored[
-                    t,
-                    r] = (
-                    s.gwpn2o *
-                    s.currtaxn2o[
-                        t,
-                        r] *
-                    s.n2oem[
-                        t,
-                        r] /
-                    2 /
-                    s.n2opar1[r] /
-                    s.n2opar2[r] /
-                    s.n2opar2[r] /
-                    s.income[
-                        t,
-                        r] /
-                    1000)
+                s.n2ored[t, r] = (s.gwpn2o * s.currtaxn2o[t,r] * s.n2oem[t,r] /2 / s.n2opar1[r] /s.n2opar2[r] /s.n2opar2[r] /s.income[t,r] /1000)
 
                 if (s.n2ored[t, r] < 0):
                     s.n2ored[t, r] = (0)
@@ -641,34 +450,12 @@ class EmissionsComponent(Behaviors):
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.ch4cost[
-                    t,
-                    r] = (
-                    s.ch4par1[r] *
-                    math.pow(
-                        s.ch4par2[r],
-                        2) *
-                    math.pow(
-                        s.ch4red[
-                            t,
-                            r],
-                        2))
+                s.ch4cost[t,r] = (s.ch4par1[r] * math.pow( s.ch4par2[r],2) * math.pow(s.ch4red[t,r],2))
                 s.ch4costindollar[t, r] = (s.ch4cost[t, r] * s.income[t, r])
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.n2ocost[
-                    t,
-                    r] = (
-                    s.n2opar1[r] *
-                    math.pow(
-                        s.n2opar2[r],
-                        2) *
-                    math.pow(
-                        s.n2ored[
-                            t,
-                            r],
-                        2))
+                s.n2ocost[t,r] = (s.n2opar1[r] * math.pow(s.n2opar2[r],2) * math.pow(s.n2ored[t,r],2))
 
             minint = (float('+inf'))
             for r in dimensions.GetValuesOfRegion():
@@ -681,31 +468,13 @@ class EmissionsComponent(Behaviors):
             for r in dimensions.GetValuesOfRegion():
 
                 if (t > Timestep.FromYear(2000)):
-                    s.cumaeei[t,
-                              r] = (s.cumaeei[t - 1,
-                                              r] * (1.0 - 0.01 * s.aeei[t,
-                                                                        r] - s.reei[t,
-                                                                                    r] + s.seei[t - 1,
-                                                                                                r] - s.seei[t,
-                                                                                                            r]))
+                    s.cumaeei[t,r] = (s.cumaeei[t - 1,r] * (1.0 - 0.01 * s.aeei[t,r] - s.reei[t,r] + s.seei[t - 1,r] - s.seei[t,r]))
                 else:
                     s.cumaeei[t, r] = (1.0)
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.mitigationcost[
-                    t,
-                    r] = (
-                    (s.taxmp[r] *
-                     s.ryg[
-                        t,
-                        r] +
-                        s.n2ocost[
-                        t,
-                        r]) *
-                    s.income[
-                        t,
-                        r])
+                s.mitigationcost[t,r] = ((s.taxmp[r] *s.ryg[t,r] +s.n2ocost[t,r]) * s.income[t,r])
 
             globco2 = (0)
             globch4 = (0)
@@ -721,20 +490,34 @@ class EmissionsComponent(Behaviors):
                 globsf6 = (globsf6 + s.sf6[t, r])
                 globso2 = (globso2 + s.so2WithSeeiAndScei[t, r])
 
+                #print "ACEI end ;", r, " ;", s.acei[t,r]
+                #print "AEEI end ;", r, " ;", s.aeei[t,r]
+                #print "income end ;", r, " ;", s.income[t,r]
+                #print "population end ;", r, " ;", s.population[t, r]
+
+            print "globsf6 original;", t, ";global;", s.globsf6
+
             s.mco2[t] = (globco2)
-            s.globch4[t] = (
-                max(0.0, globch4 + (t > 50 and s.ch4add * (t - 50) or 0.0)))
-            s.globn2o[t] = (
-                max(0.0, globn2o + (t > 50 and s.n2oadd * (t - 50) or 0)))
-            s.globsf6[t] = (
-                max(0.0, globsf6 + (t > 50 and s.sf6add * (t - 50) or 0.0)))
+            s.globch4[t] = (max(0.0, globch4 + (t > 50 and s.ch4add * (t - 50) or 0.0)))
+            s.globn2o[t] = (max(0.0, globn2o + (t > 50 and s.n2oadd * (t - 50) or 0)))
+            s.globsf6[t] = (max(0.0, globsf6 + (t > 50 and s.sf6add * (t - 50) or 0.0)))
             s.globso2[t] = (globso2)
+
+            print "t>50?;",t, ";global;", t>50
+            print "sf6add;", t, ";global;", s.sf6add
+
+            print "globsf6 adjusted;", t, ";global;", s.globsf6[t]
 
             s.cumglobco2[t] = (s.cumglobco2[t - 1] + s.mco2[t])
             s.cumglobch4[t] = (s.cumglobch4[t - 1] + s.globch4[t])
             s.cumglobn2o[t] = (s.cumglobn2o[t - 1] + s.globn2o[t])
             s.cumglobsf6[t] = (s.cumglobsf6[t - 1] + s.globsf6[t])
             s.cumglobso2[t] = (s.cumglobso2[t - 1] + s.globso2[t])
+
+
+
+
+
 
 
 behavior_classes = [EmissionsComponent]

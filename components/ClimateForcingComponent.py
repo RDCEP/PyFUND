@@ -135,45 +135,42 @@ class ClimateForcingComponent(Behaviors):
 
             s.rfCO2[t] = (5.35 * math.log(s.acco2[t] / s.co2pre))
 
-            s.rfCH4[t] = (0.036 *
-                          (1.0 +
-                           s.ch4ind) *
-                          (math.sqrt(s.acch4[t]) -
-                           math.sqrt(s.ch4pre)) -
-                          Interact(s.acch4[t], s.n2opre) +
-                          ch4n2o)
+            s.rfCH4[t] = (0.036 * (1.0 + s.ch4ind) * (math.sqrt(s.acch4[t]) - math.sqrt(s.ch4pre)) -
+                          Interact(s.acch4[t], s.n2opre) + ch4n2o)
 
-            s.rfN2O[t] = (0.12 *
-                          (math.sqrt(s.acn2o[t]) -
-                           math.sqrt(s.n2opre)) -
-                          Interact(s.ch4pre, s.acn2o[t]) +
-                          ch4n2o)
+            s.rfN2O[t] = (0.12 * (math.sqrt(s.acn2o[t]) - math.sqrt(s.n2opre)) -
+                          Interact(s.ch4pre, s.acn2o[t]) + ch4n2o)
 
             s.rfSF6[t] = (0.00052 * (s.acsf6[t] - s.sf6pre))
 
-            s.rfSO2[t] = (
-                s.so2dir *
-                s.acso2[t] /
-                14.6 +
-                s.so2ind *
-                math.log(
-                    1.0 +
-                    s.acso2[t] /
-                    34.4) /
-                math.log(
-                    1 +
-                    14.6 /
-                    34.4) -
-                0.9)
+            s.rfSO2[t] = (s.so2dir * s.acso2[t] /14.6 +s.so2ind *math.log(1.0 +s.acso2[t] /34.4) /
+                math.log(1 +14.6 /34.4) - 0.9)
 
-            s.radforc[t] = (
-                s.rfCO2[t] +
-                s.rfCH4[t] +
-                s.rfN2O[t] +
-                s.rfSF6[t] -
-                s.rfSO2[t])
+            s.radforc[t] = (s.rfCO2[t] + s.rfCH4[t] + s.rfN2O[t] + s.rfSF6[t] - s.rfSO2[t])
 
             s.rfEMF22[t] = (s.rfCO2[t] + s.rfCH4[t] + s.rfN2O[t])
+
+            #print "ch4pre;", t, ";", s.ch4pre
+            #print "n2opre;", t, ";", s.n2opre
+            #print "ch4n2o;", t, ";", ch4n2o
+            #print "acco2;", t, ";", s.acco2[t]
+            #print "co2pre;", t, ";", s.co2pre
+            #print "rfCO2;", t, ";", s.rfCO2[t]
+            #print "ch4ind;", t, ";", s.ch4ind
+            #print "acch4;", t, ";", s.acch4[t]
+            #print "rfCH4;", t, ";", s.rfCH4[t]
+            #print "acn2o;", t, ";", s.acn2o[t]
+            #print "rfN2O;", t, ";", s.rfN2O[t]
+            #print "acsf6;", t, ";", s.acsf6[t]
+            #print "sf6pre;", t, ";", s.sf6pre
+            #print "rfSF6;", t, ";", s.rfSF6[t]
+            #print "so2dir;", t, ";", s.so2dir
+            #print "acso2;", t, ";", s.acso2[t]
+            #print "so2ind;", t, ";", s.so2ind
+            #print "rfSO2;", t, ";", s.rfSO2[t]
+            #print "radforc;", t, ";", s.radforc[t]
+
+
 
 
 behavior_classes = [ClimateForcingComponent]

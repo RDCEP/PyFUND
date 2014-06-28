@@ -115,7 +115,6 @@ class SocioEconomicComponent(Behaviors):
     state_class = ISocioEconomicState
 
     def run(self, state, clock, dimensions):
-
         s = (state)
         t = (clock.Current)
 
@@ -147,36 +146,30 @@ class SocioEconomicComponent(Behaviors):
                     (1 + 0.01 * s.pgrowth[t - 1, r]) * (1 + 0.01 * s.ypcgrowth[t - 1, r]) - 1)
 
             for r in dimensions.GetValuesOfRegion():
-                oldincome = (
-                    s.income[
-                        t -
-                        1,
-                        r] -
-                    (
-                        (t >= Timestep.FromSimulationYear(40)) and not s.runwithoutdamage and s.consleak *
-                        s.eloss[
-                            t -
-                            1,
-                            r] /
+                #print "income start ;", r, " ;", s.income[t,r]
+
+                oldincome = (s.income[t -1, r] - (
+                        (t >= Timestep.FromSimulationYear(40)) and not s.runwithoutdamage and s.consleak * s.eloss[t - 1,r] /
                         10.0 or 0))
 
-                s.income[
-                    t,
-                    r] = (
-                    (1 +
-                     s.ygrowth[
-                         t,
-                         r]) *
-                    oldincome -
-                    s.mitigationcost[
-                        t -
-                        1,
-                        r])
+                s.income[t,r] = ((1 + s.ygrowth[t,r]) * oldincome - s.mitigationcost[t - 1,r])
+
+                #print "t>= timestep from simulation year - 40 ;", t>=Timestep.FromSimulationYear(40)
+                #print "runwithoutdamage ; global ; ", s.runwithoutdamage
+                #print "consleak ; global; ", s.consleak
+                #print "prior eloss ; ",r," ;", s.eloss[t-1,r]
+                #print "ygrowth ; ", r, " ;", s.ygrowth[t,r]
+                #print "mitigationcost ;", r, " ;", s.mitigationcost[t-1,r]
+                #print "oldincome ;", r, " ;", oldincome
+                #print "income intermediate ;", r, s.income[t,r]
 
             for r in dimensions.GetValuesOfRegion():
 
                 if (s.income[t, r] < 0.01 * s.population[t, r]):
                     s.income[t, r] = (0.1 * s.population[t, r])
+
+                #print "income end ;", r, " ;", s.income[t,r]
+
 
             for r in dimensions.GetValuesOfRegion():
 
@@ -184,55 +177,35 @@ class SocioEconomicComponent(Behaviors):
 
             totalConsumption = (0.0)
             for r in dimensions.GetValuesOfRegion():
-
+                #print "consumption start ;", r," ;", s.consumption[t,r]
                 s.consumption[t, r] = (max(
                     s.income[t, r] * 1000000000.0 * (1.0 - savingsrate) - (
                         s.runwithoutdamage and 0.0 or (s.eloss[t - 1, r] + s.sloss[t - 1, r]) * 1000000000.0),
                     0.0))
 
                 totalConsumption = (totalConsumption + s.consumption[t, r])
+                #print "consumption end ;", r," ;", s.consumption[t,r]
+
 
             s.globalconsumption[t] = (totalConsumption)
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.plus[
-                    t,
-                    r] = (
-                    s.plus90[r] *
-                    math.pow(
-                        s.ypc[
-                            t,
-                            r] /
-                        s.ypc90[r],
-                        s.plusel))
+                s.plus[t,r] = (s.plus90[r] * math.pow(s.ypc[t,r] /s.ypc90[r],s.plusel))
 
                 if (s.plus[t, r] > 1):
                     s.plus[t, r] = (1.0)
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.popdens[
-                    t,
-                    r] = (
-                    s.population[
-                        t,
-                        r] /
-                    s.area[
-                        t,
-                        r] *
-                    1000000.0)
+                s.popdens[t,r] = (s.population[t,r] /s.area[t,r] * 1000000.0)
 
             for r in dimensions.GetValuesOfRegion():
 
                 s.urbpop[t, r] = ((0.031 * math.sqrt(s.ypc[t, r]) - 0.011 * math.sqrt(s.popdens[t, r])) / (1.0 + 0.031 * math.sqrt(s.ypc[t, r]) - 0.011 * math.sqrt(s.popdens[t, r]))
                                   / (1 + s.urbcorr[r] / (1 + 0.001 * math.pow(Convert.ToDouble(t) - 40.0, 2))))
 
-            s.globalincome[t] = (
-                dimensions.GetValuesOfRegion().Select(
-                    lambda r: s.income[
-                        t,
-                        r]).Sum())
+            s.globalincome[t] = (dimensions.GetValuesOfRegion().Select(lambda r: s.income[t,r]).Sum())
 
             s.globalypc[t] = (dimensions.GetValuesOfRegion().Select(lambda r: s.income[t, r] * 1000000000.0).Sum() /
                               dimensions.GetValuesOfRegion().Select(lambda r: s.populationin1[t, r]).Sum())
