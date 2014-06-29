@@ -287,7 +287,8 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                     s.npprotcost[t, r] = (
                         s.pc[r] * ds * (1.0 + s.slrprtp[r] + ypcgrowth) / (s.slrprtp[r] + ypcgrowth))
 
-                    if ((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth + s.wvsl * s.wetlandgrowth[t - 1, r]) < 0.0):
+                    if ((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth +
+                         s.wvsl * s.wetlandgrowth[t - 1, r]) < 0.0):
                         s.npwetcost[t, r] = (0)
                     else:
                         s.npwetcost[t, r] = (s.wmbm[r] *

@@ -47,6 +47,7 @@ class ImpactForests(Behaviors):
     state_class = IImpactForestsState
 
     def run(self, state, clock, dimensions):
+
         s = (state)
         t = (clock.Current)
 
@@ -57,7 +58,6 @@ class ImpactForests(Behaviors):
         else:
 
             for r in dimensions.GetValuesOfRegion():
-
                 ypc = (1000.0 * s.income[t, r] / s.population[t, r])
                 ypc90 = (s.gdp90[r] / s.pop90[r] * 1000.0)
 

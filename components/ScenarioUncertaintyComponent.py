@@ -74,33 +74,15 @@ class ScenarioUncertaintyComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        yearsFromUncertaintyStart = (t - s.timeofuncertaintystart)
+        yearsFromUncertaintyStart = (
+            (t - clock.first) - (s.timeofuncertaintystart - clock.first))
 
-        #print "yearsFromUncertaintyStart ; global ;",yearsFromUncertaintyStart
-
-        # timeofuncertaintystart = 2000
-        # ANC edit 6/22/14: C# has no issue with dividing by 0.0 in year 1950 and evaluates to +infinity. It doesn't
-        # matter what sdTimeFactor is set to in 1950 (when python throws the error) since 1950 < 2000 which has
-        # no impact on ypcgrowth, pgrowth, aeei, acei, or forestemm
-
-
-        if t != 1950:
-            sdTimeFactor = ((yearsFromUncertaintyStart / 50.0) / (1.0 + (yearsFromUncertaintyStart / 50.0)))
-        else:
+        if yearsFromUncertaintyStart == -50.0:
             sdTimeFactor = 0.0
-
-        #print "sdTimeFactor ; global ; ", sdTimeFactor
-
+        else:
+            sdTimeFactor = ((yearsFromUncertaintyStart / 50.0) / (1.0 + (yearsFromUncertaintyStart / 50.0)))
 
         for r in dimensions.GetValuesOfRegion():
-
-            #print "acei start ;", r, " ;", s.acei[t,r]
-            #print "aeei start ;", r, " ;", s.aeei[t,r]
-            #print "pgrowth start ;", r, " ;", s.pgrowth[t,r]
-            #print "ypcgrowth start ;", r, " ;", s.ypcgrowth[t, r]
-            #print "t>= timeofuncertaintystart ; global ; ", t>= s.timeofuncertaintystart
-            #print "ecgradd ; ", r, " ;", s.ecgradd[r]
-            #print "pgadd ; ", r, " ;", s.pgadd[r]
 
             s.ypcgrowth[t, r] = (s.scenypcgrowth[t, r] +
                                  (t >= s.timeofuncertaintystart and s.ecgradd[r] *
@@ -117,11 +99,6 @@ class ScenarioUncertaintyComponent(Behaviors):
             s.forestemm[t, r] = (s.scenforestemm[t, r] +
                                  (t >= s.timeofuncertaintystart and s.foremadd[r] *
                                   sdTimeFactor or 0.0))
-
-            #print "acei end ;", r, " ;", s.acei[t,r]
-            #print "aeei end ;", r, " ;", s.aeei[t,r]
-            #print "pgrowth end ;", r, " ;", s.pgrowth[t,r]
-            #print "ypcgrowth end ;", r, " ;", s.ypcgrowth[t, r]
 
 
 behavior_classes = [ScenarioUncertaintyComponent]

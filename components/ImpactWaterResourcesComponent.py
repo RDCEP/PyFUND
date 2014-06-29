@@ -52,12 +52,11 @@ class ImpactWaterResourcesComponent(Behaviors):
         t = (clock.Current)
 
         if (t > Timestep.FromYear(2000)):
-            s.watech[t] = (
-                math.pow(
-                    1.0 -
-                    s.watechrate,
-                    t -
-                    Timestep.FromYear(2000)))
+            s.watech[t] = (math.pow(1.0 -
+                                    s.watechrate, (t -
+                                                   clock.first) -
+                                    (Timestep.FromYear(2000) -
+                                     clock.first)))
         else:
             s.watech[t] = (1.0)
 

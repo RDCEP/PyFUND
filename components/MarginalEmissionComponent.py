@@ -27,7 +27,8 @@ class MarginalEmissionComponent(Behaviors):
         t = (clock.Current)
         s = (state)
 
-        if ((t >= s.emissionperiod) and (t < (s.emissionperiod + s.impulselength))):
+        if (((t - clock.first) >= (s.emissionperiod - clock.first))
+                and ((t - clock.first) < ((s.emissionperiod - clock.first) + s.impulselength))):
 
             s.modemission[t] = (s.emission[t] + 1)
 

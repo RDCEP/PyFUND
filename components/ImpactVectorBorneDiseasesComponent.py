@@ -107,7 +107,8 @@ class ImpactVectorBorneDiseasesComponent(Behaviors):
                     ypc90,
                     s.vbel))
 
-            if (s.schisto[t, r] < -s.smbs[r] * s.population[t, r] * math.pow(ypc / ypc90, s.vbel)):
+            if (s.schisto[t, r] < -s.smbs[r] * s.population[t, r]
+                    * math.pow(ypc / ypc90, s.vbel)):
                 s.schisto[t, r] = (-
                                    s.smbs[r] *
                                    s.population[t, r] *

@@ -38,25 +38,24 @@ class ClimateRegionalComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        #print "ClimateRegionalComponent;", t
-
         for r in dimensions.GetValuesOfRegion():
 
             s.regtmp[t, r] = (s.inputtemp[t] * s.bregtmp[r] + s.scentemp[t, r])
-            #print "regtmp;", t, ";", r, ";", s.regtmp[t,r]
-            #print "inputtemp;", t, ";global;", s.inputtemp[t]
-            #print "bregtmp;", t, ";", r, ";", s.bregtmp[r]
-            #print "scentemp;", t, ";", r, ";", s.scentemp[t,r]
 
         for r in dimensions.GetValuesOfRegion():
 
             s.temp[t, r] = (s.regtmp[t, r] / s.bregtmp[r])
-            #print "temp;", t, ";", r, ";", s.temp[t,r]
 
         for r in dimensions.GetValuesOfRegion():
 
-            s.regstmp[t,r] = (s.inputtemp[t] * s.bregstmp[r] + s.scentemp[t,r])
-            #print "regstmp;", t, ";", r, ";", s.regstmp[t,r]
-            #print "bregstmp;", t, ";", r, ";", s.bregstmp[r]
+            s.regstmp[
+                t,
+                r] = (
+                s.inputtemp[t] *
+                s.bregstmp[r] +
+                s.scentemp[
+                    t,
+                    r])
+
 
 behavior_classes = [ClimateRegionalComponent]

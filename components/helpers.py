@@ -20,7 +20,7 @@ class Behaviors(object):
    subclass has an associated Paramters object that defines
    its interaction with the surrounding code.
    """
-
+# Clock class is implemented in C# as the Timestep class; Clock is different.
 class Clock(object):
    """
    The Clock class represents the abstract time-keeper; it allows
@@ -42,7 +42,14 @@ class Clock(object):
    @property
    def StartTime(self):
       return self.first
-   
+
+
+   # correcting incorrect removal of Value property from C# conversion. This returns
+   # the difference between base year and current year in model.
+   @property
+   def Value(self):
+       return self.time_step - self.first
+
    def FromYear(self, year):
       return year
    

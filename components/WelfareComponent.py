@@ -187,7 +187,8 @@ class GlobalWelfareComponent(Behaviors):
 
                 def DF(year):
 
-                    return math.pow(1.0 + s.prtp, -(year - s.starttimestep))
+                    return math.pow(
+                        1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
 
                 perCapitaConsumption = (s.consumption[t] / s.population[t])
 
@@ -244,7 +245,8 @@ class UtilitarianWelfareComponent(Behaviors):
 
                 def DF(year):
 
-                    return math.pow(1.0 + s.prtp, -(year - s.starttimestep))
+                    return math.pow(
+                        1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
 
                 for r in dimensions.GetValuesOfRegion():
 
@@ -318,7 +320,8 @@ class RegionalWelfareComponent(Behaviors):
 
                 def DF(year):
 
-                    return math.pow(1.0 + s.prtp, -(year - s.starttimestep))
+                    return math.pow(
+                        1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
 
                 for r in dimensions.GetValuesOfRegion():
 

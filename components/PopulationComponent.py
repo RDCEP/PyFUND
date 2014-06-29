@@ -52,6 +52,7 @@ class PopulationComponent(Behaviors):
     state_class = IPopulationState
 
     def run(self, state, clock, dimensions):
+
         s = (state)
         t = (clock.Current)
 
@@ -72,33 +73,30 @@ class PopulationComponent(Behaviors):
             globalPopulation = (0.0)
 
             for r in dimensions.GetValuesOfRegion():
-                #print "population start ;", r, " ;", s.population[t,r]
-                #print "pgrowth start ;", r, " ;", s.pgrowth[t,r]
 
-                #print "timestep.FromSimulationYear = ;", Timestep.FromSimulationYear(40)
-                #print "runwithoutpopulationperturbation ;", s.runwithoutpopulationperturbation
-                #print "enter ; ",r, " ;", s.enter[t-1,r]
-                #print "leave ;", r, " ;", s.leave[t-1,r]
-                #print "dead ;", r, " ;", s.dead[t-1,r]
-
-
-                s.population[t, r] = ((1.0 + 0.01 * s.pgrowth[t - 1, r]) * (s.population[t - 1, r] + (
-                    (t >= Timestep.FromSimulationYear(40)) and not s.runwithoutpopulationperturbation and (
-                        s.enter[t - 1,r] / 1000000.0) - (s.leave[t - 1,r] / 1000000.0) - (s.dead[t - 1,r] >= 0 and
-                        s.dead[t - 1,r] / 1000000.0 or 0) or 0)))
-
-                #print "population intermediate ;", r, " ;", s.population[t,r]
-
-
+                s.population[t, r] = ((1.0 + 0.01 * s.pgrowth[t - 1, r]) * (s.population[t - 1, r] +
+                                                                            (
+                    (
+                        t >= Timestep.FromSimulationYear(40)) and not s.runwithoutpopulationperturbation and (
+                        s.enter[
+                            t - 1,
+                            r] / 1000000.0) - (
+                        s.leave[
+                            t - 1,
+                            r] / 1000000.0) - (
+                        s.dead[
+                            t - 1,
+                            r] >= 0 and s.dead[
+                                t - 1,
+                            r] / 1000000.0 or 0) or 0
+                )
+                ))
 
                 if (s.population[t, r] < 0):
                     s.population[t, r] = (0.000001)
 
                 s.populationin1[t, r] = (s.population[t, r] * 1000000.0)
                 globalPopulation = (globalPopulation + s.populationin1[t, r])
-
-                #print "population end ;", r, " ;", s.population[t,r]
-                #print "pgrowth end ;", r, " ;", s.pgrowth[t,r]
 
             s.globalpopulation[t] = (globalPopulation)
 

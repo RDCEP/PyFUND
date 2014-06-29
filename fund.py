@@ -334,6 +334,7 @@ class FUND(object):
       
       for year in self.dimensions.time_steps:
          Timestep.__init__(year, self.dimensions.time_steps[0])
+
          print "(year={0}, is_first={1})".format(year, Timestep.IsFirstTimestep)
          
          for behavior, state in instances:

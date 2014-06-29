@@ -132,6 +132,7 @@ class ClimateCO2CycleComponent(Behaviors):
     state_class = IClimateCO2CycleState
 
     def run(self, state, clock, dimensions):
+
         s = (state)
         t = (clock.Current)
 
@@ -158,14 +159,23 @@ class ClimateCO2CycleComponent(Behaviors):
                 s.cbox5[t])
 
         else:
-            #print "globc start ; global ; ", s.globc[t]
+
             if (t == Timestep.FromYear(2011)):
 
                 s.tempIn2010 = (s.temp[Timestep.FromYear(2010)])
 
             if (t > Timestep.FromYear(2010)):
 
-                s.TerrestrialCO2[t] = ((s.temp[t -1] -s.tempIn2010) * s.TerrCO2Sens * s.TerrCO2Stock[t -1] /s.TerrCO2Stock0)
+                s.TerrestrialCO2[t] = (
+                    (s.temp[
+                        t -
+                        1] -
+                        s.tempIn2010) *
+                    s.TerrCO2Sens *
+                    s.TerrCO2Stock[
+                        t -
+                        1] /
+                    s.TerrCO2Stock0)
 
             else:
                 s.TerrestrialCO2[t] = (0)
@@ -175,16 +185,43 @@ class ClimateCO2CycleComponent(Behaviors):
 
             s.globc[t] = (s.mco2[t] + s.TerrestrialCO2[t])
 
-            s.cbox1[t] = (s.cbox1[t - 1] * s.co2decay1 + 0.000471 * s.co2frac1 * (s.globc[t]))
-            s.cbox2[t] = (s.cbox2[t - 1] * s.co2decay2 + 0.000471 * s.co2frac2 * (s.globc[t]))
-            s.cbox3[t] = (s.cbox3[t - 1] * s.co2decay3 + 0.000471 * s.co2frac3 * (s.globc[t]))
-            s.cbox4[t] = (s.cbox4[t - 1] * s.co2decay4 + 0.000471 * s.co2frac4 * (s.globc[t]))
-            s.cbox5[t] = (s.cbox5[t - 1] * s.co2decay5 + 0.000471 * s.co2frac5 * (s.globc[t]))
+            s.cbox1[t] = (s.cbox1[t -
+                                  1] *
+                          s.co2decay1 +
+                          0.000471 *
+                          s.co2frac1 *
+                          (s.globc[t]))
+            s.cbox2[t] = (s.cbox2[t -
+                                  1] *
+                          s.co2decay2 +
+                          0.000471 *
+                          s.co2frac2 *
+                          (s.globc[t]))
+            s.cbox3[t] = (s.cbox3[t -
+                                  1] *
+                          s.co2decay3 +
+                          0.000471 *
+                          s.co2frac3 *
+                          (s.globc[t]))
+            s.cbox4[t] = (s.cbox4[t -
+                                  1] *
+                          s.co2decay4 +
+                          0.000471 *
+                          s.co2frac4 *
+                          (s.globc[t]))
+            s.cbox5[t] = (s.cbox5[t -
+                                  1] *
+                          s.co2decay5 +
+                          0.000471 *
+                          s.co2frac5 *
+                          (s.globc[t]))
 
-            s.acco2[t] = (s.cbox1[t] + s.cbox2[t] + s.cbox3[t] + s.cbox4[t] + s.cbox5[t])
-
-            #print "globc end ; global ; ", s.globc[t]
-
+            s.acco2[t] = (
+                s.cbox1[t] +
+                s.cbox2[t] +
+                s.cbox3[t] +
+                s.cbox4[t] +
+                s.cbox5[t])
 
 
 behavior_classes = [ClimateCO2CycleComponent]

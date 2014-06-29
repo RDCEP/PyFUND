@@ -124,7 +124,8 @@ class ImpactCardiovascularRespiratoryComponent(Behaviors):
                         t,
                         r] *
                     10)
-                if (s.cardheat[t, r] > 1000.0 * s.maxcardvasc * s.basecardvasc[t, r] * s.urbpop[t, r] * s.population[t, r]):
+                if (s.cardheat[t, r] > 1000.0 * s.maxcardvasc *
+                        s.basecardvasc[t, r] * s.urbpop[t, r] * s.population[t, r]):
                     s.cardheat[
                         t,
                         r] = (
@@ -168,7 +169,8 @@ class ImpactCardiovascularRespiratoryComponent(Behaviors):
                         t,
                         r] *
                     10)
-                if (s.resp[t, r] > 1000 * s.maxcardvasc * s.baseresp[t, r] * s.urbpop[t, r] * s.population[t, r]):
+                if (s.resp[t, r] > 1000 * s.maxcardvasc *
+                        s.baseresp[t, r] * s.urbpop[t, r] * s.population[t, r]):
                     s.resp[
                         t,
                         r] = (
@@ -189,7 +191,8 @@ class ImpactCardiovascularRespiratoryComponent(Behaviors):
                 s.cardcold[t, r] = ((s.ccplbm[r] * s.plus[t, r] + s.ccmlbm[r] * (1.0 - s.plus[t, r])) * s.temp[t, r] +
                                     (s.ccpqbm[r] * s.plus[t, r] + s.ccmqbm[r] * (1.0 - s.plus[t, r])) * math.pow(s.temp[t, r], 2))
                 s.cardcold[t, r] = (s.cardcold[t, r] * s.population[t, r] * 10)
-                if (s.cardcold[t, r] < -1000 * s.maxcardvasc * s.basecardvasc[t, r] * s.population[t, r]):
+                if (s.cardcold[t, r] < -1000 * s.maxcardvasc *
+                        s.basecardvasc[t, r] * s.population[t, r]):
                     s.cardcold[t, r] = (-
                                         1000 *
                                         s.maxcardvasc *

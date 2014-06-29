@@ -104,7 +104,8 @@ class GlobalHotellingTaxationComponent(Behaviors):
             perCapitaConsumptionPrevious -
             1.0)
 
-        if (perCapitaConsumptionNow == 0.0 and perCapitaConsumptionPrevious == 0.0):
+        if (perCapitaConsumptionNow ==
+                0.0 and perCapitaConsumptionPrevious == 0.0):
             perCapitaGrowthRate = (0.0)
 
         discountrate = (

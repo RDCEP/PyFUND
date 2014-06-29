@@ -124,7 +124,19 @@ from components._patches import *
       code = re.sub(r'[dD]ouble.PositiveInfinity', 'float(\'+inf\')', code)
       code = re.sub(r'[dD]ouble.NegativeInfinity', 'float(\'-inf\')', code)
       code = re.sub(r'[dD]ouble.IsNaN', 'math.isnan', code)
-      code = re.sub(r'\.Value', '', code)
+
+      # ugly hack, but Clock and Timestep need to be
+      # implemented correctly
+      #code = re.sub(r'\.Value', '', code)
+      # substitute any x.Value with (x - clock.first)
+      code = re.sub(r'([^\s]+)(\.Value)', '(\g<1> - clock.first)', code)
+
+
+      # substitute all .Value calls unless we have t.value
+      #code = re.sub(r'([^t])(\.Value)', '\g<1>', code)
+      # in the case of t.Value, substitute with clock.Value
+      #code = re.sub(r't\.Value', 'Timestep.Value', code)
+
       code = re.sub(r';[ \t]*(\r\n|\n)', '\n', code)
       code = re.sub(r'\s+\?\s+', ' and ', code)
       code = re.sub(r'\s+:\s+', ' or ', code)
@@ -174,13 +186,14 @@ from components._patches import *
   except ImportError:
     warnings.warn("You do not have autopep8 installed; the generated "
                   "code is going to be terribly mangled.")
-  
-  exec generated_code in globals()
+  # dont exec here, lets write the files and then let python fund.py tell us its wrong
+  # we get better error messages that way.
+  #exec generated_code in globals()
   
   if autopep8:
     generated_code = autopep8.fix_code(generated_code,
       options=autopep8.parse_args(['--aggressive', '']))
-    exec generated_code in globals()
+    #exec generated_code in globals()
   
   destination.write(generated_code)
   destination.close()
