@@ -139,8 +139,24 @@ class ImpactDeathMorbidityComponent(Behaviors):
                                 s.diadead[t, r] +
                                 s.hurrdead[t, r] +
                                 s.extratropicalstormsdead[t, r])
+                #print "dengue;", t, ";", r, ";", s.dengue[t,r]
+                #print "schisto;", t, ";", r, ";", s.schisto[t,r]
+                #print "malaria;", t, ";", r, ";", s.malaria[t,r]
+                #print "cardheat;", t, ";", r, ";", s.cardheat[t,r]
+                #print "cardcold;", t, ";", r, ";", s.cardcold[t,r]
+                #print "resp;", t, ";", r, ";", s.resp[t,r]
+                #print "diadead;", t, ";", r, ";", s.diadead[t,r]
+                #print "hurrdead;", t, ";", r, ";", s.hurrdead[t,r]
+                #print "extratropicalstormsdead;", t, ";", r, ";", s.extratropicalstormsdead[t,r]
+                #print "dead initial;", t, ";", r, ";", s.dead[t,r]
+
+
                 if (s.dead[t, r] > s.population[t, r] * 1000000.0):
                     s.dead[t, r] = (s.population[t, r] / 1000000.0)
+
+                #print "dead final;", t, ";", r, ";", s.dead[t,r]
+
+
 
                 s.yll[
                     t,

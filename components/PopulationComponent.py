@@ -75,25 +75,24 @@ class PopulationComponent(Behaviors):
             for r in dimensions.GetValuesOfRegion():
 
                 s.population[t, r] = ((1.0 + 0.01 * s.pgrowth[t - 1, r]) * (s.population[t - 1, r] +
-                                                                            (
-                    (
-                        t >= Timestep.FromSimulationYear(40)) and not s.runwithoutpopulationperturbation and (
-                        s.enter[
-                            t - 1,
-                            r] / 1000000.0) - (
-                        s.leave[
-                            t - 1,
-                            r] / 1000000.0) - (
-                        s.dead[
-                            t - 1,
-                            r] >= 0 and s.dead[
-                                t - 1,
-                            r] / 1000000.0 or 0) or 0
-                )
-                ))
+                    ((t >= Timestep.FromSimulationYear(40)) and not s.runwithoutpopulationperturbation and
+                    (s.enter[t - 1,r] / 1000000.0) - (s.leave[t - 1,r] / 1000000.0) - (s.dead[t - 1,r] >= 0
+                    and s.dead[t - 1,r] / 1000000.0 or 0) or 0)))
+
+                #print "pgrowth;", t, ";", r, ";", s.pgrowth[t,r]
+                #print "t >= timestep.FromSimulationYear(40);", t, ";", r, ";", t>=Timestep.FromSimulationYear(40)
+                #print "runwithoutpopulationperturbation;", t, ";", r, ";", s.runwithoutpopulationperturbation
+                #print "enter;", t, ";", r, ";", s.enter[t-1,r]
+                #print "leave;", t, ";", r, ";", s.leave[t-1,r]
+                #print "dead;", t, ";", r, ";", s.dead[t-1,r]
+                #print "population start;", t, ";", r, ";", s.population[t,r]
+
 
                 if (s.population[t, r] < 0):
                     s.population[t, r] = (0.000001)
+
+                #print "population adjusted;", t, ";", r, ";", s.population[t,r]
+
 
                 s.populationin1[t, r] = (s.population[t, r] * 1000000.0)
                 globalPopulation = (globalPopulation + s.populationin1[t, r])

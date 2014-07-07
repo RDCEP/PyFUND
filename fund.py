@@ -68,10 +68,16 @@ class TriangularDistribution(Distribution):
    
    def __repr__(self):
       return u'TriangularDistribution({0}; {1}; {2})'.format(self.minimum, self.mode, self.maximum)
-   
+
+   #Pretend for a second that I know what I'm doing. Right now the regex pulls in the three values
+   #within the TriangleDistribution() line. The order of these values is min/mean/max. Right now,
+   #the middle value is called 'mode' in this file. We should not be computing the mean since we
+   #actually import it. Instead when we call property mean, we should return value associated
+   #with mean in the file (called mode here)
+
    @property
    def mean(self):
-      return (self.minimum + self.mode + self.maximum) / 3
+      return (self.mode)
 
 class GammaDistribution(Distribution):
    def __init__(self, *values):
@@ -335,10 +341,10 @@ class FUND(object):
       for year in self.dimensions.time_steps:
          Timestep.__init__(year, self.dimensions.time_steps[0])
 
-         print "(year={0}, is_first={1})".format(year, Timestep.IsFirstTimestep)
+         print "(year={0} is_first={1});;;;".format(year, Timestep.IsFirstTimestep)
          
          for behavior, state in instances:
-            print "  {0}".format(behavior.__class__.__name__)
+            print "{0};;;;".format(behavior.__class__.__name__)
             behavior.run(state, Timestep, self.dimensions)
       
       # Prepare the massive CSV file.

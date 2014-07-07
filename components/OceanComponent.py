@@ -32,6 +32,11 @@ class OceanComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
+        print "lifesea;", t, ";global;", s.lifesea, ";"
+        print "delaysea;", t, ";global;", s.delaysea, ";"
+
+
+
         if (clock.IsFirstTimestep):
 
             s.delaysea = (1.0 / s.lifesea)
@@ -41,7 +46,17 @@ class OceanComponent(Behaviors):
 
             ds = (s.delaysea * s.seas * s.temp[t] - s.delaysea * s.sea[t - 1])
 
+            #print "ds;", t, ";global;", ds, ";"
+            #print "delaysea;", t, ";global;", s.delaysea, ";"
+            #print "seas;", t, ";global;", s.seas, ";"
+            #print "temp;", t, ";global;", s.temp[t], ";"
+
+
             s.sea[t] = (s.sea[t - 1] + ds)
+
+            #print "sea[t];", t, ";global;", s.sea[t], ";"
+            #print "sea[t-1];", t, ";global;", s.sea[t-1], ";"
+
 
 
 behavior_classes = [OceanComponent]

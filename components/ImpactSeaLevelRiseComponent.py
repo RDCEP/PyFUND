@@ -185,186 +185,162 @@ class ImpactSeaLevelRiseComponent(Behaviors):
 
             ds = (s.sea[t] - s.sea[t - 1])
 
+            #print "ds;", t, ";global;", ds, ";"
+            #print "sea[t];", t, ";global;", s.sea[t], ";"
+            #print "sea[t-1];", t, ";global;", s.sea[t-1], ";"
+
+
+
             for r in dimensions.GetValuesOfRegion():
                 ypc = (s.income[t, r] / s.population[t, r] * 1000.0)
-                ypcprev = (
-                    s.income[
-                        t -
-                        1,
-                        r] /
-                    s.population[
-                        t -
-                        1,
-                        r] *
-                    1000.0)
+                ypcprev = (s.income[t -1,r] /s.population[t -1,r] *1000.0)
                 ypcgrowth = (ypc / ypcprev - 1.0)
 
                 if (t == Timestep.FromYear(1951)):
                     ypcgrowth = (0)
 
                 incomedens = (s.income[t, r] / s.area[t, r])
-
                 incomedensprev = (s.income[t - 1, r] / s.area[t - 1, r])
-
                 incomedensgrowth = (incomedens / incomedensprev - 1.0)
 
                 popdens = (s.population[t, r] / s.area[t, r] * 1000000.0)
-                popdensprev = (
-                    s.population[
-                        t -
-                        1,
-                        r] /
-                    s.area[
-                        t -
-                        1,
-                        r] *
-                    1000000.0)
+                popdensprev = (s.population[t - 1,r] /s.area[t -1,r] *1000000.0)
                 popdensgrowth = (popdens / popdensprev - 1.0)
 
-                s.dryval[
-                    t,
-                    r] = (
-                    s.dvbm *
-                    math.pow(
-                        incomedens /
-                        s.incdens,
-                        s.dvydl))
+                s.dryval[t,r] = (s.dvbm * math.pow(incomedens / s.incdens,s.dvydl))
 
-                s.wetval[t, r] = (s.wvbm *
-                                  math.pow(ypc / s.slrwvypc0, s.wvel) *
+                s.wetval[t, r] = (s.wvbm *math.pow(ypc / s.slrwvypc0, s.wvel) *
                                   math.pow(popdens / s.slrwvpopdens0, s.wvpdl) *
-                                  math.pow((s.wetland90[r] - s.cumwetlandloss[t - 1, r]) / s.wetland90[r], s.wvsl))
+                                  math.pow((s.wetland90[r] - s.cumwetlandloss[t - 1, r]) /
+                                  s.wetland90[r], s.wvsl))
 
-                potCumLandloss = (
-                    min(s.maxlandloss[r], s.dlbm[r] * math.pow(s.sea[t], s.drylandlossparam[r])))
+                potCumLandloss = (min(s.maxlandloss[r], s.dlbm[r] * math.pow(s.sea[t], s.drylandlossparam[r])))
+
+                #print "sea;", t, ";", r, ";", s.sea[t]
+                #print "potCumLandLoss;", t, ";", r, ";", potCumLandloss
 
                 potLandloss = (potCumLandloss - s.cumlandloss[t - 1, r])
 
-                if (ds < 0):
 
+
+
+
+                if (ds < 0):
+                    #print "Condition 1;", t, ";True;ds < 0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif ((1.0 + s.slrprtp[r] + ypcgrowth) < 0.0):
-
+                    #print "Condition 2;", t, ";True;(1.0 + s.slrprtp[r] + ypcgrowth) < 0.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif (((1.0 + s.dvydl * incomedensgrowth) < 0.0)):
-
+                    #print "Condition 3;", t, ";True;(1.0 + s.dvydl * incomedensgrowth) < 0.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif ((1.0 / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1):
-
+                    #print "Condition 4;", t, ";True;(1.0 / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif (((1.0 + s.dvydl * incomedensgrowth) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0):
-
+                    #print "Condition 5;",  t, ";True;((1.0 + s.dvydl * incomedensgrowth) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (1)
 
                 elif (((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth + s.wvsl * s.wetlandgrowth[t - 1, r]) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0):
-
+                    #print "Condition 6;", t, ";True;((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth + s.wvsl * s.wetlandgrowth[t - 1, r]) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 else:
-
+                    #print "Condition 7;", t, ";Exclusion;;"
                     s.npprotcost[t, r] = (
                         s.pc[r] * ds * (1.0 + s.slrprtp[r] + ypcgrowth) / (s.slrprtp[r] + ypcgrowth))
 
-                    if ((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth +
-                         s.wvsl * s.wetlandgrowth[t - 1, r]) < 0.0):
+                    if ((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth + s.wvsl * s.wetlandgrowth[t - 1, r]) < 0.0):
                         s.npwetcost[t, r] = (0)
                     else:
-                        s.npwetcost[t, r] = (s.wmbm[r] *
-                                             ds *
-                                             s.wetval[t, r] *
-                                             (1.0 +
-                                              s.slrprtp[r] +
-                                              ypcgrowth) /
-                                             (s.slrprtp[r] +
-                                              ypcgrowth -
-                                              s.wvel *
-                                              ypcgrowth -
-                                              s.wvpdl *
-                                              popdensgrowth -
-                                              s.wvsl *
-                                              s.wetlandgrowth[t -
-                                                              1, r]))
+                        s.npwetcost[t, r] = (s.wmbm[r] * ds * s.wetval[t, r] * (1.0 + s.slrprtp[r] + ypcgrowth) /
+                                             (s.slrprtp[r] + ypcgrowth - s.wvel * ypcgrowth -
+                                              s.wvpdl * popdensgrowth - s.wvsl * s.wetlandgrowth[t -1, r]))
 
                     if ((1.0 + s.dvydl * incomedensgrowth) < 0.0):
                         s.npdrycost[t, r] = (0)
                     else:
-                        s.npdrycost[t, r] = (potLandloss *
-                                             s.dryval[t, r] *
-                                             (1 +
-                                              s.slrprtp[r] +
-                                                 ypcgrowth) /
-                                             (s.slrprtp[r] +
-                                                 ypcgrowth -
-                                                 s.dvydl *
-                                                 incomedensgrowth))
+                        s.npdrycost[t, r] = (potLandloss * s.dryval[t, r] * (1 + s.slrprtp[r] + ypcgrowth) /
+                                             (s.slrprtp[r] + ypcgrowth - s.dvydl * incomedensgrowth))
 
-                    s.protlev[t, r] = (max(0.0, 1.0 -
-                                           0.5 *
-                                           (s.npprotcost[t, r] +
-                                            s.npwetcost[t, r]) /
-                                           s.npdrycost[t, r]))
+                    s.protlev[t, r] = (max(0.0, 1.0 -0.5 * (s.npprotcost[t, r] + s.npwetcost[t, r]) /s.npdrycost[t, r]))
 
                     if (s.protlev[t, r] > 1):
                         raise Exception("protlevel >1 should not happen")
 
-                s.wetlandloss[t, r] = (min(
-                    s.wlbm[r] * ds + s.protlev[t, r] * s.wmbm[r] * ds,
-                    s.wetmax[r] - s.cumwetlandloss[t - 1, r]))
+                    #print "pc;", t, ";", r, ";", s.pc[r], ";"
+                    #print "ds;", t, ";", r, ";", ds, ";"
+                    #print "slrprtp;", t, ";", r, ";", s.slrprtp[r], ";"
+                    #print "ypcgrowth;", t, ";", r, ";", ypcgrowth, ";"
+                    #print "wvel;", t, ";", r, ";", s.wvel, ";"
+                    #print "wvpdl;", t, ";", r, ";", s.wvpdl, ";"
+                    #print "popdensgrowth;", t, ";", r, ";", popdensgrowth, ";"
+                    #print "wvsl;", t, ";", r, ";", s.wvsl, ";"
+                    #print "wetlandgrowth[t-1];", t, ";", r, ";", s.wetlandgrowth[t-1, r], ";"
+                    #print "wmbm;", t, ";", r, ";", s.wmbm[r], ";"
+                    #print "wetval;", t, ";", r, ";", s.wetval[t,r], ";"
+                    #print "dvydl;", t, ";", r, ";", s.dvydl, ";"
+                    #print "incomdensgrowth;", t, ";", r, ";", incomedensgrowth, ";"
+                    #print "potLandloss;", t, ";", r, ";", potLandloss, ";"
+                    #print "dryval;", t, ";", r, ";", s.dryval[t,r], ";"
 
-                s.cumwetlandloss[
-                    t,
-                    r] = (
-                    s.cumwetlandloss[
-                        t -
-                        1,
-                        r] +
-                    s.wetlandloss[
-                        t,
-                        r])
 
-                s.wetlandgrowth[t,
-                                r] = ((s.wetland90[r] - s.cumwetlandloss[t,
-                                                                         r]) / (s.wetland90[r] - s.cumwetlandloss[t - 1,
-                                                                                                                  r]) - 1.0)
+
+
+
+
+                #print "npprotcost;", t, ";", r, ";", s.npprotcost[t,r], ";"
+                #print "npwetcost;", t, ";", r, ";", s.npwetcost[t,r], ";"
+                #print "npdrycost;", t, ";", r, ";", s.npdrycost[t,r], ";"
+                #print "protlev;", t, ";", r, ";", s.protlev[t,r]
+                #print "protlev > 1;", t, ";", r, ";", (s.protlev[t,r] > 1)
+
+
+
+
+                s.wetlandloss[t, r] = (min(s.wlbm[r] * ds + s.protlev[t, r] * s.wmbm[r] * ds,
+                                        s.wetmax[r] - s.cumwetlandloss[t - 1, r]))
+
+                s.cumwetlandloss[t,r] = (s.cumwetlandloss[t -1,r] + s.wetlandloss[t,r])
+
+                s.wetlandgrowth[t,r] = ((s.wetland90[r] - s.cumwetlandloss[t,r]) /
+                                        (s.wetland90[r] - s.cumwetlandloss[t - 1,r]) - 1.0)
 
                 s.wetcost[t, r] = (s.wetval[t, r] * s.wetlandloss[t, r])
-
                 s.landloss[t, r] = ((1.0 - s.protlev[t, r]) * potLandloss)
 
-                s.cumlandloss[
-                    t,
-                    r] = (
-                    s.cumlandloss[
-                        t -
-                        1,
-                        r] +
-                    s.landloss[
-                        t,
-                        r])
-                s.drycost[t, r] = (s.dryval[t, r] * s.landloss[t, r])
+                #print "protlev;", t, ";", r, ";", s.protlev[t,r]
+                #print "potlandloss;", t, ";", r, ";", potLandloss
+                #print "landloss;", t, ";", r, ";", s.landloss[t,r]
 
+
+
+
+
+                s.cumlandloss[t,r] = (s.cumlandloss[t -1,r] + s.landloss[t,r])
+                s.drycost[t, r] = (s.dryval[t, r] * s.landloss[t, r])
                 s.protcost[t, r] = (s.protlev[t, r] * s.pc[r] * ds)
 
                 if (s.landloss[t, r] < 0):
@@ -372,37 +348,31 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 else:
                     s.leave[t, r] = (s.coastpd[r] * popdens * s.landloss[t, r])
 
-                s.leavecost[
-                    t,
-                    r] = (
-                    s.emcst *
-                    ypc *
-                    s.leave[
-                        t,
-                        r] /
-                    1000000000)
+                #print "coastpd;", t, ";", r, ";", s.coastpd[r]
+                #print "popdens;", t, ";", r, ";", popdens
+                #print "landloss;", t, ";", r, ";", s.landloss[t,r]
+                #print "leave;", t, ";", r, ";", s.leave[t,r]
+
+
+                s.leavecost[t,r] = (s.emcst * ypc * s.leave[t,r] /1000000000)
 
             for destination in dimensions.GetValuesOfRegion():
                 enter = (0.0)
                 for source in dimensions.GetValuesOfRegion():
 
-                    enter += s.leave[t,
-                                     source] * s.imigrate[source,
-                                                          destination]
+                    enter += s.leave[t,source] * s.imigrate[source,destination]
+
+
+
 
                 s.enter[t, destination] = (enter)
 
+                #print "enter aggregate;", t, ";", destination, ";", s.enter[t, destination]
+
+
             for r in dimensions.GetValuesOfRegion():
                 ypc = (s.income[t, r] / s.population[t, r] * 1000.0)
-                s.entercost[
-                    t,
-                    r] = (
-                    s.immcst *
-                    ypc *
-                    s.enter[
-                        t,
-                        r] /
-                    1000000000)
+                s.entercost[t,r] = (s.immcst * ypc * s.enter[t,r] /1000000000)
 
 
 behavior_classes = [ImpactSeaLevelRiseComponent]
