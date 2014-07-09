@@ -82,16 +82,16 @@ class PopulationComponent(Behaviors):
                 #print "pgrowth;", t, ";", r, ";", s.pgrowth[t,r]
                 #print "t >= timestep.FromSimulationYear(40);", t, ";", r, ";", t>=Timestep.FromSimulationYear(40)
                 #print "runwithoutpopulationperturbation;", t, ";", r, ";", s.runwithoutpopulationperturbation
-                #print "enter;", t, ";", r, ";", s.enter[t-1,r]
-                #print "leave;", t, ";", r, ";", s.leave[t-1,r]
-                #print "dead;", t, ";", r, ";", s.dead[t-1,r]
+                #print "enter[t-1];", t, ";", r, ";", s.enter[t-1,r], ";"
+                #print "leave[t-1];", t, ";", r, ";", s.leave[t-1,r], ";"
+                #print "dead[t-1];", t, ";", r, ";", s.dead[t-1,r], ";"
                 #print "population start;", t, ";", r, ";", s.population[t,r]
 
 
                 if (s.population[t, r] < 0):
                     s.population[t, r] = (0.000001)
 
-                #print "population adjusted;", t, ";", r, ";", s.population[t,r]
+                #print "population;", t, ";", r, ";", s.population[t,r], ";"
 
 
                 s.populationin1[t, r] = (s.population[t, r] * 1000000.0)

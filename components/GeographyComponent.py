@@ -35,6 +35,6 @@ class GeographyComponent(Behaviors):
             for r in dimensions.GetValuesOfRegion():
 
                 s.area[t, r] = (s.area[t - 1, r] - s.landloss[t - 1, r])
-
+                #print "area;", t, ";", r, ";", s.area[t,r], ";"
 
 behavior_classes = [GeographyComponent]

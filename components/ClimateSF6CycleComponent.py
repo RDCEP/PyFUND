@@ -32,6 +32,9 @@ class ClimateSF6CycleComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
+        #print "lifesf6;", t, ";global;", s.lifesf6, ";"
+
+
         if (clock.IsFirstTimestep):
 
             s.sf6decay = (1.0 / s.lifesf6)

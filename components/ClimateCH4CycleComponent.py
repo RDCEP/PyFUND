@@ -32,6 +32,9 @@ class ClimateCH4CycleComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
+        #print "lifech4;", t, ";global;", s.lifech4, ";"
+
+
         if (clock.IsFirstTimestep):
 
             s.ch4decay = (1.0 / s.lifech4)

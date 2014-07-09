@@ -172,8 +172,11 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                     for i in dimensions.GetValuesOfRegion():
 
                         immsumm += s.migrate[i, r1]
+                        #print "migrate;", i, ";", r1, ";", s.migrate[i,r1], ";"
 
+                    #print "immsum[r2, r1];", r2, ";", r1, ";", immsumm, ";"
                     s.imigrate[r1, r2] = (s.migrate[r2, r1] / immsumm)
+                    #print "immigrate[r1, r2];", r2, ";", r1, ";", s.imigrate[r1,r2], ";"
 
                 t0 = (clock.StartTime)
                 s.landloss[t0, r1] = (0.0)
@@ -217,7 +220,7 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 potCumLandloss = (min(s.maxlandloss[r], s.dlbm[r] * math.pow(s.sea[t], s.drylandlossparam[r])))
 
                 #print "sea;", t, ";", r, ";", s.sea[t]
-                #print "potCumLandLoss;", t, ";", r, ";", potCumLandloss
+                #print "potCumLandLoss;", t, ";", r, ";", potCumLandloss, ";"
 
                 potLandloss = (potCumLandloss - s.cumlandloss[t - 1, r])
 
@@ -314,8 +317,8 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 #print "npprotcost;", t, ";", r, ";", s.npprotcost[t,r], ";"
                 #print "npwetcost;", t, ";", r, ";", s.npwetcost[t,r], ";"
                 #print "npdrycost;", t, ";", r, ";", s.npdrycost[t,r], ";"
-                #print "protlev;", t, ";", r, ";", s.protlev[t,r]
-                #print "protlev > 1;", t, ";", r, ";", (s.protlev[t,r] > 1)
+                #print "protlev;", t, ";", r, ";", s.protlev[t,r], ";"
+                #print "protlev > 1;", t, ";", r, ";", (s.protlev[t,r] > 1), ";"
 
 
 
@@ -361,6 +364,7 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 for source in dimensions.GetValuesOfRegion():
 
                     enter += s.leave[t,source] * s.imigrate[source,destination]
+                    #print "immigrate;", t, ";", source, ";", destination, ";", s.imigrate[source,destination], ";"
 
 
 

@@ -95,7 +95,9 @@ class GammaDistribution(Distribution):
    
    @property
    def mean(self):
-      if self.alpha <= 1:
+       # changed if statement to < 1 from <= 1 so that migrate.csv gamma distribution
+       # import would reflect mode values from original FUND parameter files.
+      if self.alpha < 1:
          return self.alpha * self.beta
       else:
          return (self.alpha - 1) * self.beta # this is mode, not mean
@@ -390,7 +392,7 @@ def main():
    
    with warnings.catch_warnings():
       # warnings.simplefilter('ignore')
-      model = FUND(time_steps = range(1950, 2300))
+      model = FUND(time_steps = range(1950, 3000))
    
    model.run()
 

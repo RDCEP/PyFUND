@@ -32,8 +32,8 @@ class OceanComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        print "lifesea;", t, ";global;", s.lifesea, ";"
-        print "delaysea;", t, ";global;", s.delaysea, ";"
+        #print "lifesea;", t, ";global;", s.lifesea, ";"
+        #print "delaysea;", t, ";global;", s.delaysea, ";"
 
 
 
