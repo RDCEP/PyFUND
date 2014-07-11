@@ -32,8 +32,6 @@ class ClimateCH4CycleComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        #print "lifech4;", t, ";global;", s.lifech4, ";"
-
 
         if (clock.IsFirstTimestep):
 

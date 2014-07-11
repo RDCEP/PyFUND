@@ -476,10 +476,14 @@ class EmissionsComponent(Behaviors):
                         r] /
                     1000)
 
+
+
                 if (s.co2red[t, r] < 0):
                     s.co2red[t, r] = (0)
                 elif (s.co2red[t, r] > 0.99):
                     s.co2red[t, r] = (0.99)
+
+
 
             for r in dimensions.GetValuesOfRegion():
 
@@ -708,6 +712,8 @@ class EmissionsComponent(Behaviors):
                     s.income[
                         t,
                         r])
+
+
 
             globco2 = (0)
             globch4 = (0)

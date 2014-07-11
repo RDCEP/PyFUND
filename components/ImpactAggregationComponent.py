@@ -155,6 +155,7 @@ class ImpactAggregationComponent(Behaviors):
                      t, r]),
                     s.income[t, r]))
 
+
             for r in dimensions.GetValuesOfRegion():
 
                 s.sloss[t, r] = (0.0
@@ -171,6 +172,7 @@ class ImpactAggregationComponent(Behaviors):
                                  (s.switchoffwetcost and 0.0 or s.wetcost[
                                   t, r])
                                  + (s.switchoffleavecost and 0.0 or s.leavecost[t, r]))
+
 
             for r in dimensions.GetValuesOfRegion():
 

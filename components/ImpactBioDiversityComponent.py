@@ -62,8 +62,6 @@ class ImpactBioDiversityComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        #print "bioshare;", t, ";global;", s.bioshare, ";"
-
 
         if (clock.IsFirstTimestep):
 

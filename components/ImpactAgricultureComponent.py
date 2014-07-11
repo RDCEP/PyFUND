@@ -152,4 +152,5 @@ class ImpactAgricultureComponent(Behaviors):
                                   s.income[t, r])
 
 
+
 behavior_classes = [ImpactAgricultureComponent]

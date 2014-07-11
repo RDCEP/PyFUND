@@ -32,8 +32,6 @@ class ClimateN2OCycleComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        #print "lifen2o;", t, ";global;", s.lifen2o, ";"
-
 
         if (clock.IsFirstTimestep):
 

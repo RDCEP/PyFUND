@@ -77,6 +77,12 @@ class ScenarioUncertaintyComponent(Behaviors):
         yearsFromUncertaintyStart = (
             (t - clock.first) - (s.timeofuncertaintystart - clock.first))
 
+
+        # We added this if-statement to catch a divide by 0 error when yearsFromUncertaintyStart
+        # = 50. sdTimeFactor behaves normally in all cases with this substitution since
+        # sdTimeFactor modifies ypcgrowth, pgrowth, aeei and acei only when
+        # t> timeofuncertaintystart. By construction, t>=timefromuncertaintystart will
+        # never include the time range where sdTimeFactor = 0 from this if statement
         if yearsFromUncertaintyStart == -50.0:
             sdTimeFactor = 0.0
         else:

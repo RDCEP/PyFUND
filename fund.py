@@ -69,11 +69,11 @@ class TriangularDistribution(Distribution):
    def __repr__(self):
       return u'TriangularDistribution({0}; {1}; {2})'.format(self.minimum, self.mode, self.maximum)
 
-   #Pretend for a second that I know what I'm doing. Right now the regex pulls in the three values
-   #within the TriangleDistribution() line. The order of these values is min/mean/max. Right now,
-   #the middle value is called 'mode' in this file. We should not be computing the mean since we
-   #actually import it. Instead when we call property mean, we should return value associated
-   #with mean in the file (called mode here)
+   # Right now the regex pulls in the three values within the TriangleDistribution() line.
+   # The order of these values is min/mean/max. Right now,the middle value is called 'mode'
+   # in this file. We should not be computing the mean since we actually import it. Instead
+   # when we call property mean, we should return value associated with mean in
+   # the file (called mode here)
 
    @property
    def mean(self):

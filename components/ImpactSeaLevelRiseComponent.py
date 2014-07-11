@@ -172,11 +172,8 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                     for i in dimensions.GetValuesOfRegion():
 
                         immsumm += s.migrate[i, r1]
-                        #print "migrate;", i, ";", r1, ";", s.migrate[i,r1], ";"
 
-                    #print "immsum[r2, r1];", r2, ";", r1, ";", immsumm, ";"
                     s.imigrate[r1, r2] = (s.migrate[r2, r1] / immsumm)
-                    #print "immigrate[r1, r2];", r2, ";", r1, ";", s.imigrate[r1,r2], ";"
 
                 t0 = (clock.StartTime)
                 s.landloss[t0, r1] = (0.0)
@@ -187,10 +184,6 @@ class ImpactSeaLevelRiseComponent(Behaviors):
         else:
 
             ds = (s.sea[t] - s.sea[t - 1])
-
-            #print "ds;", t, ";global;", ds, ";"
-            #print "sea[t];", t, ";global;", s.sea[t], ";"
-            #print "sea[t-1];", t, ";global;", s.sea[t-1], ";"
 
 
 
@@ -219,59 +212,47 @@ class ImpactSeaLevelRiseComponent(Behaviors):
 
                 potCumLandloss = (min(s.maxlandloss[r], s.dlbm[r] * math.pow(s.sea[t], s.drylandlossparam[r])))
 
-                #print "sea;", t, ";", r, ";", s.sea[t]
-                #print "potCumLandLoss;", t, ";", r, ";", potCumLandloss, ";"
-
                 potLandloss = (potCumLandloss - s.cumlandloss[t - 1, r])
 
 
 
-
-
                 if (ds < 0):
-                    #print "Condition 1;", t, ";True;ds < 0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif ((1.0 + s.slrprtp[r] + ypcgrowth) < 0.0):
-                    #print "Condition 2;", t, ";True;(1.0 + s.slrprtp[r] + ypcgrowth) < 0.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif (((1.0 + s.dvydl * incomedensgrowth) < 0.0)):
-                    #print "Condition 3;", t, ";True;(1.0 + s.dvydl * incomedensgrowth) < 0.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif ((1.0 / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1):
-                    #print "Condition 4;", t, ";True;(1.0 / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 elif (((1.0 + s.dvydl * incomedensgrowth) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0):
-                    #print "Condition 5;",  t, ";True;((1.0 + s.dvydl * incomedensgrowth) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (1)
 
                 elif (((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth + s.wvsl * s.wetlandgrowth[t - 1, r]) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0):
-                    #print "Condition 6;", t, ";True;((1.0 + s.wvel * ypcgrowth + s.wvpdl * popdensgrowth + s.wvsl * s.wetlandgrowth[t - 1, r]) / (1.0 + s.slrprtp[r] + ypcgrowth)) >= 1.0;"
                     s.npprotcost[t, r] = (0)
                     s.npwetcost[t, r] = (0)
                     s.npdrycost[t, r] = (0)
                     s.protlev[t, r] = (0)
 
                 else:
-                    #print "Condition 7;", t, ";Exclusion;;"
                     s.npprotcost[t, r] = (
                         s.pc[r] * ds * (1.0 + s.slrprtp[r] + ypcgrowth) / (s.slrprtp[r] + ypcgrowth))
 
@@ -293,34 +274,6 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                     if (s.protlev[t, r] > 1):
                         raise Exception("protlevel >1 should not happen")
 
-                    #print "pc;", t, ";", r, ";", s.pc[r], ";"
-                    #print "ds;", t, ";", r, ";", ds, ";"
-                    #print "slrprtp;", t, ";", r, ";", s.slrprtp[r], ";"
-                    #print "ypcgrowth;", t, ";", r, ";", ypcgrowth, ";"
-                    #print "wvel;", t, ";", r, ";", s.wvel, ";"
-                    #print "wvpdl;", t, ";", r, ";", s.wvpdl, ";"
-                    #print "popdensgrowth;", t, ";", r, ";", popdensgrowth, ";"
-                    #print "wvsl;", t, ";", r, ";", s.wvsl, ";"
-                    #print "wetlandgrowth[t-1];", t, ";", r, ";", s.wetlandgrowth[t-1, r], ";"
-                    #print "wmbm;", t, ";", r, ";", s.wmbm[r], ";"
-                    #print "wetval;", t, ";", r, ";", s.wetval[t,r], ";"
-                    #print "dvydl;", t, ";", r, ";", s.dvydl, ";"
-                    #print "incomdensgrowth;", t, ";", r, ";", incomedensgrowth, ";"
-                    #print "potLandloss;", t, ";", r, ";", potLandloss, ";"
-                    #print "dryval;", t, ";", r, ";", s.dryval[t,r], ";"
-
-
-
-
-
-
-                #print "npprotcost;", t, ";", r, ";", s.npprotcost[t,r], ";"
-                #print "npwetcost;", t, ";", r, ";", s.npwetcost[t,r], ";"
-                #print "npdrycost;", t, ";", r, ";", s.npdrycost[t,r], ";"
-                #print "protlev;", t, ";", r, ";", s.protlev[t,r], ";"
-                #print "protlev > 1;", t, ";", r, ";", (s.protlev[t,r] > 1), ";"
-
-
 
 
                 s.wetlandloss[t, r] = (min(s.wlbm[r] * ds + s.protlev[t, r] * s.wmbm[r] * ds,
@@ -334,13 +287,6 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 s.wetcost[t, r] = (s.wetval[t, r] * s.wetlandloss[t, r])
                 s.landloss[t, r] = ((1.0 - s.protlev[t, r]) * potLandloss)
 
-                #print "protlev;", t, ";", r, ";", s.protlev[t,r]
-                #print "potlandloss;", t, ";", r, ";", potLandloss
-                #print "landloss;", t, ";", r, ";", s.landloss[t,r]
-
-
-
-
 
                 s.cumlandloss[t,r] = (s.cumlandloss[t -1,r] + s.landloss[t,r])
                 s.drycost[t, r] = (s.dryval[t, r] * s.landloss[t, r])
@@ -351,12 +297,6 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 else:
                     s.leave[t, r] = (s.coastpd[r] * popdens * s.landloss[t, r])
 
-                #print "coastpd;", t, ";", r, ";", s.coastpd[r]
-                #print "popdens;", t, ";", r, ";", popdens
-                #print "landloss;", t, ";", r, ";", s.landloss[t,r]
-                #print "leave;", t, ";", r, ";", s.leave[t,r]
-
-
                 s.leavecost[t,r] = (s.emcst * ypc * s.leave[t,r] /1000000000)
 
             for destination in dimensions.GetValuesOfRegion():
@@ -364,14 +304,10 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 for source in dimensions.GetValuesOfRegion():
 
                     enter += s.leave[t,source] * s.imigrate[source,destination]
-                    #print "immigrate;", t, ";", source, ";", destination, ";", s.imigrate[source,destination], ";"
-
 
 
 
                 s.enter[t, destination] = (enter)
-
-                #print "enter aggregate;", t, ";", destination, ";", s.enter[t, destination]
 
 
             for r in dimensions.GetValuesOfRegion():
