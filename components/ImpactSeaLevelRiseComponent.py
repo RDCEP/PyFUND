@@ -7,94 +7,40 @@ from components._patches import *
 
 
 class IImpactSeaLevelRiseState(Parameters):
-    wetval = IVariable2Dimensional(
-        'wetval', [
-            'Timestep', 'Region'], 'double', None)
-    wetlandloss = IVariable2Dimensional(
-        'wetlandloss', [
-            'Timestep', 'Region'], 'double', None)
-    cumwetlandloss = IVariable2Dimensional(
-        'cumwetlandloss', [
-            'Timestep', 'Region'], 'double', None)
-    wetlandgrowth = IVariable2Dimensional(
-        'wetlandgrowth', [
-            'Timestep', 'Region'], 'double', None)
-    wetcost = IVariable2Dimensional(
-        'wetcost', [
-            'Timestep', 'Region'], 'double', None)
-    dryval = IVariable2Dimensional(
-        'dryval', [
-            'Timestep', 'Region'], 'double', None)
-    landloss = IVariable2Dimensional(
-        'landloss', [
-            'Timestep', 'Region'], 'double', None)
-    cumlandloss = IVariable2Dimensional(
-        'cumlandloss', [
-            'Timestep', 'Region'], 'double', None)
-    drycost = IVariable2Dimensional(
-        'drycost', [
-            'Timestep', 'Region'], 'double', None)
-    npprotcost = IVariable2Dimensional(
-        'npprotcost', [
-            'Timestep', 'Region'], 'double', None)
-    npwetcost = IVariable2Dimensional(
-        'npwetcost', [
-            'Timestep', 'Region'], 'double', None)
-    npdrycost = IVariable2Dimensional(
-        'npdrycost', [
-            'Timestep', 'Region'], 'double', None)
-    protlev = IVariable2Dimensional(
-        'protlev', [
-            'Timestep', 'Region'], 'double', None)
-    protcost = IVariable2Dimensional(
-        'protcost', [
-            'Timestep', 'Region'], 'double', None)
-    enter = IVariable2Dimensional(
-        'enter', [
-            'Timestep', 'Region'], 'double', None)
-    leave = IVariable2Dimensional(
-        'leave', [
-            'Timestep', 'Region'], 'double', None)
-    entercost = IVariable2Dimensional(
-        'entercost', [
-            'Timestep', 'Region'], 'double', None)
-    leavecost = IVariable2Dimensional(
-        'leavecost', [
-            'Timestep', 'Region'], 'double', None)
-    imigrate = IVariable2Dimensional(
-        'imigrate', [
-            'Region', 'Region'], 'double', None)
+    wetval = IVariable2Dimensional('wetval', ['Timestep', 'Region'], 'double', None)
+    wetlandloss = IVariable2Dimensional('wetlandloss', ['Timestep', 'Region'], 'double', None)
+    cumwetlandloss = IVariable2Dimensional('cumwetlandloss', ['Timestep', 'Region'], 'double', None)
+    wetlandgrowth = IVariable2Dimensional('wetlandgrowth', ['Timestep', 'Region'], 'double', None)
+    wetcost = IVariable2Dimensional('wetcost', ['Timestep', 'Region'], 'double', None)
+    dryval = IVariable2Dimensional('dryval', ['Timestep', 'Region'], 'double', None)
+    landloss = IVariable2Dimensional('landloss', ['Timestep', 'Region'], 'double', None)
+    cumlandloss = IVariable2Dimensional('cumlandloss', ['Timestep', 'Region'], 'double', None)
+    drycost = IVariable2Dimensional('drycost', ['Timestep', 'Region'], 'double', None)
+    npprotcost = IVariable2Dimensional('npprotcost', ['Timestep', 'Region'], 'double', None)
+    npwetcost = IVariable2Dimensional('npwetcost', ['Timestep', 'Region'], 'double', None)
+    npdrycost = IVariable2Dimensional('npdrycost', ['Timestep', 'Region'], 'double', None)
+    protlev = IVariable2Dimensional('protlev', ['Timestep', 'Region'], 'double', None)
+    protcost = IVariable2Dimensional('protcost', ['Timestep', 'Region'], 'double', None)
+    enter = IVariable2Dimensional('enter', ['Timestep', 'Region'], 'double', None)
+    leave = IVariable2Dimensional('leave', ['Timestep', 'Region'], 'double', None)
+    entercost = IVariable2Dimensional('entercost', ['Timestep', 'Region'], 'double', None)
+    leavecost = IVariable2Dimensional('leavecost', ['Timestep', 'Region'], 'double', None)
+    imigrate = IVariable2Dimensional('imigrate', ['Region', 'Region'], 'double', None)
     pc = IParameter1Dimensional('pc', ['Region'], 'double', None)
     slrprtp = IParameter1Dimensional('slrprtp', ['Region'], 'double', None)
     wmbm = IParameter1Dimensional('wmbm', ['Region'], 'double', None)
     dlbm = IParameter1Dimensional('dlbm', ['Region'], 'double', None)
-    drylandlossparam = IParameter1Dimensional(
-        'drylandlossparam',
-        ['Region'],
-        'double',
-        None)
+    drylandlossparam = IParameter1Dimensional('drylandlossparam',['Region'],'double', None)
     wlbm = IParameter1Dimensional('wlbm', ['Region'], 'double', None)
     coastpd = IParameter1Dimensional('coastpd', ['Region'], 'double', None)
     wetmax = IParameter1Dimensional('wetmax', ['Region'], 'double', None)
     wetland90 = IParameter1Dimensional('wetland90', ['Region'], 'double', None)
-    maxlandloss = IParameter1Dimensional(
-        'maxlandloss',
-        ['Region'],
-        'double',
-        None)
+    maxlandloss = IParameter1Dimensional('maxlandloss',['Region'],'double',None)
     sea = IParameter1Dimensional('sea', ['Timestep'], 'double', None)
-    migrate = IParameter2Dimensional(
-        'migrate', [
-            'Region', 'Region'], 'double', None)
-    income = IParameter2Dimensional(
-        'income', [
-            'Timestep', 'Region'], 'double', None)
-    population = IParameter2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
-    area = IParameter2Dimensional(
-        'area', [
-            'Timestep', 'Region'], 'double', None)
+    migrate = IParameter2Dimensional('migrate', ['Region', 'Region'], 'double', None)
+    income = IParameter2Dimensional('income', ['Timestep', 'Region'], 'double', None)
+    population = IParameter2Dimensional('population', ['Timestep', 'Region'], 'double', None)
+    area = IParameter2Dimensional('area', ['Timestep', 'Region'], 'double', None)
     incdens = ScalarVariable('incdens', 'double', None)
     emcst = ScalarVariable('emcst', 'double', None)
     immcst = ScalarVariable('immcst', 'double', None)
@@ -185,8 +131,6 @@ class ImpactSeaLevelRiseComponent(Behaviors):
 
             ds = (s.sea[t] - s.sea[t - 1])
 
-
-
             for r in dimensions.GetValuesOfRegion():
                 ypc = (s.income[t, r] / s.population[t, r] * 1000.0)
                 ypcprev = (s.income[t -1,r] /s.population[t -1,r] *1000.0)
@@ -213,8 +157,6 @@ class ImpactSeaLevelRiseComponent(Behaviors):
                 potCumLandloss = (min(s.maxlandloss[r], s.dlbm[r] * math.pow(s.sea[t], s.drylandlossparam[r])))
 
                 potLandloss = (potCumLandloss - s.cumlandloss[t - 1, r])
-
-
 
                 if (ds < 0):
                     s.npprotcost[t, r] = (0)
@@ -301,6 +243,7 @@ class ImpactSeaLevelRiseComponent(Behaviors):
 
             for destination in dimensions.GetValuesOfRegion():
                 enter = (0.0)
+
                 for source in dimensions.GetValuesOfRegion():
 
                     enter += s.leave[t,source] * s.imigrate[source,destination]

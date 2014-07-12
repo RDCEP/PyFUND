@@ -7,24 +7,14 @@ from components._patches import *
 
 
 class IImpactHeatingState(Parameters):
-    heating = IVariable2Dimensional(
-        'heating', [
-            'Timestep', 'Region'], 'double', None)
+    heating = IVariable2Dimensional('heating', ['Timestep', 'Region'], 'double', None)
     hebm = IParameter1Dimensional('hebm', ['Region'], 'double', None)
     gdp90 = IParameter1Dimensional('gdp90', ['Region'], 'double', None)
-    population = IParameter2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
+    population = IParameter2Dimensional('population', ['Timestep', 'Region'], 'double', None)
     pop90 = IParameter1Dimensional('pop90', ['Region'], 'double', None)
-    income = IParameter2Dimensional(
-        'income', [
-            'Timestep', 'Region'], 'double', None)
-    temp = IParameter2Dimensional(
-        'temp', [
-            'Timestep', 'Region'], 'double', None)
-    cumaeei = IParameter2Dimensional(
-        'cumaeei', [
-            'Timestep', 'Region'], 'double', None)
+    income = IParameter2Dimensional('income', ['Timestep', 'Region'], 'double', None)
+    temp = IParameter2Dimensional('temp', ['Timestep', 'Region'], 'double', None)
+    cumaeei = IParameter2Dimensional('cumaeei', ['Timestep', 'Region'], 'double', None)
     heel = ScalarVariable('heel', 'Double', None)
     henl = ScalarVariable('henl', 'Double', None)
 
@@ -59,27 +49,8 @@ class ImpactHeatingComponent(Behaviors):
                 ypc = (s.income[t, r] / s.population[t, r] * 1000.0)
                 ypc90 = (s.gdp90[r] / s.pop90[r] * 1000.0)
 
-                s.heating[
-                    t,
-                    r] = (
-                    s.hebm[r] *
-                    s.cumaeei[
-                        t,
-                        r] *
-                    s.gdp90[r] *
-                    math.atan(
-                        s.temp[
-                            t,
-                            r]) /
-                    math.atan(1.0) *
-                    math.pow(
-                        ypc /
-                        ypc90,
-                        s.heel) *
-                    s.population[
-                        t,
-                        r] /
-                    s.pop90[r])
+                s.heating[t,r] = (s.hebm[r] * s.cumaeei[t,r] * s.gdp90[r] * math.atan( s.temp[t,r]) /
+                                    math.atan(1.0) * math.pow(ypc /ypc90,s.heel) * s.population[t,r] /s.pop90[r])
 
 
 behavior_classes = [ImpactHeatingComponent]

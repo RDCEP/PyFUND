@@ -7,16 +7,8 @@ from components._patches import *
 
 
 class IClimateSO2CycleState(Parameters):
-    globso2 = IParameter1Dimensional(
-        'globso2',
-        ['Timestep'],
-        'double',
-        'Global SO2 emissions')
-    acso2 = IVariable1Dimensional(
-        'acso2',
-        ['Timestep'],
-        'double',
-        'Atmospheric SO2 concentration')
+    globso2 = IParameter1Dimensional('globso2',['Timestep'], 'double','Global SO2 emissions')
+    acso2 = IVariable1Dimensional('acso2',['Timestep'],'double','Atmospheric SO2 concentration')
 
     options = [globso2, acso2]
 

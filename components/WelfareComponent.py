@@ -7,39 +7,14 @@ from components._patches import *
 
 
 class IGlobalWelfareState(Parameters):
-    population = IParameter1Dimensional(
-        'population',
-        ['Timestep'],
-        'double',
-        None)
-    consumption = IParameter1Dimensional(
-        'consumption',
-        ['Timestep'],
-        'double',
-        None)
-    cummulativewelfare = IVariable1Dimensional(
-        'cummulativewelfare',
-        ['Timestep'],
-        'double',
-        None)
-    marginalwelfare = IVariable1Dimensional(
-        'marginalwelfare',
-        ['Timestep'],
-        'double',
-        None)
+    population = IParameter1Dimensional('population',['Timestep'],'double',None)
+    consumption = IParameter1Dimensional('consumption',['Timestep'],'double',None)
+    cummulativewelfare = IVariable1Dimensional('cummulativewelfare',['Timestep'],'double',None)
+    marginalwelfare = IVariable1Dimensional('marginalwelfare',['Timestep'],'double',None)
     prtp = ScalarVariable('prtp', 'Double', None)
-    elasticityofmarginalutility = ScalarVariable(
-        'elasticityofmarginalutility',
-        'Double',
-        None)
-    utilitycalibrationadditive = ScalarVariable(
-        'utilitycalibrationadditive',
-        'Double',
-        None)
-    utilitycalibrationmultiplicative = ScalarVariable(
-        'utilitycalibrationmultiplicative',
-        'Double',
-        None)
+    elasticityofmarginalutility = ScalarVariable('elasticityofmarginalutility','Double',None)
+    utilitycalibrationadditive = ScalarVariable('utilitycalibrationadditive','Double',None)
+    utilitycalibrationmultiplicative = ScalarVariable('utilitycalibrationmultiplicative','Double',None)
     starttimestep = ScalarVariable('starttimestep', 'Timestep', None)
     stoptimestep = ScalarVariable('stoptimestep', 'Timestep', None)
     totalwelfare = ScalarVariable('totalwelfare', 'Double', None)
@@ -59,36 +34,15 @@ class IGlobalWelfareState(Parameters):
 
 
 class IUtilitarianWelfareState(Parameters):
-    population = IParameter2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
-    consumption = IParameter2Dimensional(
-        'consumption', [
-            'Timestep', 'Region'], 'double', None)
-    welfareweight = IParameter2Dimensional(
-        'welfareweight', [
-            'Timestep', 'Region'], 'double', None)
-    cummulativewelfare = IVariable1Dimensional(
-        'cummulativewelfare',
-        ['Timestep'],
-        'double',
-        None)
-    marginalwelfare = IVariable2Dimensional(
-        'marginalwelfare', [
-            'Timestep', 'Region'], 'double', None)
+    population = IParameter2Dimensional('population', ['Timestep', 'Region'], 'double', None)
+    consumption = IParameter2Dimensional('consumption', ['Timestep', 'Region'], 'double', None)
+    welfareweight = IParameter2Dimensional('welfareweight', ['Timestep', 'Region'], 'double', None)
+    cummulativewelfare = IVariable1Dimensional('cummulativewelfare',['Timestep'],'double',None)
+    marginalwelfare = IVariable2Dimensional('marginalwelfare', ['Timestep', 'Region'], 'double', None)
     prtp = ScalarVariable('prtp', 'Double', None)
-    elasticityofmarginalutility = ScalarVariable(
-        'elasticityofmarginalutility',
-        'Double',
-        None)
-    utilitycalibrationadditive = ScalarVariable(
-        'utilitycalibrationadditive',
-        'Double',
-        None)
-    utilitycalibrationmultiplicative = ScalarVariable(
-        'utilitycalibrationmultiplicative',
-        'Double',
-        None)
+    elasticityofmarginalutility = ScalarVariable('elasticityofmarginalutility','Double',None)
+    utilitycalibrationadditive = ScalarVariable('utilitycalibrationadditive','Double',None)
+    utilitycalibrationmultiplicative = ScalarVariable('utilitycalibrationmultiplicative','Double',None)
     starttimestep = ScalarVariable('starttimestep', 'Timestep', None)
     stoptimestep = ScalarVariable('stoptimestep', 'Timestep', None)
     totalwelfare = ScalarVariable('totalwelfare', 'Double', None)
@@ -109,36 +63,15 @@ class IUtilitarianWelfareState(Parameters):
 
 
 class IRegionalWelfareState(Parameters):
-    population = IParameter2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
-    consumption = IParameter2Dimensional(
-        'consumption', [
-            'Timestep', 'Region'], 'double', None)
-    cummulativewelfare = IVariable2Dimensional(
-        'cummulativewelfare', [
-            'Timestep', 'Region'], 'double', None)
-    marginalwelfare = IVariable2Dimensional(
-        'marginalwelfare', [
-            'Timestep', 'Region'], 'double', None)
-    totalwelfare = IVariable1Dimensional(
-        'totalwelfare',
-        ['Region'],
-        'double',
-        None)
+    population = IParameter2Dimensional('population', ['Timestep', 'Region'], 'double', None)
+    consumption = IParameter2Dimensional('consumption', ['Timestep', 'Region'], 'double', None)
+    cummulativewelfare = IVariable2Dimensional('cummulativewelfare', ['Timestep', 'Region'], 'double', None)
+    marginalwelfare = IVariable2Dimensional('marginalwelfare', ['Timestep', 'Region'], 'double', None)
+    totalwelfare = IVariable1Dimensional('totalwelfare',['Region'],'double',None)
     prtp = ScalarVariable('prtp', 'Double', None)
-    elasticityofmarginalutility = ScalarVariable(
-        'elasticityofmarginalutility',
-        'Double',
-        None)
-    utilitycalibrationadditive = ScalarVariable(
-        'utilitycalibrationadditive',
-        'Double',
-        None)
-    utilitycalibrationmultiplicative = ScalarVariable(
-        'utilitycalibrationmultiplicative',
-        'Double',
-        None)
+    elasticityofmarginalutility = ScalarVariable('elasticityofmarginalutility','Double',None)
+    utilitycalibrationadditive = ScalarVariable('utilitycalibrationadditive','Double',None)
+    utilitycalibrationmultiplicative = ScalarVariable('utilitycalibrationmultiplicative','Double',None)
     starttimestep = ScalarVariable('starttimestep', 'Timestep', None)
     stoptimestep = ScalarVariable('stoptimestep', 'Timestep', None)
 
@@ -180,29 +113,21 @@ class GlobalWelfareComponent(Behaviors):
                             math.log(consumption)
                     else:
                         return s.utilitycalibrationadditive + s.utilitycalibrationmultiplicative * \
-                            math.pow(
-                                consumption,
-                                1.0 - s.elasticityofmarginalutility) / (
+                            math.pow(consumption, 1.0 - s.elasticityofmarginalutility) / (
                                 1.0 - s.elasticityofmarginalutility)
 
                 def DF(year):
 
-                    return math.pow(
-                        1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
+                    return math.pow(1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
 
                 perCapitaConsumption = (s.consumption[t] / s.population[t])
 
                 if (perCapitaConsumption <= 0.0):
                     perCapitaConsumption = (1.0)
 
-                s.cummulativewelfare[t] = (
-                    s.cummulativewelfare[t - 1] + (U(perCapitaConsumption) * s.population[t] * DF(t)))
-                s.marginalwelfare[t] = (
-                    DF(t) *
-                    s.utilitycalibrationmultiplicative /
-                    math.pow(
-                        perCapitaConsumption,
-                        s.elasticityofmarginalutility))
+                s.cummulativewelfare[t] = (s.cummulativewelfare[t - 1] + (U(perCapitaConsumption) * s.population[t] * DF(t)))
+                s.marginalwelfare[t] = (DF(t) * s.utilitycalibrationmultiplicative /
+                    math.pow(perCapitaConsumption,s.elasticityofmarginalutility))
 
                 if (t == s.stoptimestep):
 
@@ -238,45 +163,25 @@ class UtilitarianWelfareComponent(Behaviors):
                             math.log(consumption)
                     else:
                         return s.utilitycalibrationadditive + s.utilitycalibrationmultiplicative * \
-                            math.pow(
-                                consumption,
+                            math.pow(consumption,
                                 1.0 - s.elasticityofmarginalutility) / (
                                 1.0 - s.elasticityofmarginalutility)
 
                 def DF(year):
 
-                    return math.pow(
-                        1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
+                    return math.pow(1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
 
                 for r in dimensions.GetValuesOfRegion():
 
-                    perCapitaConsumption = (
-                        s.consumption[
-                            t,
-                            r] /
-                        s.population[
-                            t,
-                            r])
+                    perCapitaConsumption = (s.consumption[t,r] / s.population[t,r])
 
                     if (perCapitaConsumption <= 0.0):
                         perCapitaConsumption = (1.0)
 
-                    w = (w +
-                         (s.welfareweight[t, r] *
-                          U(perCapitaConsumption) *
-                             s.population[t, r] *
-                             DF(t)))
-                    s.marginalwelfare[
-                        t,
-                        r] = (
-                        DF(t) *
-                        s.welfareweight[
-                            t,
-                            r] *
-                        s.utilitycalibrationmultiplicative /
-                        math.pow(
-                            perCapitaConsumption,
-                            s.elasticityofmarginalutility))
+                    w = (w + (s.welfareweight[t, r] * U(perCapitaConsumption) * s.population[t, r] * DF(t)))
+                    s.marginalwelfare[t,r] = (
+                        DF(t) * s.welfareweight[t,r] * s.utilitycalibrationmultiplicative /
+                        math.pow(perCapitaConsumption, s.elasticityofmarginalutility))
 
                 s.cummulativewelfare[t] = (w)
 
@@ -313,43 +218,26 @@ class RegionalWelfareComponent(Behaviors):
                             math.log(consumption)
                     else:
                         return s.utilitycalibrationadditive + s.utilitycalibrationmultiplicative * \
-                            math.pow(
-                                consumption,
+                            math.pow(consumption,
                                 1.0 - s.elasticityofmarginalutility) / (
                                 1.0 - s.elasticityofmarginalutility)
 
                 def DF(year):
 
-                    return math.pow(
-                        1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
+                    return math.pow(1.0 + s.prtp, (-(year - clock.first) - (s.starttimestep - clock.first)))
 
                 for r in dimensions.GetValuesOfRegion():
 
                     w = (s.cummulativewelfare[t - 1, r])
 
-                    perCapitaConsumption = (
-                        s.consumption[
-                            t,
-                            r] /
-                        s.population[
-                            t,
-                            r])
+                    perCapitaConsumption = (s.consumption[t,r] / s.population[t,r])
 
                     if (perCapitaConsumption <= 0.0):
                         perCapitaConsumption = (1.0)
 
-                    w = (w +
-                         (U(perCapitaConsumption) *
-                          s.population[t, r] *
-                             DF(t)))
-                    s.marginalwelfare[
-                        t,
-                        r] = (
-                        DF(t) *
-                        s.utilitycalibrationmultiplicative /
-                        math.pow(
-                            perCapitaConsumption,
-                            s.elasticityofmarginalutility))
+                    w = (w +(U(perCapitaConsumption) * s.population[t, r] * DF(t)))
+                    s.marginalwelfare[t,r] = (DF(t) * s.utilitycalibrationmultiplicative /
+                                            math.pow(perCapitaConsumption,s.elasticityofmarginalutility))
 
                     s.cummulativewelfare[t, r] = (w)
 

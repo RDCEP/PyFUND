@@ -8,21 +8,13 @@ from components._patches import *
 
 class IImpactWaterResourcesState(Parameters):
     watech = IVariable1Dimensional('watech', ['Timestep'], 'double', None)
-    water = IVariable2Dimensional(
-        'water', [
-            'Timestep', 'Region'], 'double', None)
+    water = IVariable2Dimensional('water', ['Timestep', 'Region'], 'double', None)
     wrbm = IParameter1Dimensional('wrbm', ['Region'], 'double', None)
     gdp90 = IParameter1Dimensional('gdp90', ['Region'], 'double', None)
-    income = IParameter2Dimensional(
-        'income', [
-            'Timestep', 'Region'], 'double', None)
-    population = IParameter2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
+    income = IParameter2Dimensional('income', ['Timestep', 'Region'], 'double', None)
+    population = IParameter2Dimensional('population', ['Timestep', 'Region'], 'double', None)
     pop90 = IParameter1Dimensional('pop90', ['Region'], 'double', None)
-    temp = IParameter2Dimensional(
-        'temp', [
-            'Timestep', 'Region'], 'double', None)
+    temp = IParameter2Dimensional('temp', ['Timestep', 'Region'], 'double', None)
     watechrate = ScalarVariable('watechrate', 'Double', None)
     wrel = ScalarVariable('wrel', 'Double', None)
     wrnl = ScalarVariable('wrnl', 'Double', None)
@@ -52,11 +44,7 @@ class ImpactWaterResourcesComponent(Behaviors):
         t = (clock.Current)
 
         if (t > Timestep.FromYear(2000)):
-            s.watech[t] = (math.pow(1.0 -
-                                    s.watechrate, (t -
-                                                   clock.first) -
-                                    (Timestep.FromYear(2000) -
-                                     clock.first)))
+            s.watech[t] = (math.pow(1.0 - s.watechrate, (t - clock.first) - (Timestep.FromYear(2000) - clock.first)))
         else:
             s.watech[t] = (1.0)
 
@@ -64,25 +52,8 @@ class ImpactWaterResourcesComponent(Behaviors):
             ypc = (s.income[t, r] / s.population[t, r] * 1000.0)
             ypc90 = (s.gdp90[r] / s.pop90[r] * 1000.0)
 
-            water = (
-                s.wrbm[r] *
-                s.gdp90[r] *
-                s.watech[t] *
-                math.pow(
-                    ypc /
-                    ypc90,
-                    s.wrel) *
-                math.pow(
-                    s.population[
-                        t,
-                        r] /
-                    s.pop90[r],
-                    s.wrpl) *
-                math.pow(
-                    s.temp[
-                        t,
-                        r],
-                    s.wrnl))
+            water = (s.wrbm[r] * s.gdp90[r] * s.watech[t] * math.pow(ypc / ypc90, s.wrel) *
+                math.pow(s.population[t,r] /s.pop90[r],s.wrpl) * math.pow(s.temp[t,r],s.wrnl))
 
             if (water > 0.1 * s.income[t, r]):
                 s.water[t, r] = (0.1 * s.income[t, r])

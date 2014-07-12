@@ -8,9 +8,7 @@ from components._patches import *
 
 class IGeographyState(Parameters):
     area = IVariable2Dimensional('area', ['Timestep', 'Region'], 'double', '')
-    landloss = IParameter2Dimensional(
-        'landloss', [
-            'Timestep', 'Region'], 'double', None)
+    landloss = IParameter2Dimensional('landloss', ['Timestep', 'Region'], 'double', None)
     area0 = IParameter1Dimensional('area0', ['Region'], 'double', None)
 
     options = [area, landloss, area0]

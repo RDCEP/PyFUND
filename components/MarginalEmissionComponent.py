@@ -8,11 +8,7 @@ from components._patches import *
 
 class IMarginalEmissionState(Parameters):
     emission = IParameter1Dimensional('emission', ['Timestep'], 'Double', None)
-    modemission = IVariable1Dimensional(
-        'modemission',
-        ['Timestep'],
-        'Double',
-        None)
+    modemission = IVariable1Dimensional('modemission',['Timestep'],'Double',None)
     emissionperiod = ScalarVariable('emissionperiod', 'Timestep', None)
     impulselength = ScalarVariable('impulselength', 'int', None)
 
@@ -28,7 +24,7 @@ class MarginalEmissionComponent(Behaviors):
         s = (state)
 
         if (((t - clock.first) >= (s.emissionperiod - clock.first))
-                and ((t - clock.first) < ((s.emissionperiod - clock.first) + s.impulselength))):
+            and ((t - clock.first) < ((s.emissionperiod - clock.first) + s.impulselength))):
 
             s.modemission[t] = (s.emission[t] + 1)
 

@@ -64,18 +64,16 @@ class ImpactDiarrhoeaComponent(Behaviors):
             ypc = (1000.0 * s.income[t, r] / s.population[t, r])
             ypc90 = (1000.0 * s.gdp90[r] / s.pop90[r])
 
-            absoluteRegionalTempPreIndustrial = (
-                s.temp90[r] -
-                0.49 *
-                s.bregtmp[r])
+            absoluteRegionalTempPreIndustrial = (s.temp90[r] - 0.49 * s.bregtmp[r])
 
             if (absoluteRegionalTempPreIndustrial > 0.0):
+                s.diadead[t, r] = (s.diamort[r] * s.population[t, r] * math.pow(ypc / ypc90, s.diamortel) *
+                                    (math.pow((absoluteRegionalTempPreIndustrial + s.regtmp[t, r]) /
+                                    absoluteRegionalTempPreIndustrial, s.diamortnl) - 1.0))
 
-                s.diadead[t, r] = (s.diamort[r] * s.population[t, r] * math.pow(ypc / ypc90, s.diamortel)
-                                   * (math.pow((absoluteRegionalTempPreIndustrial + s.regtmp[t, r]) / absoluteRegionalTempPreIndustrial, s.diamortnl) - 1.0))
-
-                s.diasick[t, r] = (s.diayld[r] * s.population[t, r] * math.pow(ypc / ypc90, s.diayldel)
-                                   * (math.pow((absoluteRegionalTempPreIndustrial + s.regtmp[t, r]) / absoluteRegionalTempPreIndustrial, s.diayldnl) - 1.0))
+                s.diasick[t, r] = (s.diayld[r] * s.population[t, r] * math.pow(ypc / ypc90, s.diayldel) *
+                                    (math.pow((absoluteRegionalTempPreIndustrial + s.regtmp[t, r]) /
+                                    absoluteRegionalTempPreIndustrial, s.diayldnl) - 1.0))
 
             else:
 

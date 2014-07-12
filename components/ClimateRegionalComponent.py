@@ -7,25 +7,13 @@ from components._patches import *
 
 
 class IClimateRegionalState(Parameters):
-    inputtemp = IParameter1Dimensional(
-        'inputtemp',
-        ['Timestep'],
-        'Double',
-        None)
+    inputtemp = IParameter1Dimensional('inputtemp',['Timestep'],'Double',None)
     bregtmp = IParameter1Dimensional('bregtmp', ['Region'], 'Double', None)
     bregstmp = IParameter1Dimensional('bregstmp', ['Region'], 'Double', None)
-    scentemp = IParameter2Dimensional(
-        'scentemp', [
-            'Timestep', 'Region'], 'Double', None)
-    temp = IVariable2Dimensional(
-        'temp', [
-            'Timestep', 'Region'], 'Double', None)
-    regtmp = IVariable2Dimensional(
-        'regtmp', [
-            'Timestep', 'Region'], 'Double', None)
-    regstmp = IVariable2Dimensional(
-        'regstmp', [
-            'Timestep', 'Region'], 'Double', None)
+    scentemp = IParameter2Dimensional('scentemp', ['Timestep', 'Region'], 'Double', None)
+    temp = IVariable2Dimensional('temp', ['Timestep', 'Region'], 'Double', None)
+    regtmp = IVariable2Dimensional('regtmp', ['Timestep', 'Region'], 'Double', None)
+    regstmp = IVariable2Dimensional('regstmp', ['Timestep', 'Region'], 'Double', None)
 
     options = [inputtemp, bregtmp, bregstmp, scentemp, temp, regtmp, regstmp]
 
@@ -48,14 +36,7 @@ class ClimateRegionalComponent(Behaviors):
 
         for r in dimensions.GetValuesOfRegion():
 
-            s.regstmp[
-                t,
-                r] = (
-                s.inputtemp[t] *
-                s.bregstmp[r] +
-                s.scentemp[
-                    t,
-                    r])
+            s.regstmp[t,r] = (s.inputtemp[t] * s.bregstmp[r] + s.scentemp[t,r])
 
 
 behavior_classes = [ClimateRegionalComponent]

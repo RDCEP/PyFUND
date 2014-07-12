@@ -7,63 +7,25 @@ from components._patches import *
 
 
 class IImpactAggregationState(Parameters):
-    eloss = IVariable2Dimensional(
-        'eloss', [
-            'Timestep', 'Region'], 'double', None)
-    sloss = IVariable2Dimensional(
-        'sloss', [
-            'Timestep', 'Region'], 'double', None)
-    loss = IVariable2Dimensional(
-        'loss', [
-            'Timestep', 'Region'], 'double', None)
-    income = IParameter2Dimensional(
-        'income', [
-            'Timestep', 'Region'], 'double', None)
-    water = IParameter2Dimensional(
-        'water', [
-            'Timestep', 'Region'], 'double', None)
-    forests = IParameter2Dimensional(
-        'forests', [
-            'Timestep', 'Region'], 'double', None)
-    heating = IParameter2Dimensional(
-        'heating', [
-            'Timestep', 'Region'], 'double', None)
-    cooling = IParameter2Dimensional(
-        'cooling', [
-            'Timestep', 'Region'], 'double', None)
-    agcost = IParameter2Dimensional(
-        'agcost', [
-            'Timestep', 'Region'], 'double', None)
-    drycost = IParameter2Dimensional(
-        'drycost', [
-            'Timestep', 'Region'], 'double', None)
-    protcost = IParameter2Dimensional(
-        'protcost', [
-            'Timestep', 'Region'], 'double', None)
-    entercost = IParameter2Dimensional(
-        'entercost', [
-            'Timestep', 'Region'], 'double', None)
-    hurrdam = IParameter2Dimensional(
-        'hurrdam', [
-            'Timestep', 'Region'], 'double', None)
-    extratropicalstormsdam = IParameter2Dimensional(
-        'extratropicalstormsdam', [
-            'Timestep', 'Region'], 'double', None)
-    species = IParameter2Dimensional(
-        'species', [
-            'Timestep', 'Region'], 'double', None)
-    deadcost = IParameter2Dimensional(
-        'deadcost', [
-            'Timestep', 'Region'], 'double', None)
-    morbcost = IParameter2Dimensional(
-        'morbcost', [
-            'Timestep', 'Region'], 'double', None)
-    wetcost = IParameter2Dimensional(
-        'wetcost', [
-            'Timestep', 'Region'], 'double', None)
-    leavecost = IParameter2Dimensional(
-        'leavecost', [
-            'Timestep', 'Region'], 'double', None)
+    eloss = IVariable2Dimensional('eloss', ['Timestep', 'Region'], 'double', None)
+    sloss = IVariable2Dimensional('sloss', ['Timestep', 'Region'], 'double', None)
+    loss = IVariable2Dimensional('loss', ['Timestep', 'Region'], 'double', None)
+    income = IParameter2Dimensional('income', ['Timestep', 'Region'], 'double', None)
+    water = IParameter2Dimensional('water', ['Timestep', 'Region'], 'double', None)
+    forests = IParameter2Dimensional('forests', ['Timestep', 'Region'], 'double', None)
+    heating = IParameter2Dimensional('heating', ['Timestep', 'Region'], 'double', None)
+    cooling = IParameter2Dimensional('cooling', ['Timestep', 'Region'], 'double', None)
+    agcost = IParameter2Dimensional('agcost', ['Timestep', 'Region'], 'double', None)
+    drycost = IParameter2Dimensional('drycost', ['Timestep', 'Region'], 'double', None)
+    protcost = IParameter2Dimensional('protcost', ['Timestep', 'Region'], 'double', None)
+    entercost = IParameter2Dimensional('entercost', ['Timestep', 'Region'], 'double', None)
+    hurrdam = IParameter2Dimensional('hurrdam', ['Timestep', 'Region'], 'double', None)
+    extratropicalstormsdam = IParameter2Dimensional('extratropicalstormsdam', ['Timestep', 'Region'], 'double', None)
+    species = IParameter2Dimensional('species', ['Timestep', 'Region'], 'double', None)
+    deadcost = IParameter2Dimensional('deadcost', ['Timestep', 'Region'], 'double', None)
+    morbcost = IParameter2Dimensional('morbcost', ['Timestep', 'Region'], 'double', None)
+    wetcost = IParameter2Dimensional('wetcost', ['Timestep', 'Region'], 'double', None)
+    leavecost = IParameter2Dimensional('leavecost', ['Timestep', 'Region'], 'double', None)
     switchoffwater = ScalarVariable('switchoffwater', 'Boolean', None)
     switchoffforests = ScalarVariable('switchoffforests', 'Boolean', None)
     switchoffheating = ScalarVariable('switchoffheating', 'Boolean', None)
@@ -73,10 +35,7 @@ class IImpactAggregationState(Parameters):
     switchoffprotcost = ScalarVariable('switchoffprotcost', 'Boolean', None)
     switchoffentercost = ScalarVariable('switchoffentercost', 'Boolean', None)
     switchoffhurrdam = ScalarVariable('switchoffhurrdam', 'Boolean', None)
-    switchoffextratropicalstormsdam = ScalarVariable(
-        'switchoffextratropicalstormsdam',
-        'Boolean',
-        None)
+    switchoffextratropicalstormsdam = ScalarVariable('switchoffextratropicalstormsdam','Boolean',None)
     switchoffspecies = ScalarVariable('switchoffspecies', 'Boolean', None)
     switchoffdeadcost = ScalarVariable('switchoffdeadcost', 'Boolean', None)
     switchoffmorbcost = ScalarVariable('switchoffmorbcost', 'Boolean', None)
@@ -139,8 +98,7 @@ class ImpactAggregationComponent(Behaviors):
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.eloss[t, r] = (min(
-                    0.0
+                s.eloss[t, r] = (min(0.0
                     - (s.switchoffwater and 0.0 or s.water[t, r])
                     - (s.switchoffforests and 0.0 or s.forests[t, r])
                     - (s.switchoffheating and 0.0 or s.heating[t, r])
@@ -150,27 +108,16 @@ class ImpactAggregationComponent(Behaviors):
                     + (s.switchoffprotcost and 0.0 or s.protcost[t, r])
                     + (s.switchoffentercost and 0.0 or s.entercost[t, r])
                     + (s.switchoffhurrdam and 0.0 or s.hurrdam[t, r])
-                    +
-                    (s.switchoffextratropicalstormsdam and 0.0 or s.extratropicalstormsdam[
-                     t, r]),
+                    + (s.switchoffextratropicalstormsdam and 0.0 or s.extratropicalstormsdam[t, r]),
                     s.income[t, r]))
 
 
             for r in dimensions.GetValuesOfRegion():
 
-                s.sloss[t, r] = (0.0
-                                 +
-                                 (s.switchoffspecies and 0.0 or s.species[
-                                  t, r])
-                                 +
-                                 (s.switchoffdeadcost and 0.0 or s.deadcost[
-                                  t, r])
-                                 +
-                                 (s.switchoffmorbcost and 0.0 or s.morbcost[
-                                  t, r])
-                                 +
-                                 (s.switchoffwetcost and 0.0 or s.wetcost[
-                                  t, r])
+                s.sloss[t, r] = (0.0 + (s.switchoffspecies and 0.0 or s.species[t, r])
+                                 + (s.switchoffdeadcost and 0.0 or s.deadcost[t, r])
+                                 + (s.switchoffmorbcost and 0.0 or s.morbcost[t, r])
+                                 + (s.switchoffwetcost and 0.0 or s.wetcost[t, r])
                                  + (s.switchoffleavecost and 0.0 or s.leavecost[t, r]))
 
 

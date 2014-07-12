@@ -7,16 +7,8 @@ from components._patches import *
 
 
 class IOceanState(Parameters):
-    sea = IVariable1Dimensional(
-        'sea',
-        ['Timestep'],
-        'double',
-        'Sea-level rise in cm')
-    temp = IParameter1Dimensional(
-        'temp',
-        ['Timestep'],
-        'double',
-        'Temperature incrase in C\xc2\xb0')
+    sea = IVariable1Dimensional('sea',['Timestep'],'double','Sea-level rise in cm')
+    temp = IParameter1Dimensional('temp',['Timestep'],'double','Temperature incrase in C\xc2\xb0')
     lifesea = ScalarVariable('lifesea', 'double', '')
     seas = ScalarVariable('seas', 'double', '')
     delaysea = ScalarVariable('delaysea', 'double', None)
@@ -32,11 +24,6 @@ class OceanComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        #print "lifesea;", t, ";global;", s.lifesea, ";"
-        #print "delaysea;", t, ";global;", s.delaysea, ";"
-
-
-
         if (clock.IsFirstTimestep):
 
             s.delaysea = (1.0 / s.lifesea)
@@ -46,17 +33,6 @@ class OceanComponent(Behaviors):
 
             ds = (s.delaysea * s.seas * s.temp[t] - s.delaysea * s.sea[t - 1])
 
-            #print "ds;", t, ";global;", ds, ";"
-            #print "delaysea;", t, ";global;", s.delaysea, ";"
-            #print "seas;", t, ";global;", s.seas, ";"
-            #print "temp;", t, ";global;", s.temp[t], ";"
-
-
             s.sea[t] = (s.sea[t - 1] + ds)
-
-            #print "sea[t];", t, ";global;", s.sea[t], ";"
-            #print "sea[t-1];", t, ";global;", s.sea[t-1], ";"
-
-
 
 behavior_classes = [OceanComponent]

@@ -74,15 +74,14 @@ class ScenarioUncertaintyComponent(Behaviors):
         s = (state)
         t = (clock.Current)
 
-        yearsFromUncertaintyStart = (
-            (t - clock.first) - (s.timeofuncertaintystart - clock.first))
-
+        yearsFromUncertaintyStart = ((t - clock.first) - (s.timeofuncertaintystart - clock.first))
 
         # We added this if-statement to catch a divide by 0 error when yearsFromUncertaintyStart
         # = 50. sdTimeFactor behaves normally in all cases with this substitution since
         # sdTimeFactor modifies ypcgrowth, pgrowth, aeei and acei only when
         # t> timeofuncertaintystart. By construction, t>=timefromuncertaintystart will
         # never include the time range where sdTimeFactor = 0 from this if statement
+
         if yearsFromUncertaintyStart == -50.0:
             sdTimeFactor = 0.0
         else:
@@ -90,21 +89,16 @@ class ScenarioUncertaintyComponent(Behaviors):
 
         for r in dimensions.GetValuesOfRegion():
 
-            s.ypcgrowth[t, r] = (s.scenypcgrowth[t, r] +
-                                 (t >= s.timeofuncertaintystart and s.ecgradd[r] *
-                                  sdTimeFactor or 0.0))
-            s.pgrowth[t, r] = (s.scenpgrowth[t, r] +
-                               (t >= s.timeofuncertaintystart and s.pgadd[r] *
+            s.ypcgrowth[t, r] = (s.scenypcgrowth[t, r] + (t >= s.timeofuncertaintystart and s.ecgradd[r] *
                                 sdTimeFactor or 0.0))
-            s.aeei[t, r] = (s.scenaeei[t, r] +
-                            (t >= s.timeofuncertaintystart and s.aeeiadd[r] *
-                             sdTimeFactor or 0.0))
-            s.acei[t, r] = (s.scenacei[t, r] +
-                            (t >= s.timeofuncertaintystart and s.aceiadd[r] *
-                             sdTimeFactor or 0.0))
-            s.forestemm[t, r] = (s.scenforestemm[t, r] +
-                                 (t >= s.timeofuncertaintystart and s.foremadd[r] *
-                                  sdTimeFactor or 0.0))
+            s.pgrowth[t, r] = (s.scenpgrowth[t, r] + (t >= s.timeofuncertaintystart and s.pgadd[r] *
+                                sdTimeFactor or 0.0))
+            s.aeei[t, r] = (s.scenaeei[t, r] + (t >= s.timeofuncertaintystart and s.aeeiadd[r] *
+                                sdTimeFactor or 0.0))
+            s.acei[t, r] = (s.scenacei[t, r] + (t >= s.timeofuncertaintystart and s.aceiadd[r] *
+                                sdTimeFactor or 0.0))
+            s.forestemm[t, r] = (s.scenforestemm[t, r] + (t >= s.timeofuncertaintystart and s.foremadd[r] *
+                                sdTimeFactor or 0.0))
 
 
 behavior_classes = [ScenarioUncertaintyComponent]

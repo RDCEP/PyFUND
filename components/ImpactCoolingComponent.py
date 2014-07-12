@@ -7,24 +7,14 @@ from components._patches import *
 
 
 class IImpactCoolingState(Parameters):
-    cooling = IVariable2Dimensional(
-        'cooling', [
-            'Timestep', 'Region'], 'double', None)
+    cooling = IVariable2Dimensional('cooling', ['Timestep', 'Region'], 'double', None)
     cebm = IParameter1Dimensional('cebm', ['Region'], 'double', None)
     gdp90 = IParameter1Dimensional('gdp90', ['Region'], 'double', None)
-    population = IParameter2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
+    population = IParameter2Dimensional('population', ['Timestep', 'Region'], 'double', None)
     pop90 = IParameter1Dimensional('pop90', ['Region'], 'double', None)
-    income = IParameter2Dimensional(
-        'income', [
-            'Timestep', 'Region'], 'double', None)
-    temp = IParameter2Dimensional(
-        'temp', [
-            'Timestep', 'Region'], 'double', None)
-    cumaeei = IParameter2Dimensional(
-        'cumaeei', [
-            'Timestep', 'Region'], 'double', None)
+    income = IParameter2Dimensional('income', ['Timestep', 'Region'], 'double', None)
+    temp = IParameter2Dimensional('temp', ['Timestep', 'Region'], 'double', None)
+    cumaeei = IParameter2Dimensional('cumaeei', ['Timestep', 'Region'], 'double', None)
     ceel = ScalarVariable('ceel', 'Double', None)
     cenl = ScalarVariable('cenl', 'Double', None)
 
@@ -59,28 +49,8 @@ class ImpactCoolingComponent(Behaviors):
                 ypc = (s.income[t, r] / s.population[t, r] * 1000.0)
                 ypc90 = (s.gdp90[r] / s.pop90[r] * 1000.0)
 
-                s.cooling[
-                    t,
-                    r] = (
-                    s.cebm[r] *
-                    s.cumaeei[
-                        t,
-                        r] *
-                    s.gdp90[r] *
-                    math.pow(
-                        s.temp[
-                            t,
-                            r] /
-                        1.0,
-                        s.cenl) *
-                    math.pow(
-                        ypc /
-                        ypc90,
-                        s.ceel) *
-                    s.population[
-                        t,
-                        r] /
-                    s.pop90[r])
+                s.cooling[t,r] = (s.cebm[r] * s.cumaeei[t,r] * s.gdp90[r] *
+                    math.pow(s.temp[t,r] /1.0,s.cenl) * math.pow(ypc /ypc90,s.ceel) * s.population[t,r] /s.pop90[r])
 
 
 

@@ -7,34 +7,15 @@ from components._patches import *
 
 
 class IPopulationState(Parameters):
-    population = IVariable2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
-    populationin1 = IVariable2Dimensional(
-        'populationin1', [
-            'Timestep', 'Region'], 'double', None)
-    globalpopulation = IVariable1Dimensional(
-        'globalpopulation',
-        ['Timestep'],
-        'double',
-        None)
-    pgrowth = IParameter2Dimensional(
-        'pgrowth', [
-            'Timestep', 'Region'], 'double', None)
-    enter = IParameter2Dimensional(
-        'enter', [
-            'Timestep', 'Region'], 'double', None)
-    leave = IParameter2Dimensional(
-        'leave', [
-            'Timestep', 'Region'], 'double', None)
-    dead = IParameter2Dimensional(
-        'dead', [
-            'Timestep', 'Region'], 'double', None)
+    population = IVariable2Dimensional('population', ['Timestep', 'Region'], 'double', None)
+    populationin1 = IVariable2Dimensional('populationin1', ['Timestep', 'Region'], 'double', None)
+    globalpopulation = IVariable1Dimensional('globalpopulation',['Timestep'],'double',None)
+    pgrowth = IParameter2Dimensional('pgrowth', ['Timestep', 'Region'], 'double', None)
+    enter = IParameter2Dimensional('enter', ['Timestep', 'Region'], 'double', None)
+    leave = IParameter2Dimensional('leave', ['Timestep', 'Region'], 'double', None)
+    dead = IParameter2Dimensional('dead', ['Timestep', 'Region'], 'double', None)
     pop0 = IParameter1Dimensional('pop0', ['Region'], 'double', None)
-    runwithoutpopulationperturbation = ScalarVariable(
-        'runwithoutpopulationperturbation',
-        'bool',
-        None)
+    runwithoutpopulationperturbation = ScalarVariable('runwithoutpopulationperturbation','bool',None)
 
     options = [
         population,

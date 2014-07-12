@@ -7,32 +7,15 @@ from components._patches import *
 
 
 class IGlobalHotellingTaxationState(Parameters):
-    population = IParameter1Dimensional(
-        'population',
-        ['Timestep'],
-        'double',
-        None)
-    consumption = IParameter1Dimensional(
-        'consumption',
-        ['Timestep'],
-        'double',
-        None)
-    currtax = IVariable2Dimensional(
-        'currtax', [
-            'Timestep', 'Region'], 'double', None)
-    currtaxch4 = IVariable2Dimensional(
-        'currtaxch4', [
-            'Timestep', 'Region'], 'double', None)
-    currtaxn2o = IVariable2Dimensional(
-        'currtaxn2o', [
-            'Timestep', 'Region'], 'double', None)
+    population = IParameter1Dimensional('population',['Timestep'],'double',None)
+    consumption = IParameter1Dimensional('consumption',['Timestep'],'double',None)
+    currtax = IVariable2Dimensional('currtax', ['Timestep', 'Region'], 'double', None)
+    currtaxch4 = IVariable2Dimensional('currtaxch4', ['Timestep', 'Region'], 'double', None)
+    currtaxn2o = IVariable2Dimensional('currtaxn2o', ['Timestep', 'Region'], 'double', None)
     basetax = ScalarVariable('basetax', 'double', None)
     baseyear = ScalarVariable('baseyear', 'Timestep', None)
     prtp = ScalarVariable('prtp', 'Double', None)
-    elasticityofmarginalutility = ScalarVariable(
-        'elasticityofmarginalutility',
-        'Double',
-        None)
+    elasticityofmarginalutility = ScalarVariable('elasticityofmarginalutility','Double',None)
 
     options = [
         population,
@@ -48,27 +31,14 @@ class IGlobalHotellingTaxationState(Parameters):
 
 class IRegionalHotellingTaxationState(Parameters):
     basetax = IParameter1Dimensional('basetax', ['Region'], 'double', None)
-    population = IParameter2Dimensional(
-        'population', [
-            'Timestep', 'Region'], 'double', None)
-    consumption = IParameter2Dimensional(
-        'consumption', [
-            'Timestep', 'Region'], 'double', None)
-    currtax = IVariable2Dimensional(
-        'currtax', [
-            'Timestep', 'Region'], 'double', None)
-    currtaxch4 = IVariable2Dimensional(
-        'currtaxch4', [
-            'Timestep', 'Region'], 'double', None)
-    currtaxn2o = IVariable2Dimensional(
-        'currtaxn2o', [
-            'Timestep', 'Region'], 'double', None)
+    population = IParameter2Dimensional('population', ['Timestep', 'Region'], 'double', None)
+    consumption = IParameter2Dimensional('consumption', ['Timestep', 'Region'], 'double', None)
+    currtax = IVariable2Dimensional('currtax', ['Timestep', 'Region'], 'double', None)
+    currtaxch4 = IVariable2Dimensional('currtaxch4', ['Timestep', 'Region'], 'double', None)
+    currtaxn2o = IVariable2Dimensional('currtaxn2o', ['Timestep', 'Region'], 'double', None)
     baseyear = ScalarVariable('baseyear', 'Timestep', None)
     prtp = ScalarVariable('prtp', 'Double', None)
-    elasticityofmarginalutility = ScalarVariable(
-        'elasticityofmarginalutility',
-        'Double',
-        None)
+    elasticityofmarginalutility = ScalarVariable('elasticityofmarginalutility','Double',None)
 
     options = [
         basetax,
@@ -91,27 +61,14 @@ class GlobalHotellingTaxationComponent(Behaviors):
         s = (state)
 
         perCapitaConsumptionNow = (s.consumption[t] / s.population[t])
-        perCapitaConsumptionPrevious = (
-            s.consumption[
-                t -
-                1] /
-            s.population[
-                t -
-                1])
+        perCapitaConsumptionPrevious = (s.consumption[t -1] / s.population[t-1])
 
-        perCapitaGrowthRate = (
-            perCapitaConsumptionNow /
-            perCapitaConsumptionPrevious -
-            1.0)
+        perCapitaGrowthRate = (perCapitaConsumptionNow /perCapitaConsumptionPrevious - 1.0)
 
-        if (perCapitaConsumptionNow ==
-                0.0 and perCapitaConsumptionPrevious == 0.0):
+        if (perCapitaConsumptionNow == 0.0 and perCapitaConsumptionPrevious == 0.0):
             perCapitaGrowthRate = (0.0)
 
-        discountrate = (
-            perCapitaGrowthRate *
-            s.elasticityofmarginalutility +
-            s.prtp)
+        discountrate = (perCapitaGrowthRate * s.elasticityofmarginalutility + s.prtp)
 
         for r in dimensions.GetValuesOfRegion():
 
@@ -136,32 +93,12 @@ class RegionalHotellingTaxationComponent(Behaviors):
 
         for r in dimensions.GetValuesOfRegion():
 
-            perCapitaConsumptionNow = (
-                s.consumption[
-                    t,
-                    r] /
-                s.population[
-                    t,
-                    r])
-            perCapitaConsumptionPrevious = (
-                s.consumption[
-                    t -
-                    1,
-                    r] /
-                s.population[
-                    t -
-                    1,
-                    r])
+            perCapitaConsumptionNow = (s.consumption[t,r] /s.population[t,r])
+            perCapitaConsumptionPrevious = (s.consumption[t-1,r] /s.population[t-1,r])
 
-            perCapitaGrowthRate = (
-                perCapitaConsumptionNow /
-                perCapitaConsumptionPrevious -
-                1.0)
+            perCapitaGrowthRate = (perCapitaConsumptionNow / perCapitaConsumptionPrevious - 1.0)
 
-            discountrate = (
-                perCapitaGrowthRate *
-                s.elasticityofmarginalutility +
-                s.prtp)
+            discountrate = (perCapitaGrowthRate * s.elasticityofmarginalutility + s.prtp)
 
             if (t < s.baseyear):
                 s.currtax[t, r] = (0.0)
@@ -174,6 +111,4 @@ class RegionalHotellingTaxationComponent(Behaviors):
             s.currtaxch4[t, r] = (s.currtax[t, r])
 
 
-behavior_classes = [
-    GlobalHotellingTaxationComponent,
-    RegionalHotellingTaxationComponent]
+behavior_classes = [GlobalHotellingTaxationComponent, RegionalHotellingTaxationComponent]
